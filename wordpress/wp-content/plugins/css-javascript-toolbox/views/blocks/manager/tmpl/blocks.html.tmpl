@@ -1,0 +1,42 @@
+<?php
+/**
+* 
+*/
+
+// Diallow direct access.
+defined('ABSPATH') or die("Access denied");
+?>
+<div id="cjtoolbox-admin" class="wrap">
+<?php require CJTOOLBOX_VIEWS_PATH . '/blocks/block/tmpl/menu/menu.html.tmpl' ?>
+<?php require CJTOOLBOX_VIEWS_PATH . '/blocks/block/tmpl/codefile/codefile.html.tmpl' ?>
+	<h2><?php echo cssJSToolbox::getText('CSS & Javascript Toolbox Free') ?></h2>
+	<a id="docs-link" target="_blank" href="http://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/documentation/"><?php echo cssJSToolbox::getText('Online Documentation') ?></a>
+	<div id="cjt-banner-bar-right">
+		<span class="cjt-banner-link">
+			Like CSS & JS Toolbox Free?&nbsp;<a target="_blank" href="http://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/pricing/"><?php echo cssJSToolbox::getText('Upgrade CJT-Free') ?></a>
+		</span>
+		<br />
+		<span>Enter <span id="dicount-code">CJT-DISCOUNT</span> and Save 50% Now!!!!</span>
+	</div>
+	<div id="cjtoolbox-blocks-page-form" method="post">
+		<?php wp_nonce_field('cjtoolbox'); ?>
+		<?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
+		<?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false); ?>
+		<input type="hidden" id="cjt-hasBlocks" value="<?php echo $this->hasBlocks ? 'true' : 'false' ?>" />
+		<input type="hidden" id="cjt-securityToken" value="<?php echo $this->securityToken ?>" />
+		<div id="poststuff" class="metabox-holder">
+			<div id="post-body">
+<?php if ($this->backupId) : ?>
+				<p id="cjt-info"><?php  echo cssJSToolbox::getText('You have now restored the code blocks from the current backup. Nothing is saved until you click "Restore" button. To revert back to the previous code blocks and discard this action, simply click the "Cancel Restore" button.') ?></p>
+<?php endif; ?>
+<?php 	echo $this->getTemplate('toolbox', array('location' => 'top'));	?>
+<?php		do_meta_boxes($this->pageHook, 'normal', null); ?>
+				<div id="cjt-noblocks-intro"<?php if ($this->hasBlocks) : ?> style="display:none"<?php endif; ?>>
+<?php		echo $this->getTemplate('intro', array(), 'tmpl/help') ?>
+				</div>
+<?php 	echo $this->getTemplate('toolbox', array('location' => 'bottom'));	?>
+			</div>
+		</div>
+	</div>
+	<div id="cjt-inline-popup"></div>
+</div>
