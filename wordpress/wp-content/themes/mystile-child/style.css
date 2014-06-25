@@ -1,0 +1,44 @@
+/*
+ Theme Name:   Mystile-Child
+ Theme URI:    http://www.woothemes.com/products/mystile/
+ Description:  Mystile Woocommerce Theme
+ Author:       Tony Davis
+ Author URI:   http://geostor.arkansas.gov
+ Template:     mystile
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  Mystile-Child
+*/
+
+@import url("../mystile/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+
+
+.quantity {
+ display:none;
+}
+
+.amount {
+ display:none;
+}
+
+.product-price {
+ display:none;
+}
+
+.product-quantity {
+ display:none;
+}
+
+.product-subtotal {
+ display:none;
+}
+
+div.cart_totals {
+ display:none;
+}
+
+ 

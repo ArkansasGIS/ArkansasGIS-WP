@@ -1,0 +1,964 @@
+/*
+The styles in this stylesheet only apply to resolutions 768px and up
+
+CALCULATING DIMENSIONS:
+----------------------
+The layout is fluid. The sote wrapper (.col-full) has a fixed pixel max-width.
+All subsequent dimensions are calculated based on that fixed pixel width, using the formula: target / context = result
+Credit - http://www.alistapart.com/articles/fluidgrids/
+
+-----
+INDEX
+-----
+
+1. Global dropdown styles
+2. Top Navigation
+3. Main navigation dropdown menus
+ -3.1 General dropdown menus
+4. General layout
+5. WOOCOMMERCE
+-5.1 Messages
+-5.2 Products
+  -5.2.1 Single Product
+-5.3 Cart
+-5.4 Checkout
+-5.5 Widgets
+-5.6 Account
+-5.7 Shortcodes
+6. Footer widgets
+7. IE Fixes
+
+*/
+/*----------------------*/
+/*----------------------*/
+@media only screen and (min-width: 768px) {
+  html.boxed {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGAwBuKzQAwGjDAGNgGwSgwVAFCGAgUGpiTrAAAAAElFTkSuQmCC) #e6e6e6;
+  }
+  html.boxed body {
+    margin: 2.618em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+  }
+  body {
+    padding: 0 3.631em;
+  }
+  table {
+    font-size: 1em !important;
+  }
+  /* 1. GLOBAL DROPDOWN STYLES (these are purely for the dropdown layout and you should only edit the width of the dropdowns) */
+  ul.nav {
+    position: relative;
+    margin-bottom: 0;
+    /* LEVEL 2 */
+    /* LEVEL 3 */
+  }
+  ul.nav li {
+    position: relative;
+    float: left;
+    zoom: 1;
+    list-style: none;
+  }
+  ul.nav li a {
+    display: block;
+    padding: .53em 1em;
+  }
+  ul.nav ul {
+    width: 15.379em;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9999;
+    margin: 0;
+  }
+  ul.nav ul li {
+    float: none;
+  }
+  ul.nav ul li a {
+    width: 100%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+  }
+  ul.nav ul ul {
+    left: 100%;
+    top: 0;
+  }
+  ul.nav li:hover > ul {
+    visibility: visible;
+    display: block;
+  }
+  /* 2. TOP NAVIGATION (Add top navigation presentational styles here) */
+  #top {
+    background: #f7f7f7;
+    margin: 0 -3.631em;
+    padding: 0 3.631em;
+  }
+  #top #top-nav {
+    display: block;
+  }
+  #top ul.nav {
+    font-size: .857em;
+    /* LEVEL 2 */
+    /* LEVEL 3 */
+  }
+  #top ul.nav > li a {
+    padding: 1.387em 1em;
+    color: #9f9693;
+  }
+  #top ul.nav > li a:hover {
+    background: #f7f7f7;
+    text-decoration: none;
+    color: #6c6360;
+  }
+  #top ul.nav > li:hover {
+    background: #f7f7f7;
+  }
+  #top ul.nav ul {
+    background: #f7f7f7;
+  }
+  #top ul.nav ul li a {
+    padding: .53em 1em;
+  }
+  #top .wc-nav {
+    width: auto;
+    float: right;
+  }
+  #top .wc-nav li.checkout {
+    display: inline-block;
+  }
+  #top .wc-nav li.checkout a:before {
+    font-family: 'WebSymbolsRegular';
+    display: inline-block;
+    font-size: .857em;
+    margin-right: .618em;
+    content: ")";
+    font-weight: normal;
+  }
+  #top .wc-nav li.search {
+    width: auto;
+  }
+  #top .wc-nav li.search form {
+    margin-bottom: 0;
+    padding-top: 1.1em;
+  }
+  #top .wc-nav li.search label {
+    display: none;
+  }
+  #top .wc-nav li.search .button {
+    position: absolute;
+    top: 0;
+    left: -999em;
+  }
+  #top .wc-nav li.search:hover {
+    background: none;
+  }
+  #top .wc-nav li.cart {
+    width: auto;
+    text-align: right;
+  }
+  #top .wc-nav li.cart a {
+    padding-top: 1.387em;
+    padding-left: 1em;
+  }
+  #top .wc-nav li.cart a .contents {
+    padding: .2em .618em;
+    background: #fff;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-left: 1em;
+    display: inline;
+  }
+  /* 3. MAIN NAVIGATION DROPDOWN MENUS (Add main navigation presentational styles here) */
+  #header #navigation {
+    display: block !important;
+    margin-top: .382em;
+  }
+  #header #navigation ul.nav {
+    float: right;
+    /* LEVEL 2 */
+    /* LEVEL 3 */
+  }
+  #header #navigation ul.nav > li a {
+    border: 1px solid #fcfcfc;
+    background: #fcfcfc;
+    font-weight: bold;
+    position: relative;
+    -webkit-border-radius: 0.236em;
+    border-radius: 0.236em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  #header #navigation ul.nav > li a:hover {
+    border-color: #e8e4e3;
+    background: #fff;
+  }
+  #header #navigation ul.nav > li:hover a {
+    border-color: #e8e4e3;
+    background: #fff;
+  }
+  #header #navigation ul.nav > li.current-menu-item > a,
+  #header #navigation ul.nav > li.current_page_item > a {
+    color: #ff4800;
+  }
+  #header #navigation ul.nav > li.parent a {
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  #header #navigation ul.nav > li.parent a:after {
+    font-family: 'WebSymbolsRegular';
+    display: inline-block;
+    font-size: .857em;
+    margin-left: .618em;
+    content: ";";
+    color: #e3dad7;
+    font-weight: normal;
+  }
+  #header #navigation ul.nav > li.parent a:hover:before {
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 99999;
+  }
+  #header #navigation ul.nav > li.parent:hover a:before {
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 99999;
+  }
+  #header #navigation ul.nav > li.parent:hover a:after {
+    color: #ff4800;
+  }
+  #header #navigation ul.nav > li.parent ul li a:after {
+    visibility: hidden;
+  }
+  #header #navigation ul.nav > li.parent ul li.parent a:after {
+    visibility: visible;
+    content: "]";
+    float: right;
+  }
+  #header #navigation ul.nav > li.parent ul li.parent ul li a:after {
+    visibility: hidden;
+  }
+  #header #navigation ul.nav > li.parent ul li.parent ul li.parent a:after {
+    visibility: visible;
+    content: "]";
+  }
+  #header #navigation ul.nav > li.parent ul li.parent ul li.parent ul li a:after {
+    visibility: hidden;
+  }
+  #header #navigation ul.nav ul {
+    border: 1px solid #e8e4e3;
+    margin-top: -1px;
+    padding: .372em 0;
+    box-shadow: 0 0.202em 0 0 rgba(232, 228, 227, 0.4);
+    -webkit-box-shadow: 0 0.202em 0 0 rgba(232, 228, 227, 0.4);
+    background: #fff;
+  }
+  #header #navigation ul.nav ul li a {
+    border: 0;
+    background: #fff;
+  }
+  #header #navigation ul.nav ul ul {
+    left: 100%;
+    top: -0.372em;
+  }
+  h3.nav-toggle {
+    display: none;
+  }
+  /* 4. GENERAL LAYOUT */
+  #breadcrumbs {
+    display: block;
+  }
+  .homepage-banner {
+    position: relative;
+    max-width: 95.949em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3.631em;
+    display: block;
+  }
+  .homepage-banner img {
+    margin-bottom: 0;
+    width: 100%;
+    position: relative;
+  }
+  .homepage-banner h1,
+  .homepage-banner .description {
+    z-index: 55;
+  }
+  .homepage-banner h1 {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    right: 20%;
+    color: #fff;
+    text-align: left;
+    font-size: 3.631em;
+  }
+  .homepage-banner h1 span {
+    -webkit-border-radius: 0.236em;
+    border-radius: 0.236em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  }
+  .homepage-banner .description {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 20%;
+    color: #fff;
+    font-size: 1.618em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    -webkit-border-radius: 0.236em;
+    border-radius: 0.236em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  .homepage-banner .description p {
+    text-align: left;
+  }
+  .homepage-banner .description p:last-child {
+    margin-bottom: 0;
+  }
+  .homepage-banner:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    bottom: 0;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGAwBuKzQAwGjDAGNgGwSgwVAFCGAgUGpiTrAAAAAElFTkSuQmCC);
+  }
+  .home #content.with-banner {
+    border-top: 4px double #e8e4e3;
+    padding-top: 3.631em;
+  }
+  .archive-header h1 {
+    float: left;
+  }
+  .archive-header .archive-rss {
+    float: right;
+    padding-top: 1em;
+  }
+  .archive-header .archive-rss a:before {
+    font-family: 'WebSymbolsRegular';
+    display: inline-block;
+    font-size: .857em;
+    margin-right: .618em;
+    font-weight: normal;
+    content: "r";
+    color: orange;
+  }
+  .type-post:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  .type-post .meta {
+    display: block;
+    width: 11%;
+    float: left;
+  }
+  .type-post .meta .day,
+  .type-post .meta .month,
+  .type-post .meta .year {
+    display: block;
+    text-align: center;
+    width: 65.4%;
+    margin: 0 auto;
+    background: #fff;
+  }
+  .type-post .meta .month {
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #ff4800;
+    border-top: 0.202em solid #dd2600;
+    color: #fff;
+    font-size: .857em;
+    padding: .202em 0;
+  }
+  .type-post .meta .day {
+    font-size: 2em;
+    line-height: 1.387;
+    border: 1px solid #e8e4e3;
+    border-width: 0 1px;
+    font-weight: bold;
+  }
+  .type-post .meta .year {
+    border: 1px solid #e8e4e3;
+    border-top: 0;
+    -webkit-border-bottom-left-radius: 0.327em;
+    -webkit-border-bottom-right-radius: 0.327em;
+    border-bottom-left-radius: 0.327em;
+    border-bottom-right-radius: 0.327em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-bottom: 1em;
+    font-size: .857em;
+    padding-bottom: .53em;
+    color: #b0a7a4;
+  }
+  .type-post .meta img {
+    padding: 0;
+    border: 0;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-bottom: 1em;
+    display: block;
+    height: auto;
+  }
+  .type-post .post-content {
+    width: 82.7%;
+    float: right;
+  }
+  .single .type-post p:first-child {
+    font-size: 1.387em;
+  }
+  #post-entries {
+    width: 82.7%;
+    float: right;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+  }
+  #comments,
+  #respond {
+    clear: both;
+  }
+  #comments .commentlist li.comment ul.children {
+    float: right;
+    width: 82.7%;
+    clear: right;
+    padding-top: 2.618em;
+  }
+  .single-post #comments h2:first-child {
+    width: 82.7%;
+    float: right;
+  }
+  #respond {
+    width: 82.7%;
+    float: right;
+  }
+  #fancybox-outer #respond {
+    width: 100%;
+    float: none;
+  }
+  #fancybox-outer #respond textarea {
+    width: 90%;
+  }
+  .col2-set {
+    clear: both;
+  }
+  .col2-set:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  .col2-set .col-1 {
+    width: 48%;
+    float: left;
+  }
+  .col2-set .col-2 {
+    width: 48%;
+    float: right;
+  }
+  .form-row {
+    width: 48%;
+    float: left;
+    margin-bottom: 2.053em;
+  }
+  .form-row label {
+    display: block;
+    padding: .206em 0;
+  }
+  .form-row .input-text,
+  .form-row select {
+    width: 100%;
+    *width: 90%;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+  }
+  .form-row input[type=checkbox] {
+    float: left;
+  }
+  .form-row.notes {
+    width: 100%;
+    float: none;
+  }
+  .form-row.notes textarea {
+    width: 100%;
+    *width: 90%;
+  }
+  .form-row.notes + h3 {
+    clear: both;
+  }
+  .form-row-first {
+    clear: left;
+  }
+  .form-row-last {
+    float: right;
+  }
+  .form-row-wide {
+    float: left;
+    width: 100%;
+    clear: both;
+  }
+  header.title {
+    overflow: hidden;
+    zoom: 1;
+  }
+  header.title h1,
+  header.title h2,
+  header.title h3,
+  header.title h4,
+  header.title h5 {
+    float: left;
+  }
+  header.title a.edit {
+    float: right;
+    font-weight: bold;
+    line-height: 2.4em;
+  }
+  header.title a.edit:before {
+    font-family: 'WebSymbolsRegular';
+    display: inline-block;
+    font-size: .857em;
+    margin-right: .618em;
+    font-weight: normal;
+    content: "S";
+  }
+  #header {
+    padding-bottom: 1.618em;
+    padding-top: 3.631em;
+  }
+  #header:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  #header hgroup {
+    float: left;
+  }
+  #header #navigation {
+    float: right;
+    clear: none;
+    border: 0;
+    background: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: auto;
+  }
+  #main.fullwidth,
+  .layout-full #main,
+  .col-full,
+  .no-sidebar #main {
+    max-width: 75.998em;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #main {
+    width: 69.2%;
+  }
+  #sidebar {
+    margin-top: 0;
+    width: 22.05%;
+    font-size: .857em;
+  }
+  .entry:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  .entry img {
+    max-width: 100%;
+  }
+  .layout-full .entry img {
+    max-width: 100%;
+  }
+  .layout-right-content #main {
+    float: right;
+  }
+  .layout-right-content #sidebar {
+    float: left;
+  }
+  .layout-full #main {
+    width: 100%;
+  }
+  .col-left {
+    float: left;
+  }
+  .col-right {
+    float: right;
+  }
+  .page-template-template-contact-php .location-twitter .col-left {
+    float: left;
+  }
+  .page-template-template-contact-php .location-twitter #office-location {
+    width: 48%;
+    margin: 0;
+  }
+  .page-template-template-contact-php .location-twitter .contact-social {
+    float: right;
+    width: 48%;
+  }
+  .page-template-template-contact-php .location-twitter .contact-social #twitter {
+    margin: 0;
+  }
+  .footer-wrap {
+    background: #f7f7f7;
+    margin: 0 -3.631em;
+    padding: 0 3.631em;
+  }
+  /*-------------------------------------------------------------------------------------------*/
+  /* 7. WOOCOMMERCE */
+  /*-------------------------------------------------------------------------------------------*/
+  /* 7.1 Messages */
+  /* 7.2 Products */
+  ul.products li.product {
+    position: relative;
+    width: 22.05%;
+  }
+  ul.products li.product:nth-child(2n) {
+    margin-right: 3.8%;
+  }
+  ul.products li.product.first {
+    clear: both;
+  }
+  ul.products li.product.last {
+    margin-right: 0;
+  }
+  /* 7.2.1 Single Product */
+  .single-product .images {
+    width: 48%;
+    float: left;
+  }
+  .single-product .summary {
+    width: 48%;
+    float: right;
+  }
+  .single-product .woocommerce_tabs,
+  .single-product .woocommerce-tabs {
+    clear: both;
+  }
+  .single-product .related {
+    clear: both;
+  }
+  .single-product .sale .summary h1 {
+    width: 80%;
+  }
+  .woocommerce_tabs ul.tabs,
+  .woocommerce-tabs ul.tabs,
+  .ui-tabs ul.tabs,
+  .woocommerce_tabs .ui-tabs-nav,
+  .woocommerce-tabs .ui-tabs-nav,
+  .ui-tabs .ui-tabs-nav {
+    margin-bottom: 0;
+    margin-left: 2.618em;
+  }
+  .woocommerce_tabs ul.tabs li,
+  .woocommerce-tabs ul.tabs li,
+  .ui-tabs ul.tabs li,
+  .woocommerce_tabs .ui-tabs-nav li,
+  .woocommerce-tabs .ui-tabs-nav li,
+  .ui-tabs .ui-tabs-nav li {
+    width: auto;
+    float: left;
+    clear: none;
+    margin-bottom: 0;
+  }
+  .woocommerce_tabs ul.tabs li:nth-child(2n),
+  .woocommerce-tabs ul.tabs li:nth-child(2n),
+  .ui-tabs ul.tabs li:nth-child(2n),
+  .woocommerce_tabs .ui-tabs-nav li:nth-child(2n),
+  .woocommerce-tabs .ui-tabs-nav li:nth-child(2n),
+  .ui-tabs .ui-tabs-nav li:nth-child(2n) {
+    float: left;
+    clear: none;
+  }
+  .woocommerce_tabs ul.tabs li a,
+  .woocommerce-tabs ul.tabs li a,
+  .ui-tabs ul.tabs li a,
+  .woocommerce_tabs .ui-tabs-nav li a,
+  .woocommerce-tabs .ui-tabs-nav li a,
+  .ui-tabs .ui-tabs-nav li a {
+    border-bottom: 0;
+    background: rgba(232, 228, 227, 0.5);
+    color: #6c6360;
+  }
+  .woocommerce_tabs ul.tabs li a:hover,
+  .woocommerce-tabs ul.tabs li a:hover,
+  .ui-tabs ul.tabs li a:hover,
+  .woocommerce_tabs .ui-tabs-nav li a:hover,
+  .woocommerce-tabs .ui-tabs-nav li a:hover,
+  .ui-tabs .ui-tabs-nav li a:hover {
+    color: #ff4800;
+  }
+  .woocommerce_tabs ul.tabs li.active,
+  .woocommerce-tabs ul.tabs li.active,
+  .ui-tabs ul.tabs li.active,
+  .woocommerce_tabs .ui-tabs-nav li.active,
+  .woocommerce-tabs .ui-tabs-nav li.active,
+  .ui-tabs .ui-tabs-nav li.active,
+  .woocommerce_tabs ul.tabs li.ui-state-active,
+  .woocommerce-tabs ul.tabs li.ui-state-active,
+  .ui-tabs ul.tabs li.ui-state-active,
+  .woocommerce_tabs .ui-tabs-nav li.ui-state-active,
+  .woocommerce-tabs .ui-tabs-nav li.ui-state-active,
+  .ui-tabs .ui-tabs-nav li.ui-state-active {
+    position: relative;
+  }
+  .woocommerce_tabs ul.tabs li.active:before,
+  .woocommerce-tabs ul.tabs li.active:before,
+  .ui-tabs ul.tabs li.active:before,
+  .woocommerce_tabs .ui-tabs-nav li.active:before,
+  .woocommerce-tabs .ui-tabs-nav li.active:before,
+  .ui-tabs .ui-tabs-nav li.active:before,
+  .woocommerce_tabs ul.tabs li.ui-state-active:before,
+  .woocommerce-tabs ul.tabs li.ui-state-active:before,
+  .ui-tabs ul.tabs li.ui-state-active:before,
+  .woocommerce_tabs .ui-tabs-nav li.ui-state-active:before,
+  .woocommerce-tabs .ui-tabs-nav li.ui-state-active:before,
+  .ui-tabs .ui-tabs-nav li.ui-state-active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.236em;
+    left: 0;
+    right: 0;
+    height: .236em;
+    background: #ff4800;
+    border-top: 1px solid #ff5911;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  .woocommerce_tabs ul.tabs li.active a,
+  .woocommerce-tabs ul.tabs li.active a,
+  .ui-tabs ul.tabs li.active a,
+  .woocommerce_tabs .ui-tabs-nav li.active a,
+  .woocommerce-tabs .ui-tabs-nav li.active a,
+  .ui-tabs .ui-tabs-nav li.active a,
+  .woocommerce_tabs ul.tabs li.ui-state-active a,
+  .woocommerce-tabs ul.tabs li.ui-state-active a,
+  .ui-tabs ul.tabs li.ui-state-active a,
+  .woocommerce_tabs .ui-tabs-nav li.ui-state-active a,
+  .woocommerce-tabs .ui-tabs-nav li.ui-state-active a,
+  .ui-tabs .ui-tabs-nav li.ui-state-active a {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 #e8e4e3;
+    -webkit-box-shadow: 0 1px 2px 0 #e8e4e3;
+    color: #ff4800;
+    border-top-color: #ff4800;
+  }
+  .woocommerce_tabs ul.tabs li.active a:after,
+  .woocommerce-tabs ul.tabs li.active a:after,
+  .ui-tabs ul.tabs li.active a:after,
+  .woocommerce_tabs .ui-tabs-nav li.active a:after,
+  .woocommerce-tabs .ui-tabs-nav li.active a:after,
+  .ui-tabs .ui-tabs-nav li.active a:after,
+  .woocommerce_tabs ul.tabs li.ui-state-active a:after,
+  .woocommerce-tabs ul.tabs li.ui-state-active a:after,
+  .ui-tabs ul.tabs li.ui-state-active a:after,
+  .woocommerce_tabs .ui-tabs-nav li.ui-state-active a:after,
+  .woocommerce-tabs .ui-tabs-nav li.ui-state-active a:after,
+  .ui-tabs .ui-tabs-nav li.ui-state-active a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #fff;
+  }
+  .woocommerce_tabs .panel,
+  .woocommerce-tabs .panel,
+  .ui-tabs .panel {
+    background: #fff;
+    padding: 2.618em;
+    border: 1px solid #e8e4e3;
+  }
+  .woocommerce_tabs table.shop_attributes p,
+  .woocommerce-tabs table.shop_attributes p,
+  .ui-tabs table.shop_attributes p {
+    margin-bottom: 0;
+  }
+  /* 7.3 Cart */
+  table.cart {
+    margin-bottom: 2.618em;
+  }
+  table.cart .product-remove,
+  table.cart .product-thumbnail,
+  table.cart .product-price {
+    position: static;
+  }
+  table.cart td.actions {
+    text-align: right;
+  }
+  table.cart td.actions .coupon {
+    width: 50%;
+    float: left;
+  }
+  table.cart td.actions .input-text,
+  table.cart td.actions .button,
+  table.cart td.actions .checkout-button {
+    width: auto !important;
+    display: inline-block;
+    margin-bottom: 0 !important;
+  }
+  table.cart td.actions .button {
+    margin-left: .618em;
+    float: none !important;
+  }
+  .cart-collaterals:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  .cart-collaterals .cross-sells,
+  .cart-collaterals .cart_totals,
+  .cart-collaterals .shipping_calculator {
+    width: 48%;
+    font-size: .857em;
+    float: left;
+  }
+  .cart-collaterals .cart_totals {
+    float: right;
+  }
+  .cart-collaterals .shipping_calculator {
+    float: right;
+    clear: right;
+  }
+  .cart-collaterals .cross-sells ul.products li.product {
+    width: 48%;
+  }
+  /* 7.4 Checkout */
+  .checkout #order_review {
+    padding: 1.618em;
+  }
+  .checkout #shiptobilling {
+    float: right;
+    margin: 0;
+    text-align: right;
+    width: 48%;
+  }
+  .checkout #shiptobilling label {
+    white-space: nowrap;
+  }
+  .checkout #shiptobilling input[type="checkbox"] {
+    float: right;
+    margin-left: 1em;
+    margin-right: 0;
+  }
+  /* 7.5 Widgets */
+  /* 7.6 Account */
+  /* 7.7 Shortcodes */
+  /* 6. FOOTER WIDGETS */
+  #footer-widgets {
+    border-top: 0;
+  }
+  #footer-widgets .block {
+    margin-right: 3.8%;
+    float: left;
+  }
+  #footer-widgets.col-1 .block {
+    width: 100%;
+    float: none;
+  }
+  #footer-widgets.col-1 .footer-widget-1 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-2 .block {
+    width: 48%;
+  }
+  #footer-widgets.col-2 .footer-widget-2 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-3 .block {
+    width: 30.75%;
+  }
+  #footer-widgets.col-3 .footer-widget-3 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-4 .block {
+    width: 22.05%;
+  }
+  #footer-widgets.col-4 .footer-widget-4 {
+    margin-right: 0;
+  }
+  /* 7. IE FIXES */
+  .ie7 #top-nav {
+    position: relative;
+    z-index: 9999999;
+  }
+  .ie7 #header {
+    position: relative;
+    z-index: 9999999;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .homepage-banner h1 {
+    font-size: 2.244em;
+  }
+  .homepage-banner .description {
+    font-size: 1.387em;
+  }
+}

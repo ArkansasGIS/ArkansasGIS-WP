@@ -1,0 +1,298 @@
+/**
+ * Sensei
+ *
+ * Styles which integrate this theme with Sensei.
+ * This stylesheet is only enqueued if Sensei is activated.
+ * http://www.woothemes.com/products/sensei/
+ */
+
+@import url(../../../../css/mixins.less);
+
+// General Sensei elements
+.meter {
+	clear: both;
+	height: 1.618em;
+	background: @bg_light;
+	margin-bottom: 1.618em;
+	position: relative;
+
+	span {
+		display: inline-block;
+		background: @color_links;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		color: #fff;
+		font-weight: 700;
+		min-width: 2.618em;
+		.borderbox;
+		padding-right: .618em;
+		text-align: right;
+	}
+}
+
+.status {
+	display: inline-block;
+	padding: .236em .857em;
+	background: @border_main;
+	font-weight: 700;
+
+	&.completed {
+		background: @success;
+		color: #fff;
+	}
+
+	&.register {
+		color: #fff;
+		background: @color_links;
+	}
+}
+
+a.view-results,
+a.view-results-link,
+a.sensei-certificate-link {
+	display: inline-block;
+	padding: .236em .857em;
+	float: right;
+	margin-left:.236em;
+}
+
+.course-price {
+	font-weight: 700;
+
+	del {
+		.opacity(.5);
+		font-weight: normal;
+		margin-right: .236em;
+	}
+
+	ins {
+		text-decoration: none;
+		background: none;
+	}
+}
+
+.answer_message,
+.sensei-message {
+	padding:.618em 1em .618em 2.618em;
+	margin-bottom:1.618em;
+	background: #fff;
+	border:1px solid @info;
+	border-left-width:.382em ;
+	position: relative;
+	font-weight: bold;
+	&:before {
+		font-family: 'WebSymbolsRegular';
+		content: "S";
+		display: block;
+		color: @info;
+		font-weight: normal;
+		position: absolute;
+		top:.618em;
+		font-size: 1em;
+		left:.857em;
+	}
+
+	&.user_right,
+	&.user_wrong {
+		color: @color_body;
+	}
+}
+
+.user_right {
+	color: @success;
+}
+
+.user_wrong {
+	color: @error;
+}
+
+.course {
+	.woo-sc-box {
+		clear:both;
+	}
+}
+
+// Courses
+.course-container {
+	.course {
+		.clearfix;
+		border: 1px solid @border_main;
+		padding:1.618em;
+		clear: both;
+	}
+}
+
+.tax-course-category {
+	.course-container {
+		.type-course {
+			clear: both;
+			.entry {
+				clear: none;
+			}
+		}
+	}
+}
+
+.sensei-course-meta {
+	> span {
+		margin-right: 1em;
+		padding-right: 1em;
+		border-right: 1px solid @border_main;
+
+		&:last-child {
+			border: 0;
+			margin-right: 0;
+			padding-right: 0;
+		}
+
+		&.lesson-course {
+			&:before {
+				width: auto;
+				margin-right: .236em;
+				.rotate(90deg);
+			}
+		}
+	}
+}
+
+// Single Course
+.single-course {
+	.course-meta {
+		margin-bottom: 1.618em;
+		.clearfix;
+
+		.status {
+			float: left;
+			margin-right: .236em;
+		}
+
+		.view-results {
+			float: right;
+		}
+	}
+}
+
+.course {
+	.total-grade {
+		border-top:2px solid @border_main;
+		padding-top:1em;
+		margin-top:1em;
+	}
+
+	.lesson-grade {
+		float: right;
+	}
+}
+
+// Lessons
+.course-lessons,
+.module-lessons {
+	.course-completion-rate {
+		float: right;
+	}
+	.lesson {
+		.clearfix;
+		padding:1.618em;
+		border: 1px solid @border_main;
+
+		.lesson-meta {
+			> span {
+				margin-right: 1em;
+				padding-right: 1em;
+				border-right: 1px solid @border_main;
+
+				&:last-child {
+					border: 0;
+					margin-right: 0;
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
+// Single Quiz
+.single-quiz {
+	.multiple-choice {
+		> span {
+			font-weight: 700;
+		}
+
+		ul {
+			margin-left: 0;
+			li {
+				list-style: none;
+			}
+		}
+	}
+}
+
+#sensei-quiz-list {
+	list-style: none;
+
+	> li {
+		margin-bottom: 2.618em;
+		padding: 1.618em;
+		border: 1px solid @border_main;
+		ul {
+			list-style: none;
+			margin: 0;
+		}
+		.user_right,
+		.right_answer,
+		.user_wrong {
+			font-weight: 700;
+		}
+	}
+}
+
+// Learner Profile
+.learner-info {
+	.avatar {
+		float: right;
+		margin: 0 0 1.618em 1em;
+	}
+
+	& + h2 {
+		clear: both;
+	}
+}
+
+
+// Widgets
+.widget_sensei_category_courses,
+.widget_sensei_course_component {
+	li {
+		.clearfix;
+		margin-bottom: 1.618em;
+	}
+
+	img {
+		width: 4.236em;
+		height: auto;
+		float: right;
+	}
+}
+
+.widget_sensei_lesson_component {
+	li {
+		margin-bottom: 1.618em;
+	}
+}
+
+// Modules
+.module-lessons {
+	padding: 1.618em;
+	border: 1px solid @border_main;
+}
+
+@media only screen and (min-width: 768px) {
+	.sensei {
+		#post-entries {
+			width: 100%;
+		}
+	}
+}
