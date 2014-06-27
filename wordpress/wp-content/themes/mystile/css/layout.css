@@ -130,9 +130,11 @@ INDEX
     width: auto;
     float: right;
   }
+/*  Do not need "Checkout" in the header since we are not using "Checkout"- TD 20140625 */
+/*
   #top .wc-nav li.checkout {
     display: inline-block;
-  }
+  } */
   #top .wc-nav li.checkout a:before {
     font-family: 'WebSymbolsRegular';
     display: inline-block;

@@ -13,15 +13,74 @@ from style.css to this file, and modify it to your liking. */
 GLOBAL STYLES
 ----------------
 Add styles beneath this line that you want to be applied across your entire site */
-.homepage-banner h1 {
+
+
+/* Overide:  Change settings of the description on the frontpage banner- TD */
+ .homepage-banner .description {
     position: absolute;
-    top: 10%;
-    left: 5%;
-    right: 5%;
-    color: #fff;
-    text-align: center;
-    font-size: 3.631em;
+    top: 70%;
+    left: 3%;
+    right: 25%;
+    color: #f1f1f0 !important;
+    style="background-color:#F0F0F0;
+    font-size: 1.618em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    -webkit-border-radius: 0.236em;
+    border-radius: 0.236em;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
   }
+
+/*  Change the color of the description on the header image- TD */
+/* a { color: #f1f1f0 !important; } */ 
+
+/* Taken off the top due to not using the checkout feature- TD 20140625 */
+/*  #top .wc-nav li.checkout {
+    display: inline-block;
+  } */
+
+/*Center the header and Navigation bar- TD 201400626*/
+#header hgroup, #header #logo {
+float: none;
+}
+#logo img {
+margin: 0 auto;
+display: block;
+}
+@media only screen and (min-width: 768px) {
+#header #navigation {
+float: left;
+width: 100%;
+position: relative;
+}
+
+#header #navigation ul.nav {
+clear: left;
+float: left;
+list-style: none;
+margin: 0;
+padding: 0;
+position: relative;
+left: 50%;
+text-align: center;
+}
+
+#navigation ul.nav li {
+display: block;
+float: left;
+list-style: none;
+margin: 0;
+padding: 0;
+position: relative;
+right: 50%;
+}
+#navigation ul.nav li li {
+right: auto;
+text-align: left;
+}
+}
 
 /* 
 DESKTOP STYLES

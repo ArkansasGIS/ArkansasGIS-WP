@@ -58,24 +58,6 @@ add_filter('gettext',  'translate_text');
 	    	}
 
 
-function create_combobox($groupname, $selected_key, $options, $prefix='  '){
-  $return = "\n$prefix<select name='$groupname' id='$groupname'>\n";
-
-  foreach( $options as $key => $display ) { 
-    $selected = ($selected_key == $key ) ? " selected" : '';
-    $return .= "$prefix  <option value='$key'".$selected.">$display \n";
-  }
-
-  $return .= "$prefix</select>\n\n";
-
-  return $return;
-}
-
-
-
-
-
-
 /*-----------------------------------------------------------------------------------*/
 /* Don't add any code below here or the sky will fall down */
 /*-----------------------------------------------------------------------------------*/

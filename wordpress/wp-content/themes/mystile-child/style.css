@@ -14,10 +14,12 @@
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
-
-
-
+/*Turn off certain features on homepage and cart */
 .quantity {
+ display:none;
+}
+
+.checkout {
  display:none;
 }
 
