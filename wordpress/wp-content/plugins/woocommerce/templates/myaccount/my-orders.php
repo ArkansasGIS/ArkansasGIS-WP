@@ -32,7 +32,7 @@ if ( $customer_orders ) : ?>
 				<th class="order-number"><span class="nobr"><?php _e( 'Order', 'woocommerce' ); ?></span></th>
 				<th class="order-date"><span class="nobr"><?php _e( 'Date', 'woocommerce' ); ?></span></th>
 				<th class="order-status"><span class="nobr"><?php _e( 'Status', 'woocommerce' ); ?></span></th>
-				<th class="order-total"><span class="nobr"><?php _e( 'Total', 'woocommerce' ); ?></span></th>
+				 <th class="order-total"><span class="nobr"><?php _e( 'Total', 'woocommerce' ); ?></span></th>
 				<th class="order-actions">&nbsp;</th>
 			</tr>
 		</thead>

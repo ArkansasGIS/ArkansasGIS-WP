@@ -16,9 +16,21 @@ Add styles beneath this line that you want to be applied across your entire site
 
 
 /* Overide:  Change settings of the description on the frontpage banner- TD */
- .homepage-banner .description {
+/* Top Title Portion */
+.homepage-banner h1 {		
+    position: absolute;		
+    top: 2%;		
+    left: 3%;		
+    right: 20%;		
+    color: #fff;		
+    text-align: left;		
+    font-size: 3.631em;
+  } 
+
+/* Bottom Description/ Links */
+.homepage-banner .description {
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 3%;
     right: 25%;
     color: #f1f1f0 !important;

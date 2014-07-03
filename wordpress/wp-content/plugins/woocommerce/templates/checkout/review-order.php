@@ -15,16 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<table class="shop_table">
 		<thead>
 			<tr>
-				<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
-				<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
+				<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th> 
+<!-- COMMENT OUT PRODUCT TOTAL: TD 20140627 -->
+			<!--	<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th> -->
+<th class="product-sku"><?php _e( 'Feature Class', 'woocommerce' ); ?></th>
+
 			</tr>
 		</thead>
 		<tfoot>
 
-			<tr class="cart-subtotal">
+		<!--	COMMENT OUT SUBTOTAL: TD 20140627
+<tr class="cart-subtotal">
 				<th><?php _e( 'Cart Subtotal', 'woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
-			</tr>
+			</tr> -->
 
 			<?php foreach ( WC()->cart->get_coupons( 'cart' ) as $code => $coupon ) : ?>
 				<tr class="cart-discount coupon-<?php echo esc_attr( $code ); ?>">
@@ -75,10 +79,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
-			<tr class="order-total">
+	<!-- COMMENT OUT ORDER TOTAL: TD 20140627
+		<tr class="order-total">
 				<th><?php _e( 'Order Total', 'woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_order_total_html(); ?></td>
-			</tr>
+			</tr> -->
 
 			<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
@@ -98,9 +103,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
 							</td>
-							<td class="product-total">
+<!-- COMMENT THIS OUT TO REPLACE WITH SKU: TD 20140627							
+<td class="product-total">
 								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
-							</td>
+							</td> -->
+
+<!-- ADD SKU (FEATURE CLASS): TD 20140627 -->
+<td><?php echo $_product->get_sku(); ?></td>
+
+<!-- FINISH WITH SKU ADDITION -->
 						</tr>
 						<?php
 					}
@@ -167,9 +178,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
 			<?php
-			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) );
+			$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Download Data', 'woocommerce' ) );
 
-			echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
+			echo apply_filters( 'woocommerce_order_button_html', '<input type="submit"  class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
 			?>
 
 			<?php if ( wc_get_page_id( 'terms' ) > 0 && apply_filters( 'woocommerce_checkout_show_terms', true ) ) { 

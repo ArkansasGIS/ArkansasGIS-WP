@@ -59,6 +59,22 @@ if ( $order ) : ?>
 
 	<?php endif; ?>
 
+
+<!--  REDIRECT PAGE AND SEND TO FME: TD 20140701 -->
+<?php
+// This creates a "for loop" to find each sku (Feature)
+foreach($order->get_items() as $item) { 
+$product = get_product( $item['product_id'] ); 
+$sku .= $product->get_sku().' '; 
+}
+
+// This creates the actual redirect to FME
+header( 'Location: http://cm-sas-geo-fme1.sas.arkgov.net/fmedatadownload/geostor_dev/geostor_vector-dl_dev.fmw?opt_servicemode='.$order->dl_type.'&Format='.$order->format_type.'&CoordinateSystem='.$order->projection.'&opt_requesteremail='.$order->email.'&SmallClippee='.$sku.'&WhereClause='.$order->whereclip.'&LargeClippee=DEFAULT');
+
+?>
+
+<!-- END FME REDIRECT CODE: TD 20140702 -->
+
 	<?php do_action( 'woocommerce_thankyou_' . $order->payment_method, $order->id ); ?>
 	<?php do_action( 'woocommerce_thankyou', $order->id ); ?>
 
