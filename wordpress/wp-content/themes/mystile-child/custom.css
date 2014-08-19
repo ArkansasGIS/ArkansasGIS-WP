@@ -61,6 +61,7 @@ float: none;
 margin: 0 auto;
 display: block;
 }
+
 @media only screen and (min-width: 768px) {
 #header #navigation {
 float: left;
@@ -92,8 +93,16 @@ right: 50%;
 right: auto;
 text-align: left;
 }
+
 }
 
+input.input-text{
+width: 1000px;
+position: relative;
+margin: 0;
+left: 20%;
+right: 20%;
+}
 /* 
 DESKTOP STYLES
 -----------------
