@@ -136,7 +136,7 @@ function woo_wc_search_form( $form ) {
     $form = '<li class="search"><form role="search" method="get" id="searchform" action="' . esc_url(home_url( '/' )) . '" >
   <!-- 20140819: TD Comment out the label for the searchbox <label class="screen-reader-text" for="s">' . __( 'Search Products:' , 'woothemes' ) . '</label> -->
     <input type="search" results=5 autosave="'. esc_url(home_url( '/' )) .'" class="input-text" placeholder="'. esc_attr__( 'Search Data, Maps, Tools, etc', 'woothemes' ) .'" value="' . get_search_query() . '" name="s" id="s" />
-    <!-- input type="submit" class="button" id="searchsubmit" value="'. esc_attr__( 'Search', 'woothemes' ) .'" /> -->
+     <input type="submit" class="button" id="searchsubmit" value="'. esc_attr__( 'Search', 'woothemes' ) .'" /> 
     <input type="hidden" name="post_type" value="product" />
     </form></li>';
 
