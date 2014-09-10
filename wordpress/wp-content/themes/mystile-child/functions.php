@@ -43,9 +43,16 @@ foreach ( $includes as $i ) {
 /*-----------------------------------------------------------------------------------*/
 /* You can add custom functions below */
 /*-----------------------------------------------------------------------------------*/
+// Added to get access to MySQL database tables
+global $wpdb;
+/* RDP added to load custom javascript file GEOSTOREDITS     */
+wp_enqueue_script('geostor_custom', get_stylesheet_directory_uri().'/woocommerce/geostor_custom.js',array(),false,true);
+
+//  Action to add 'Add To Cart' button with the product thumbnails
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
 
 add_filter('gettext',  'translate_text');
-	add_filter('ngettext',  'translate_text');
+add_filter('ngettext',  'translate_text');
 	  
 	function translate_text($translated) {
 		$translated = str_ireplace('Products',  'Data',  $translated);
@@ -60,13 +67,15 @@ add_filter('gettext',  'translate_text');
 	     
 	     return $translated;
 	     
-	    	}
+	 }
+
 
 // Hook in
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
 
 // Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields( $fields ) {
+	global $wpdb;
      unset($fields['billing']['billing_address_1']);
      unset($fields['billing']['billing_country']);
       unset($fields['billing']['billing_first_name']);
@@ -93,17 +102,19 @@ function custom_override_checkout_fields( $fields ) {
       		'sync'       => __( 'Desktop', 'woocommerce' ) 	
                         )                       
     );
+	
     $fields['billing']['format_type']= array(
 	    'type' => 'select',
 	    'label'     => __('Format', 'woocommerce'),
     	'placeholder'   => _x('Format', 'placeholder', 'woocommerce'),
-    	'required'  => false,
+    	'required'  => true,
      	'form' => 'FME',
     	'class'     => array('chosen-container'),
     	'clear'     => true,
 	    'id' => 'format_type',
         'class'     => array('form-row-wide'),
  	    'options' => array(
+ 	    	''        => __( 'Select A Format', 'woocommerce' ),
      		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
       		'GEODATABASE_FILE'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
       		'GEODATABASE_MDB'       => __( 'Personal Geodatabase (Esri)', 'woocommerce' ),
@@ -117,35 +128,91 @@ function custom_override_checkout_fields( $fields ) {
                         )                       
     );
     
-   $fields['billing']['whereclip']= array(
+   $fields['billing']['clip_type']= array(
 	    'type' => 'select',
 	    'label'     => __('Clip by: ', 'woocommerce'),
+    	'placeholder'   => _x('Select', 'placeholder', 'woocommerce'),
+    	'required'  => true,
+     	'form' => 'FME',
+    	'class'     => array('chosen-container'),
+    	'clear'     => true,
+	    'id' => 'clip_type',
+        'class'     => array('form-row-wide'),
+        // THIS calls the toggleClipper function from the geostor_custom.js
+        'custom_attributes' => array('onchange' => 'toggleClipper();'),
+ 	    'options' => array(
+ 	    	''        => __( 'Select a Clipper', 'woocommerce' ),
+     		'County'        => __( 'County', 'woocommerce' ),
+      		'City'        => __( 'City', 'woocommerce' ),
+      		'Extent'        => __( 'Map Extent', 'woocommerce' ),
+      		'State'        => __( 'Statewide', 'woocommerce' )
+                        )                       
+    );
+	
+	// Query the database County table to get select values GEOSTOREDITS
+	$counties = $wpdb->get_results("SELECT COUNTY_NAME from county");
+	// Create the County clipper pulldown on the cart page GEOSTOREDITS
+	$fields['billing']['county_clipper']= array(
+	    'type' => 'select',
+	    'label'     => __('County', 'woocommerce'),
     	'placeholder'   => _x('Select', 'placeholder', 'woocommerce'),
     	'required'  => false,
      	'form' => 'FME',
     	'class'     => array('chosen-container'),
     	'clear'     => true,
-	    'id' => 'CountyClip',
-        'class'     => array('form-row-wide'),
+	    'id' => 'county_clipper',
  	    'options' => array(
-     		'where COUNTY_NAM =\'Faulkner\'&Clipper=ADMIN.DBO.COUNTIES_AHTD'        => __( 'Faulkner', 'woocommerce' ),
-      		'where COUNTY_NAM =\'Pulaski\'&Clipper=ADMIN.DBO.COUNTIES_AHTD'       => __( 'Pulaski', 'woocommerce' ), 	
-      		'where CITY_NAME =\'Conway\'&Clipper=ADMIN.DBO.CITY_LIMITS_AHTD'        => __( 'Cities: Conway', 'woocommerce' )
+ 	    	''        => __( 'Select a County', 'woocommerce' )
                         )                       
     );
-     
+	// Add the countyies to the county clipper puldown
+	foreach($counties as $county){
+		$fields['billing']['county_clipper']['options'][$county->COUNTY_NAME] =  __($county->COUNTY_NAME,'woocommerce');
+	}
 
+	// Query the database City table to get select values GEOSTOREDITS
+	$cities = $wpdb->get_results("SELECT CITY_NAME from city");
+	$fields['billing']['city_clipper']= array(
+	    'type' => 'select',
+	    'label'     => __('City', 'woocommerce'),
+    	'placeholder'   => _x('Select', 'placeholder', 'woocommerce'),
+    	'required'  => false,
+     	'form' => 'FME',
+    	'class'     => array('chosen-container'),
+    	'clear'     => true,
+	    'id' => 'city_clipper',
+ 	    'options' => array(
+ 	    	''        => __( 'Select a City', 'woocommerce' )
+                        )                       
+    );
+
+	// Add the cities to the city clipper puldown
+	foreach($cities as $city){
+		$fields['billing']['city_clipper']['options'][$city->CITY_NAME] =  __($city->CITY_NAME,'woocommerce');
+	}
+
+	$fields['billing']['extent_clipper'] = array(
+        'label'     => __('Extent:', 'woocommerce'),
+        'placeholder'   => _x('Extent:', 'placeholder', 'woocommerce'),
+        'required'  => false,
+        'class'     => array('form-row-wide'),
+        'id' => 'extent_clipper',
+        'clear'     => true
+     );
+     
+	
      $fields['billing']['projection']= array(
 	    'type' => 'select',
 	    'label'     => __('Projection', 'woocommerce'),
     	'placeholder'   => _x('Projection', 'placeholder', 'woocommerce'),
-    	'required'  => false,
+    	'required'  => true,
      	'form' => 'FME',
     	'class'     => array('chosen-container'),
     	'clear'     => true,
 	    'id' => 'Proj',
         'class'     => array('form-row-wide'),
  	    'options' => array(
+ 	    	''        => __( 'Select A Projection', 'woocommerce' ),
      		'EPSG:26915'        => __( 'NAD83 UTM- Zone 15N', 'woocommerce' ),
       		'LL-WGS84'       => __( 'WGS84 Lat/Long', 'woocommerce' ), 	
       		'LL-83'       => __( 'NAD83 Lat/Long', 'woocommerce' ), 
@@ -157,7 +224,7 @@ function custom_override_checkout_fields( $fields ) {
     $fields['billing']['email'] = array(
         'label'     => __('E-Mail:', 'woocommerce'),
         'placeholder'   => _x('E-Mail', 'placeholder', 'woocommerce'),
-        'required'  => false,
+        'required'  => true,
         'class'     => array('form-row-wide'),
         'clear'     => true
      );
@@ -166,23 +233,7 @@ function custom_override_checkout_fields( $fields ) {
      return $fields;
 }
 
-// TESTING ONLY!!!  Trying to establish a new hook that will send the data to FME after updating the database:  TD- 20140630
-add_action( 'geostor_received', 'geostor_rec_func' );
 
-	function wgeostor_rec_func () {
-
-		echo '<form action="http://cm-sas-geo-fme1.sas.arkgov.net/fmedatadownload/geostor_dev/geostor_vector-dl_dev.fmw" method="get" id="FME">
-		<input name="opt_responseformat" type="hidden" value="html"/>
-		<input name="CoordinateSystem" type="hidden" value="EPSG:26915"/>
-		<input name="opt_requesteremail" type="hidden" value="" />
-		<input name="WhereClause" type="hidden" value="where CITY_NAME = &#039;North Little Rock&#039;" />
-		<input name="Clipper" type="hidden" value="ADMIN.DBO.CITY_LIMITS_AHTD" />
-		<input name="Format" type="hidden" value="SHAPE" />
-		<input name="opt_servicemode" type="hidden" value="async">
-		<input form="FME" type="submit" value="Submit Request" />' . "
-";
-
-	} 
 
 
 /*-----------------------------------------------------------------------------------*/

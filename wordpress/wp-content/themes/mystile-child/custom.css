@@ -105,9 +105,24 @@ text-align: center;
 
 }
 
-/* Edits by RDP: remove the radio button next to the search bar */
+/* Edits by RDP: remove the radio button next to the search bar GEOSTOREDITS */
 li {
  display: block;
+}
+
+
+
+/* set display to none to hide the clipper on page load    */
+#county_clipper_field {
+	display: none;
+}
+/* set display to none to hide the clipper on page load    */
+#city_clipper_field {
+	display: none;
+}
+/* set display to none to hide the clipper on page load    */
+#extent_clipper_field {
+	display: block;
 }
 
 /* 

@@ -24,6 +24,16 @@ global $woo_options, $woocommerce;
 <?php woo_meta(); ?>
 <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!-- RDP Added to include Sencha javascript library GEOSTOREDITS -->
+<link rel="stylesheet" type="text/css" href="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/resources/css/ext-all-gray.css" />
+<script type="text/javascript" src="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/ext-all-debug.js"></script>
+<!-- RDP Added to include Leaflet javascript library GEOSTOREDITS -->
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
 <?php
 	wp_head();
 	woo_head();
