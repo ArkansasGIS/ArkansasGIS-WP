@@ -46,7 +46,7 @@ foreach ( $includes as $i ) {
 // Added to get access to MySQL database tables
 global $wpdb;
 /* RDP added to load custom javascript file GEOSTOREDITS     */
-wp_enqueue_script('geostor_custom', get_stylesheet_directory_uri().'/woocommerce/geostor_custom.js',array(),false,true);
+
 
 //  Action to add 'Add To Cart' button with the product thumbnails
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );

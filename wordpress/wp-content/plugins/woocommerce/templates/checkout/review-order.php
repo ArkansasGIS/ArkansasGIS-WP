@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<thead>
 			<tr>
 				<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th> 
-<!-- COMMENT OUT PRODUCT TOTAL: TD 20140627 -->
+<!-- COMMENT OUT PRODUCT TOTAL: TD 20140627 GEOSTOREDITS -->
 			<!--	<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th> -->
 <th class="product-sku"><?php _e( 'Feature Class', 'woocommerce' ); ?></th>
 
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</thead>
 		<tfoot>
 
-		<!--	COMMENT OUT SUBTOTAL: TD 20140627
+		<!--	COMMENT OUT SUBTOTAL: TD 20140627 GEOSTOREDITS
 <tr class="cart-subtotal">
 				<th><?php _e( 'Cart Subtotal', 'woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
@@ -79,7 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
-	<!-- COMMENT OUT ORDER TOTAL: TD 20140627
+	<!-- COMMENT OUT ORDER TOTAL: TD 20140627  GEOSTOREDITS
 		<tr class="order-total">
 				<th><?php _e( 'Order Total', 'woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_order_total_html(); ?></td>
@@ -103,7 +103,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
 							</td>
-<!-- COMMENT THIS OUT TO REPLACE WITH SKU: TD 20140627							
+<!-- COMMENT THIS OUT TO REPLACE WITH SKU: TD 20140627	 GEOSTOREDTIS						
 <td class="product-total">
 								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
 							</td> -->

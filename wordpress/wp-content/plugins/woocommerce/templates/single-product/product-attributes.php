@@ -20,7 +20,6 @@ $attributes = $product->get_attributes();
 ob_start();
 ?>
 <table class="shop_attributes">
-
 	<?php if ( $product->enable_dimensions_display() ) : ?>
 
 		<?php if ( $product->has_weight() ) : $has_row = true; ?>

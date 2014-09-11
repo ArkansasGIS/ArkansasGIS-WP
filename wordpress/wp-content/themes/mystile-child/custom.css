@@ -96,13 +96,11 @@ text-align: left;
 
 }
 
-input.input-text{
+#s {
 width: 52%;
 position: relative;
 margin-left: 20%;
 text-align: center;
-
-
 }
 
 /* Edits by RDP: remove the radio button next to the search bar GEOSTOREDITS */
@@ -110,8 +108,17 @@ li {
  display: block;
 }
 
-
-
+/* RDP change the add to cart button color GEOSTOREDITS */
+a.button.add_to_cart_button.product_type_simple {
+	color: white !important;
+}
+/* RDP change the 'read more' button color GEOSTOREDITS */
+a.button.product_type_simple {
+	color: white !important;
+}
+a.button.view {
+	color: white !important;
+}
 /* set display to none to hide the clipper on page load    */
 #county_clipper_field {
 	display: none;
@@ -122,7 +129,7 @@ li {
 }
 /* set display to none to hide the clipper on page load    */
 #extent_clipper_field {
-	display: block;
+	display: none;
 }
 
 /* 

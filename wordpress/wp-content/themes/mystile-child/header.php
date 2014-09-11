@@ -31,7 +31,7 @@ global $woo_options, $woocommerce;
   <!-- Load Leaflet from CDN-->
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
+ <?php wp_enqueue_script('geostor_custom', get_stylesheet_directory_uri().'/woocommerce/geostor_custom.js',array(),false,true); ?>
   <!-- Load Esri Leaflet from CDN -->
   <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
 <?php

@@ -69,8 +69,8 @@ $sku .= $product->get_sku().' ';
 }
 
 // This creates the actual redirect to FME
-header( 'Location: http://cm-sas-geo-fme1.sas.arkgov.net/fmedatadownload/geostor_dev/geostor_vector-dl_dev.fmw?opt_servicemode='.$order->dl_type.'&Format='.$order->format_type.'&CoordinateSystem='.$order->projection.'&opt_requesteremail='.$order->email.'&SmallClippee='.$sku.'&WhereClause='.$order->whereclip.'&LargeClippee=DEFAULT');
-
+//header( 'Location: http://cm-sas-geo-fme1.sas.arkgov.net/fmedatadownload/geostor_dev/geostor_vector-dl_dev.fmw?opt_servicemode='.$order->dl_type.'&Format='.$order->format_type.'&CoordinateSystem='.$order->projection.'&opt_requesteremail='.$order->email.'&SmallClippee='.$sku.'&WhereClause='.$order->whereclip.'&LargeClippee=DEFAULT');
+print_r($order);
 ?>
 
 <!-- END FME REDIRECT CODE: TD 20140702 -->
