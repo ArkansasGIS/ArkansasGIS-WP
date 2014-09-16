@@ -38,7 +38,20 @@ if ( ! function_exists( 'wp' ) && ! empty( $_SERVER['SCRIPT_FILENAME'] ) && base
     
 		<section id="main" class="col-left">  
 		
-		<?php mystile_homepage_content(); ?>		
+		<?php 
+		if (class_exists('woocommerce') && $woo_options[ 'woo_homepage_products' ] == "true" ) {
+			echo '<h1>'.__('Recent Data Uploads', 'woothemes').'</h1>';
+			$productsperpage = $woo_options['woo_homepage_products_perpage'];
+			echo do_shortcode('[product_category category="data" per_page="'.$productsperpage.'" orderby="date" order="ASC"]');
+		} // End query to see if products should be displayed
+		
+		if (class_exists('woocommerce') && $woo_options[ 'woo_homepage_featured_products' ] == "true" ) {
+			echo '<h1>'.__('Featured Places, Persons, Agencies, and Datasets', 'woothemes').'</h1>';
+			$featuredproductsperpage = $woo_options['woo_homepage_featured_products_perpage'];
+			echo do_shortcode('[featured_products per_page="'.$featuredproductsperpage.'"]');
+		} // End query to see if products should be displayed
+		//mystile_homepage_content(); 
+		?>		
 		
 		<?php woo_loop_before(); ?>
 		

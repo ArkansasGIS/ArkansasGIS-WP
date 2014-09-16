@@ -45,8 +45,6 @@ foreach ( $includes as $i ) {
 /*-----------------------------------------------------------------------------------*/
 // Added to get access to MySQL database tables
 global $wpdb;
-/* RDP added to load custom javascript file GEOSTOREDITS     */
-
 
 //  Action to add 'Add To Cart' button with the product thumbnails
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
@@ -55,8 +53,8 @@ add_filter('gettext',  'translate_text');
 add_filter('ngettext',  'translate_text');
 	  
 	function translate_text($translated) {
-		$translated = str_ireplace('Products',  'Data',  $translated);
-	     $translated = str_ireplace('Product',  'Data',  $translated);
+	$translated = str_ireplace('Products',  'Data',  $translated);
+	$translated = str_ireplace('Product',  'Data',  $translated);
 	$translated = str_ireplace('Free',  'Downloadable Data',  $translated);
 	$translated = str_ireplace('Customer',  'User',  $translated);
 	$translated = str_ireplace('Billing',  'Download',  $translated);
@@ -69,6 +67,30 @@ add_filter('ngettext',  'translate_text');
 	     
 	 }
 
+
+// RDP added Hook for FME details on My Account Page GEOSTOREDITS
+add_filter('woocommerce_order_details_after_order_table','custom_order_details_after_order_table');
+
+function custom_order_details_after_order_table($order){
+	$post_meta = get_post_meta($order->id);
+	echo '<table class="shop_table order_details">';
+	echo '<thead><tr><th class="product-name">FME</th><th class="product-name"></th></tr></thead>';
+	echo '<tbody>';
+	echo '<tr class="order_item">';
+	echo '<td class="product-name">Format</td>';
+	echo '<td class="product-name">'.get_post_meta($order->id,'_format_type',true).'</td>';
+	echo '</tr>';
+	echo '<tr class="order_item">';
+	echo '<td class="product-name">Coordinate System</td>';
+	echo '<td class="product-name">'.get_post_meta($order->id,'_projection',true).'</td>';
+	echo '</tr>';
+	echo '<tr class="order_item">';
+	echo '<td class="product-name">Clipper</td>';
+	echo '<td class="product-name">'.get_post_meta($order->id,'_clip_type',true).'</td>';
+	echo '</tr>';
+	echo '</tbody>';
+	echo '</table>';
+}
 
 // Hook in
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
