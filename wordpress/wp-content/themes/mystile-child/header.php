@@ -24,6 +24,16 @@ global $woo_options, $woocommerce;
 <?php woo_meta(); ?>
 <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!-- RDP Added to include Sencha javascript library GEOSTOREDITS -->
+<link rel="stylesheet" type="text/css" href="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/resources/css/ext-all-gray.css" />
+<script type="text/javascript" src="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/ext-all-debug.js"></script>
+<!-- RDP Added to include Leaflet javascript library GEOSTOREDITS -->
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+ <?php wp_enqueue_script('geostor_custom', get_stylesheet_directory_uri().'/woocommerce/geostor_custom.js',array(),false,true); ?>
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
 <?php
 	wp_head();
 	woo_head();
@@ -96,6 +106,7 @@ global $woo_options, $woocommerce;
 				<?php if ( is_page() ) $highlight = 'page_item'; else $highlight = 'page_item current_page_item'; ?>
 				<li class="<?php echo $highlight; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php _e( 'Home', 'woothemes' ); ?></a></li>
 				<?php wp_list_pages( 'sort_column=menu_order&depth=6&title_li=&exclude=' ); ?>
+				<li><?php wp_loginout(); ?></li>
 			</ul><!-- /#nav -->
 	        <?php } ?>
 

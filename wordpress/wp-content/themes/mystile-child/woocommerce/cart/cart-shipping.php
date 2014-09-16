@@ -10,8 +10,8 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
-<tr class="shipping">
-	<th><?php
+<!-- <tr class="shipping">
+	 <th><?php
 		 if ( $show_package_details ) {
 			printf( __( 'Shipping #%d', 'woocommerce' ), $index + 1 );
 		} else {
@@ -94,4 +94,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			?>
 		<?php endif; ?>
 	</td>
-</tr>
+</tr> -->
