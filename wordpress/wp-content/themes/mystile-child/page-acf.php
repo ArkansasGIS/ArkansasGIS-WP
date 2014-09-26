@@ -1,86 +1,39 @@
+<?php
+/*
+Template Name: Map Page Template
+ * Created by RDP for GeoStor Map Viewer   GEOSTOREDITS
+ * 09/24/2014
+*/
 
-function toggleClipper(){
-	var cliptype = document.getElementById('clip_type').value;
-	document.getElementById('county_clipper_field').style.display = 'none';
-	document.getElementById('city_clipper_field').style.display = 'none';
-	document.getElementById('extent_clipper_field').style.display = 'none';
-	switch(cliptype) {
-		case 'County':
-			document.getElementById('county_clipper_field').style.display = 'block';
-			break;
-		case 'City':
-			document.getElementById('city_clipper_field').style.display = 'block';
-			break;
-		case 'Extent':
-			document.getElementById('extent_clipper_field').style.display = 'block';
-			showExtentMapWindow();
-			break;
-		case 'State':
-			break;
-	}
-}
+get_header(); ?>
+<style>
+  #map {position: relative; width: 100%px; height: 800px; margin: 0 auto;}
+  .label {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: -1em;
+  }
 
-var mapWindow;
-var map;
-Ext.onReady(function(){
-	Ext.define('Ext.ux.LeafletMapView',{
-		extend: 'Ext.Component',
-		alias: 'widget.leafletmapview',
-		config: { map: null},
-		afterRender: function(t,eOpts){
-			this.callParent(arguments);
-			var leafletRef = window.L;
-			if(leafletRef == null){
-				this.update('No leaflet library loaded');
-			}else{
-				map = L.map(this.getId());
-				map.setView([34.749, -92.286], 8);
-				this.setMap(map);
-				L.esri.basemapLayer('Gray').addTo(map);
-    			L.esri.basemapLayer('GrayLabels').addTo(map); 
-			}
-			
-		}
-	});
-});
-
-function showExtentMapWindow(){
-	mapWindow = Ext.create('Ext.window.Window',{
-		layout: 'fit',
-		title: 'Extent Map Window',
-		id: 'MapWindow',
-		modal: true,
-		resizeable: false,
-		width: '90%',
-		height: '80%',
-		closeAction: 'destroy',
-		items:[
-			{
-				xtype: 'leafletmapview'
-			}
-		],
-		bbar: [{
-			xtype: 'button',
-			text: 'Use Current Extent',
-			handler: function(){
-				var extent = map.getBounds().toBBoxString();
-				document.getElementById('extent_clipper').value = extent;
-				mapWindow.close();
-			}
-		}]
-	});
-	mapWindow.show();
-	map.invalidateSize();
-}
-
-function addMainMap(){
-	var map = L.map('map').setView([34.749, -92.286], 8);
-
-    L.esri.basemapLayer('Gray').addTo(map);
-    L.esri.basemapLayer('GrayLabels').addTo(map);
-}
-
-function addACFMap(){
+  .label div {
+    position: relative;
+    left: -50%;
+    text-shadow: 0px 2px 1px rgba(255,255,255,0.85);
+  }
+  #info-pane {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    padding: 1em;
+    background: white;
+  }
+</style>
+<div id="map">
+    
+</div>
+<div id="info-pane" class="leaflet-bar"></div>
+<script>
 	var map = L.map('map').setView([34.749, -92.286], 8);
 
     L.esri.basemapLayer('Gray').addTo(map);
@@ -147,8 +100,5 @@ function addACFMap(){
     };
     
     L.control.layers(overlays).addTo(map);
-}
-
-function addCAMPMap(){
-	
-}
+</script>
+<?php get_footer(); ?>

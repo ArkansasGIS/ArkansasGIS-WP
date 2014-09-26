@@ -39,12 +39,17 @@ if ( ! function_exists( 'wp' ) && ! empty( $_SERVER['SCRIPT_FILENAME'] ) && base
 		<section id="main" class="col-left">  
 		
 		<?php 
+		//
+		// RDP added to show Recent Data Uploads   GEOSTOREDITS
+		//
 		if (class_exists('woocommerce') && $woo_options[ 'woo_homepage_products' ] == "true" ) {
 			echo '<h1>'.__('Recent Data Uploads', 'woothemes').'</h1>';
 			$productsperpage = $woo_options['woo_homepage_products_perpage'];
 			echo do_shortcode('[product_category category="data" per_page="'.$productsperpage.'" orderby="date" order="ASC"]');
 		} // End query to see if products should be displayed
-		
+		//
+		// RDP added to show Featured Places...etc
+		//
 		if (class_exists('woocommerce') && $woo_options[ 'woo_homepage_featured_products' ] == "true" ) {
 			echo '<h1>'.__('Featured Places, Persons, Agencies, and Datasets', 'woothemes').'</h1>';
 			$featuredproductsperpage = $woo_options['woo_homepage_featured_products_perpage'];
