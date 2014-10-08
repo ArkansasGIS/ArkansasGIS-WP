@@ -10,14 +10,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $woocommerce;
-
 if ( $order ) : ?>
 	<!--RDP Added for FME Request GEOSTOREDITS   -->
 	<?php
 		// This creates a "for loop" to find each sku (Feature)
 		foreach($order->get_items() as $item) { 
 			$product = get_product( $item['product_id'] ); 
-			$terms = get_the_terms( $product->ID, 'product_cat' );
+			$terms = get_the_terms( $item['product_id'], 'product_cat' );
 	        if($terms && ! is_wp_error($terms)){
 		        foreach ($terms as $term) {
 		            $product_cat = $term->name;
@@ -67,7 +66,7 @@ if ( $order ) : ?>
 		$fmeurl .= http_build_query($fmeparams);
 		$fmeerror = false;
 		$result = file_get_contents($fmeurl);
-		
+		print_r($fmeurl);
 		$xmlresponse = new SimpleXMLElement($result);
 		if($xmlresponse->statusInfo->status == 'failure'){
 			$fmeerror = true;
