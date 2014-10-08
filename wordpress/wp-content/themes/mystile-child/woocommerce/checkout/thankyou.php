@@ -17,66 +17,68 @@ if ( $order ) : ?>
 		// This creates a "for loop" to find each sku (Feature)
 		foreach($order->get_items() as $item) { 
 			$product = get_product( $item['product_id'] ); 
-			$sku .= $product->get_sku().' '; 
+			$terms = get_the_terms( $product->ID, 'product_cat' );
+	        if($terms && ! is_wp_error($terms)){
+		        foreach ($terms as $term) {
+		            $product_cat = $term->name;
+		            break;
+		        }
+			}	
+			$sku .= $product_cat.'.'.$product->get_sku().' '; 
 		}
 		
 		// Build the FME url
-		$fmeurl = 'http://cm-sas-geo-fme1.sas.arkgov.net/fmedatadownload/geostor_dev/geostor_vector-dl_dev.fmw?';
+		$fmeurl = 'https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?';
 		$fmeparams = array();
-		$fmeparams['opt_servicemode'] = $order->dl_type;
+		$fmeparams['ClippeeSource'] = 'gisdb';
+		$fmeparams['Clippee'] = $sku;
+		$fmeparams['OUTPUT'] = '$(FME_SHAREDRESOURCE_TEMP)';
 		$fmeparams['Format'] = $order->format_type;
+		$fmeparams['ClipperSource'] = 'gisdb';
 		$fmeparams['CoordinateSystem'] = $order->projection;
+		$fmeparams['opt_showresult'] = 'false';
+		$fmeparams['opt_servicemode'] = $order->dl_type;
 		$fmeparams['opt_requesteremail'] = $order->email;
-		$fmeparams['SmallClippee'] = $sku;
-		$fmeparams['LargeClippee'] = 'DEFAULT';
 		
 		//// Check what clipper we are using and set the Clipper and WhereClause ->  RDP GEOSTOREDITS
 		switch($order->clip_type){
 			case 'County':
-				$fmeparams['WhereClause'] = 'where COUNTY_NAME = "'.$order->county_clipper.'"';
-				$fmeparams['Clipper'] = 'ADMIN.DBO.AHTD_COUNTIES';
+				$fmeparams['WhereClause'] = "county_nam LIKE '".$order->county_clipper."'";
+				$fmeparams['Clipper'] = 'Boundaries.COUNTIES_AHTD';
 				//$fmeurl .= '&WhereClause='.urlencode('COUNTY_NAME = "'.$order->county_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_COUNTIES';
 				break;
 			case 'City':
-				$fmeparams['WhereClause'] = 'where CITY_NAME = "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'ADMIN.DBO.CITY_LIMITS_AHTD';
+				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
+				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
 				//$fmeurl .= '&WhereClause='.urlencode('CITY_NAME = "'.$order->city_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_CITIES';
 				break;
 			case 'Extent':
-				$fmeparams['WhereClause'] = 'where CITY_NAME = "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'ADMIN.DBO.CITY_LIMITS_AHTD';
+				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
+				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
 				//$fmeurl .= '&WhereClause='.urlencode($order->extent_clipper).'&Clipper=DEFAULT';
 				break;
 			case 'State':
-				$fmeparams['WhereClause'] = 'where CITY_NAME = "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'ADMIN.DBO.CITY_LIMITS_AHTD';
+				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
+				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
 		$fmeparams['opt_responseformat'] = 'xml';
 		$fmeurl .= http_build_query($fmeparams);
 		$fmeerror = false;
-		$xmlresponse = '';
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $fmeurl);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		if( ! $result = curl_exec($ch)){
-			trigger_error(curl_error($ch));
-			$fmeerror = true;
-		}else{
-			$xmlresponse = new SimpleXMLElement($result);
-			if($xmlresponse->statusInfo->status == 'failure'){
-				$fmeerror = true;
-			}
-		}
-		curl_close($ch);
+		$result = file_get_contents($fmeurl);
 		
+		$xmlresponse = new SimpleXMLElement($result);
+		if($xmlresponse->statusInfo->status == 'failure'){
+			$fmeerror = true;
+		}
+
 	?>
 	<!-- End FME Request GEOSTOREDITS -->
 	
 	<?php if ( in_array( $order->status, array( 'failed' ) ) || $fmeerror == true ) : ?>
 
-		<p><?php _e( 'Unfortunately here was a problem with your Download request.<br>'.curl_error($ch), 'woocommerce' ); ?></p>
+		<p><?php _e( 'Unfortunately there was a problem with your Download request.<br>'.curl_error($ch), 'woocommerce' ); ?></p>
 
 		<p><?php
 			if ( is_user_logged_in() )
