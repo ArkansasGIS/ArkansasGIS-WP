@@ -66,7 +66,6 @@ if ( $order ) : ?>
 		$fmeurl .= http_build_query($fmeparams);
 		$fmeerror = false;
 		$result = file_get_contents($fmeurl);
-		print_r($fmeurl);
 		$xmlresponse = new SimpleXMLElement($result);
 		if($xmlresponse->statusInfo->status == 'failure'){
 			$fmeerror = true;
