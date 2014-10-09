@@ -138,15 +138,13 @@ function custom_override_checkout_fields( $fields ) {
  	    'options' => array(
  	    	''        => __( 'Select A Format', 'woocommerce' ),
      		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
-      		'GEODATABASE_FILE'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
-      		'GEODATABASE_MDB'       => __( 'Personal Geodatabase (Esri)', 'woocommerce' ),
-      		'DGNV8'       => __( 'Microstation Design V8', 'woocommerce' ),
+      		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
       		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
       		'DWF'       => __( 'AutoCAD DWF', 'woocommerce' ),
-      		'MITAB'       => __( 'MapInfo TAB', 'woocommerce' ),
-      		'GIF'       => __( 'GIF Image', 'woocommerce' ),
+      		'MAPINFO'       => __( 'MapInfo TAB', 'woocommerce' ),
+      		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
       		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
-      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )	
+      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
                         )                       
     );
     
