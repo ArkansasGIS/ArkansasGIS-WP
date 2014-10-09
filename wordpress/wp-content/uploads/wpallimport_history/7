@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product><title>AHPP Historic Districts Polyline</title>
+        <publisher>Arkansas Historic Preservation Program</publisher>
+        <pubdate>20140723</pubdate>
+        <keywords> Historic, Preservation, History boundaries structure </keywords>
+        <description>The Arkansas Historic District dataset contains the boundaries for all historic
+                districts in Arkansas. The districts are formally designated through a process
+                administered by the Arkansas Historic Preservation Program. These areas typically
+                contain a concentration of buildings where half the structures are at least 50 years
+                old and represent important elements of the areas. Property owners within the
+                District may become eligible for federal tax credits through rehabilitation
+                projects.The designation follows the process outlined below:The mayor or other
+                representative of the interested city contacts the AHPP to express interest in the
+                project.AHPP historians will visit the city to evaluate whether or not a sufficient
+                concentration of historic structures exists to be designated a historic district.
+                (Basically, at least 51 percent of the buildings must be 50 years or older and still
+                reflect their historic appearance.)If a potential district exists, the AHPP will
+                contact the city and provide a list of addresses for the buildings in the area that
+                is eligible for district designation. The city or other local partners will generate
+                the list of property owners.The AHPP will then work with the city to set a time and
+                place for an informational meeting with property owners; the AHPP will mail letters
+                to each of the property owners informing them of the meeting.At the meeting, AHPP
+                representatives will explain the project, what is does and does not mean to be
+                listed on the National Register, and how the 20 percent federal rehabilitation tax
+                project works. Most questions and concerns about the project can be addressed at the
+                meeting.After the meeting, the local partners will poll the property owners to
+                determine whether or not at least 51 percent of them are interested in the historic
+                district designation.After being notified that a majority of the owners are
+                interested, the AHPP will contract an architectural resources survey of the district
+                area, in which each building will be photographed and informational forms
+                completed.At the completion of the survey, the AHPP will contract to have a National
+                Register nomination completed for the district.When the nomination is completed, the
+                AHPP will present it to its State Review Board, which meets the first Wednesday in
+                April, August and December to make formal nominations to the National
+                Register.Following the meeting, the nominations are sent to the Keeper of the
+                National Register in Washington, D.C., who makes the final decision on whether a
+                property is listed (The AHPP has a 99 percent success rate in this process).The
+                decision on listing will be made within six weeks of delivery of the nomination to
+                the Keeper.</description>
+        <category>Boundaries</category><featurename>AHPP_HISTORIC_DISTRICTS_POLYLINE</featurename>
+        <imageurl>http:\\ec2-54-164-204-174.compute-1.amazonaws.com\GeoStor_Dev\wordpress\wp-content\uploads\product_thumbnails\JPG\ADMIN.DBO.AHPP_HISTORIC_DISTRICTS_POLYLINE.jpg</imageurl>
+        <price>0</price></product>
