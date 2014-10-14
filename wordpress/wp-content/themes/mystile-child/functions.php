@@ -92,6 +92,22 @@ function custom_order_details_after_order_table($order){
 	echo '</table>';
 }
 
+// RDP added for automatic order status to complete
+add_filter( 'woocommerce_payment_complete_order_status', 'custom_update_order_status', 10, 2 );
+
+function custom_update_order_status( $order_status, $order_id ) {
+ 
+ $order = new WC_Order( $order_id );
+ 
+ if ( 'processing' == $order_status && ( 'on-hold' == $order->status || 'pending' == $order->status || 'failed' == $order->status ) ) {
+ 
+ return 'completed';
+ 
+ }
+ 
+ return $order_status;
+}
+
 // Hook in
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
 
