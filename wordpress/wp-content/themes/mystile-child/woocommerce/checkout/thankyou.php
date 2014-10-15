@@ -30,11 +30,11 @@ if ( $order ) : ?>
 		$fmeurl = 'https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?';
 		$fmeparams = array();
 		$fmeparams['ClippeeSource'] = 'gisdb';
-		$fmeparams['Clippee'] = $sku;
 		$fmeparams['OUTPUT'] = '$(FME_SHAREDRESOURCE_TEMP)';
 		$fmeparams['Format'] = $order->format_type;
 		$fmeparams['ClipperSource'] = 'gisdb';
 		$fmeparams['CoordinateSystem'] = $order->projection;
+		$fmeparams['Clippee'] = rtrim($sku," ");
 		$fmeparams['opt_showresult'] = 'false';
 		$fmeparams['opt_servicemode'] = $order->dl_type;
 		$fmeparams['opt_requesteremail'] = $order->email;
