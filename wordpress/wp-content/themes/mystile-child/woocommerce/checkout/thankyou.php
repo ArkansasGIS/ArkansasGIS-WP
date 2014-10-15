@@ -27,49 +27,45 @@ if ( $order ) : ?>
 		}
 		
 		// Build the FME url
-		$fmeurl = 'https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?';
-		$fmeparams = array();
-		$fmeparams['ClippeeSource'] = 'gisdb';
-		$fmeparams['OUTPUT'] = '$(FME_SHAREDRESOURCE_TEMP)';
-		$fmeparams['Format'] = $order->format_type;
-		$fmeparams['ClipperSource'] = 'gisdb';
-		$fmeparams['CoordinateSystem'] = $order->projection;
-		$fmeparams['Clippee'] = rtrim($sku," ");
-		$fmeparams['opt_showresult'] = 'false';
-		$fmeparams['opt_servicemode'] = $order->dl_type;
-		$fmeparams['opt_requesteremail'] = $order->email;
+		$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?";
+		$fmeurl .= "ClippeeSource=gisdb&Clippee=".rtrim($sku," ")."&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)&Format=".$order->format_type;
+		$fmeurl .= "&ClipperSource=gisdb&CoordinateSystem=".$order->projection;
+		$fmeurl .= "&opt_showresult=false&opt_servicemode=async&opt_requesteremail=".$order->email;
 		
 		//// Check what clipper we are using and set the Clipper and WhereClause ->  RDP GEOSTOREDITS
 		switch($order->clip_type){
 			case 'County':
-				$fmeparams['WhereClause'] = "county_nam LIKE '".$order->county_clipper."'";
-				$fmeparams['Clipper'] = 'Boundaries.COUNTIES_AHTD';
+				$fmeurl .= "&WHERE=county_nam%20LIKE%20'".$order->county_clipper."'";
+				$fmeurl .= "&Clipper=Boundaries.COUNTIES_AHTD";
 				//$fmeurl .= '&WhereClause='.urlencode('COUNTY_NAME = "'.$order->county_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_COUNTIES';
 				break;
 			case 'City':
-				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
+				$fmeurl .= "&WhereClause=city_nam LIKE '".$order->city_clipper."'";
+				$fmeurl .= "&Clipper=Boundaries.CITY_LIMITS_AHTD";
 				//$fmeurl .= '&WhereClause='.urlencode('CITY_NAME = "'.$order->city_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_CITIES';
 				break;
 			case 'Extent':
-				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
+				
 				//$fmeurl .= '&WhereClause='.urlencode($order->extent_clipper).'&Clipper=DEFAULT';
 				break;
 			case 'State':
-				$fmeparams['WhereClause'] = 'city_nam LIKE "'.$order->city_clipper.'"';
-				$fmeparams['Clipper'] = 'Boundaries.CITY_LIMITS_AHTD';
+				
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
-		$fmeparams['opt_responseformat'] = 'xml';
-		$fmeurl .= http_build_query($fmeparams);
+		$fmeurl .= "&opt_responseformat=xml";
 		$fmeerror = false;
-		$result = file_get_contents($fmeurl);
-		$xmlresponse = new SimpleXMLElement($result);
-		if($xmlresponse->statusInfo->status == 'failure'){
+		try{
+			$result = file_get_contents($fmeurl);
+			$xmlresponse = new SimpleXMLElement($result);
+			if($xmlresponse->statusInfo->status == 'failure'){
+				$fmeerror = true;
+			}
+		}catch (Exception $e){
 			$fmeerror = true;
+			print_r($e->getMessage());
 		}
+		
 
 	?>
 	<!-- End FME Request GEOSTOREDITS -->
@@ -100,7 +96,7 @@ if ( $order ) : ?>
 			</li>
 			<li class="order">
 				<?php _e( 'Process ID:', 'woocommerce' ); ?>
-				<strong><?php echo $xmlresponse->jobID[0].'    <a href="'.$fmeurl.'" >Test URL</a>';; ?></strong>
+				<strong><?php echo $xmlresponse->jobID[0].'    <a href="'.$fmeurl.'" > Direct URL</a>';; ?></strong>
 			</li>
 		</ul>
 		<div class="clear"></div>
