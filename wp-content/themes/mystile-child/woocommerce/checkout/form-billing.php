@@ -10,6 +10,15 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <div class="woocommerce-billing-fields">
+	<?PHP foreach (WC()->cart->get_cart() as $cart_item_key => $values){
+		$_product = $values['data']->id;
+		$terms = get_the_terms( $_product, 'product_cat' );
+		$imagery = 'none';
+        if($terms[0]->name == 'Imagery'){
+        	$imagery = 'block';
+			break;
+        }
+	}  ?>
 	<?php if ( WC()->cart->ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
 		<h3><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
@@ -70,6 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
+	document.getElementById('raster_format_type_field').style.display = "<?=$imagery; ?>";
 	switch(cliptype) {
 		case 'County':
 			document.getElementById('county_clipper_field').style.display = 'block';
