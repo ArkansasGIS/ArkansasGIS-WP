@@ -152,7 +152,6 @@ function custom_override_checkout_fields( $fields ) {
 	    'id' => 'vector_format_type',
         'class'     => array('form-row-wide'),
  	    'options' => array(
- 	    	''        => __( 'Select A Vector Format', 'woocommerce' ),
      		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
       		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
       		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
@@ -175,7 +174,6 @@ function custom_override_checkout_fields( $fields ) {
 	    'id' => 'raster_format_type',
         'class'     => array('form-row-wide'),
  	    'options' => array(
- 	    	''        => __( 'Select A Raster Format', 'woocommerce' ),
      		'JPEG2000'        => __( 'Jpeg 2000', 'woocommerce' ),
       		'TIFF'       => __( 'Geo Tif', 'woocommerce' )
                         )                       

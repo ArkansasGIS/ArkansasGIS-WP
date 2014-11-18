@@ -23,26 +23,45 @@ if ( $order ) : ?>
 		            break;
 		        }
 			}	
-			$sku .= $product_cat.'.'.$product->get_sku().' '; 
+			if($product->get_attribute('imagery')){
+				$rastersku .= $product_cat.'.'.$product->get_sku().' ';
+			}else{
+				$vectorsku .= $product_cat.'.'.$product->get_sku().' ';
+			}
 		}
-		
+
+		if (isset($order->raster_format_type)){
+			$raster_type = $order->raster_format_type;
+		}else{
+			$raster_type = '';
+		}
+		if (isset($order->vector_format_type)){
+			$vector_type = $order->vector_format_type;
+		}else{
+			$vector_type = '';
+		}
+		if(isset($order->projection)){
+			$projection = $order->projection;
+		}else{
+			$projection = '';
+		}
 		// Build the FME url
-		$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?";
-		$fmeurl .= "ClippeeSource=gisdb&Clippee=".rtrim($sku," ")."&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)&Format=".$order->format_type;
-		$fmeurl .= "&ClipperSource=gisdb&CoordinateSystem=".$order->projection;
-		$fmeurl .= "&opt_showresult=false&opt_servicemode=async&opt_requesteremail=".$order->email;
+		$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads.fmw?";
+		$fmeurl .= "DestDataset_GENERIC=%24(FME_SHAREDRESOURCE_TEMP)";
+		$fmeurl .= "&RASTER_FORMAT=".$raster_type;
+		$fmeurl .= "&VECTOR_FORMAT=".$vector_type;
+		$fmeurl .= "&CoordinateSystem=".$projection;
+		
 		
 		//// Check what clipper we are using and set the Clipper and WhereClause ->  RDP GEOSTOREDITS
 		switch($order->clip_type){
 			case 'County':
 				$fmeurl .= "&WHERE=county_nam%20LIKE%20'".$order->county_clipper."'";
 				$fmeurl .= "&Clipper=Boundaries.COUNTIES_AHTD";
-				//$fmeurl .= '&WhereClause='.urlencode('COUNTY_NAME = "'.$order->county_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_COUNTIES';
 				break;
 			case 'City':
 				$fmeurl .= "&WhereClause=city_nam LIKE '".$order->city_clipper."'";
 				$fmeurl .= "&Clipper=Boundaries.CITY_LIMITS_AHTD";
-				//$fmeurl .= '&WhereClause='.urlencode('CITY_NAME = "'.$order->city_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_CITIES';
 				break;
 			case 'Extent':
 				
@@ -53,18 +72,30 @@ if ( $order ) : ?>
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
-		$fmeurl .= "&opt_responseformat=xml";
+		
+		$fmeurl .= "&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)";
+		$fmeurl .= "&SourceDataset_RASTER=gisdb";
+		$fmeurl .= "&SourceDataset_POSTGIS=gisdb";
+		$fmeurl .= "&RASTER_FEATURE_TYPES=".$rastersku;
+		$fmeurl .= "&CLIPPEE=".$vectorsku;
+		$fmeurl .= "&opt_showresult=false&opt_servicemode=async&opt_requesteremail=".$order->email;
+		$fmeurl .= "&opt_responseformat=xml"; 
+		//$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads.fmw?DestDataset_GENERIC=%24(FME_SHAREDRESOURCE_TEMP)&RASTER_FORMAT=JPEG2000&RASTER_FEATURE_TYPES=Imagery.ADOP2_COUNTY_MOSAICS_RGB_EXTENT&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)&VECTOR_FORMAT=SHAPE&CoordinateSystem=EPSG%3A26915&SourceDataset_RASTER=gisdb&CLIPPER=Boundaries.COUNTIES_AHTD&WHERE=county_nam%20LIKE%20%27Chicot%27&SourceDataset_POSTGIS=gisdb&CLIPPEE=Boundaries.CITY_LIMITS_AHTD&opt_showresult=false&opt_servicemode=async&opt_requesteremail=richie.pierce%40arkansas.gov";
+		echo "<a href=".$fmeurl.">URL</a>";
 		$fmeerror = false;
 		try{
-			$result = file_get_contents($fmeurl);
+			$result = @file_get_contents($fmeurl);
+			//var_dump($result);
 			$xmlresponse = new SimpleXMLElement($result);
-			if($xmlresponse->statusInfo->status == 'failure'){
+			if($xmlresponse->statusInfo->status == 'success'){
+				$fmeerror = false;
+			}else{
 				$fmeerror = true;
 			}
 		}catch (Exception $e){
 			$fmeerror = true;
 			print_r($e->getMessage());
-		}
+		} 
 		
 
 	?>
@@ -96,7 +127,7 @@ if ( $order ) : ?>
 			</li>
 			<li class="order">
 				<?php _e( 'Process ID:', 'woocommerce' ); ?>
-				<strong><?php echo $xmlresponse->jobID[0].'    <a href="'.$fmeurl.'" > Direct URL</a>';; ?></strong>
+				<strong><?php echo $xmlresponse->jobID[0].'    <a href='.$fmeurl.' > Direct URL</a>';; ?></strong>
 			</li>
 		</ul>
 		<div class="clear"></div>

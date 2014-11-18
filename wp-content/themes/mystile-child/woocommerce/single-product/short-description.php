@@ -31,6 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		if($pubdate == ''){
 			$pubdate = 'Not Assigned';
 		}
+		$imagery = $product->get_attribute('imagery');
 //if ( ! $post->post_excerpt ) return;
 ?>
 
@@ -40,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 echo '<strong>Updated: </strong> '.$product->post->post_date.'<br><br>'; 
 	 echo '<strong>Publisher: </strong>'.$publisher.'<br><br>'; 
 	 echo '<strong>Publication Date: </strong>'.$pubdate.'<br><br>'; 
-	 if($product_cat == 'Imagery'){
+	 if($imagery){
 	 	
 	 }else{
 	 	echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$product->get_sku().'.zip"><img src="'.wp_get_attachment_url(210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Download the Statewide ZIP file</a><br><br>'; 
