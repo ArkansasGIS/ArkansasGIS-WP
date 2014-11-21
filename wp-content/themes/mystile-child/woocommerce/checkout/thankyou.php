@@ -46,22 +46,15 @@ if ( $order ) : ?>
 			$projection = '';
 		}
 		// Build the FME url
-		$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads.fmw?";
-		$fmeurl .= "DestDataset_GENERIC=%24(FME_SHAREDRESOURCE_TEMP)";
-		$fmeurl .= "&RASTER_FORMAT=".$raster_type;
-		$fmeurl .= "&VECTOR_FORMAT=".$vector_type;
-		$fmeurl .= "&CoordinateSystem=".$projection;
-		
-		
 		//// Check what clipper we are using and set the Clipper and WhereClause ->  RDP GEOSTOREDITS
 		switch($order->clip_type){
 			case 'County':
-				$fmeurl .= "&WHERE=county_nam%20LIKE%20'".$order->county_clipper."'";
-				$fmeurl .= "&Clipper=Boundaries.COUNTIES_AHTD";
+				$whereclause = "county_nam%20LIKE%20'".$order->county_clipper."'";
+				$clipper = "Boundaries.COUNTIES_AHTD";
 				break;
 			case 'City':
-				$fmeurl .= "&WhereClause=city_nam LIKE '".$order->city_clipper."'";
-				$fmeurl .= "&Clipper=Boundaries.CITY_LIMITS_AHTD";
+				$whereclause = "city_nam LIKE '".$order->city_clipper."'";
+				$clipper .= "Boundaries.CITY_LIMITS_AHTD";
 				break;
 			case 'Extent':
 				
@@ -73,19 +66,33 @@ if ( $order ) : ?>
 				break;
 		}
 		
-		$fmeurl .= "&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)";
-		$fmeurl .= "&SourceDataset_RASTER=gisdb";
-		$fmeurl .= "&SourceDataset_POSTGIS=gisdb";
-		$fmeurl .= "&RASTER_FEATURE_TYPES=".$rastersku;
-		$fmeurl .= "&CLIPPEE=".$vectorsku;
-		$fmeurl .= "&opt_showresult=false&opt_servicemode=async&opt_requesteremail=".$order->email;
-		$fmeurl .= "&opt_responseformat=xml"; 
-		//$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads.fmw?DestDataset_GENERIC=%24(FME_SHAREDRESOURCE_TEMP)&RASTER_FORMAT=JPEG2000&RASTER_FEATURE_TYPES=Imagery.ADOP2_COUNTY_MOSAICS_RGB_EXTENT&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)&VECTOR_FORMAT=SHAPE&CoordinateSystem=EPSG%3A26915&SourceDataset_RASTER=gisdb&CLIPPER=Boundaries.COUNTIES_AHTD&WHERE=county_nam%20LIKE%20%27Chicot%27&SourceDataset_POSTGIS=gisdb&CLIPPEE=Boundaries.CITY_LIMITS_AHTD&opt_showresult=false&opt_servicemode=async&opt_requesteremail=richie.pierce%40arkansas.gov";
-		echo "<a href=".$fmeurl.">URL</a>";
+		
+		
+		
+		
+   		$fmeurl = "https://guest:agioguest@geostor-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads_2015.fmw?";
+   		$fmeurl .= "DestDataset_GENERIC=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
+   		$fmeurl .= "&RASTER_FORMAT=".$raster_type;
+   		$fmeurl .= "&OUTPUT=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
+   		$fmeurl .= "&VECTOR_FORMAT=".$vector_type;
+   		$fmeurl .= "&CoordinateSystem=EPSG%3A".$projection;
+   		$fmeurl .= "&SourceDataset_POSTGIS=gisdb";
+   		$fmeurl .= "&CLIPPEE=".rtrim($vectorsku);
+		$fmeurl .= "&RASTER_FEATURE_TYPES=".rtrim($rastersku);
+   		$fmeurl .= "&SourceDataset_SCHEMA=gisdb";
+   		$fmeurl .= "&SCHEMA_IN_REAL_FORMAT_SCHEMA=POSTGIS";
+   		$fmeurl .= "&WHERE=".$whereclause;
+   		$fmeurl .= "&CLIPPER=".$clipper;
+   		$fmeurl .= "&opt_showresult=false";
+   		$fmeurl .= "&opt_servicemode=async";
+   		$fmeurl .= "&opt_requesteremail=".$order->email;
+   		$fmeurl .= "&opt_responseformat=xml";
+		
+		
+		
 		$fmeerror = false;
 		try{
 			$result = @file_get_contents($fmeurl);
-			//var_dump($result);
 			$xmlresponse = new SimpleXMLElement($result);
 			if($xmlresponse->statusInfo->status == 'success'){
 				$fmeerror = false;
@@ -103,7 +110,7 @@ if ( $order ) : ?>
 	
 	<?php if ( in_array( $order->status, array( 'failed' ) ) || $fmeerror == true ) : ?>
 
-		<p><?php _e( 'Unfortunately there was a problem with your Download request.<br>'.curl_error($ch), 'woocommerce' ); ?></p>
+		<p><?php _e( 'Unfortunately there was a problem with your Download request.<br>'.var_dump($result), 'woocommerce' ); ?></p>
 
 		<p><?php
 			if ( is_user_logged_in() )
