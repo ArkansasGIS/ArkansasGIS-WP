@@ -23,26 +23,38 @@ if ( $order ) : ?>
 		            break;
 		        }
 			}	
-			$sku .= $product_cat.'.'.$product->get_sku().' '; 
+			if($product->get_attribute('imagery')){
+				$rastersku .= $product_cat.'.'.$product->get_sku().' ';
+			}else{
+				$vectorsku .= $product_cat.'.'.$product->get_sku().' ';
+			}
 		}
-		
+
+		if (isset($order->raster_format_type)){
+			$raster_type = $order->raster_format_type;
+		}else{
+			$raster_type = '';
+		}
+		if (isset($order->vector_format_type)){
+			$vector_type = $order->vector_format_type;
+		}else{
+			$vector_type = '';
+		}
+		if(isset($order->projection)){
+			$projection = $order->projection;
+		}else{
+			$projection = '';
+		}
 		// Build the FME url
-		$fmeurl = "https://guest:agioguest@geostor-dev-agio-test.fmecloud.com/fmedatadownload/GeoStor-Vectors/GeoStor_Vectors.fmw?";
-		$fmeurl .= "ClippeeSource=gisdb&Clippee=".rtrim($sku," ")."&OUTPUT=%24(FME_SHAREDRESOURCE_TEMP)&Format=".$order->format_type;
-		$fmeurl .= "&ClipperSource=gisdb&CoordinateSystem=".$order->projection;
-		$fmeurl .= "&opt_showresult=false&opt_servicemode=async&opt_requesteremail=".$order->email;
-		
 		//// Check what clipper we are using and set the Clipper and WhereClause ->  RDP GEOSTOREDITS
 		switch($order->clip_type){
 			case 'County':
-				$fmeurl .= "&WHERE=county_nam%20LIKE%20'".$order->county_clipper."'";
-				$fmeurl .= "&Clipper=Boundaries.COUNTIES_AHTD";
-				//$fmeurl .= '&WhereClause='.urlencode('COUNTY_NAME = "'.$order->county_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_COUNTIES';
+				$whereclause = "county_nam%20LIKE%20'".$order->county_clipper."'";
+				$clipper = "Boundaries.COUNTIES_AHTD";
 				break;
 			case 'City':
-				$fmeurl .= "&WhereClause=city_nam LIKE '".$order->city_clipper."'";
-				$fmeurl .= "&Clipper=Boundaries.CITY_LIMITS_AHTD";
-				//$fmeurl .= '&WhereClause='.urlencode('CITY_NAME = "'.$order->city_clipper.'"').'&Clipper=ADMIN.DBO.AHTD_CITIES';
+				$whereclause = "city_nam LIKE '".$order->city_clipper."'";
+				$clipper .= "Boundaries.CITY_LIMITS_AHTD";
 				break;
 			case 'Extent':
 				
@@ -53,18 +65,44 @@ if ( $order ) : ?>
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
-		$fmeurl .= "&opt_responseformat=xml";
+		
+		
+		
+		
+		
+   		$fmeurl = "https://guest:agioguest@geostor-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads_2015.fmw?";
+   		$fmeurl .= "DestDataset_GENERIC=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
+   		$fmeurl .= "&RASTER_FORMAT=".$raster_type;
+   		$fmeurl .= "&OUTPUT=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
+   		$fmeurl .= "&VECTOR_FORMAT=".$vector_type;
+   		$fmeurl .= "&CoordinateSystem=EPSG%3A".$projection;
+   		$fmeurl .= "&SourceDataset_POSTGIS=gisdb";
+   		$fmeurl .= "&CLIPPEE=".rtrim($vectorsku);
+		$fmeurl .= "&RASTER_FEATURE_TYPES=".rtrim($rastersku);
+   		$fmeurl .= "&SourceDataset_SCHEMA=gisdb";
+   		$fmeurl .= "&SCHEMA_IN_REAL_FORMAT_SCHEMA=POSTGIS";
+   		$fmeurl .= "&WHERE=".$whereclause;
+   		$fmeurl .= "&CLIPPER=".$clipper;
+   		$fmeurl .= "&opt_showresult=false";
+   		$fmeurl .= "&opt_servicemode=async";
+   		$fmeurl .= "&opt_requesteremail=".$order->email;
+   		$fmeurl .= "&opt_responseformat=xml";
+		
+		
+		
 		$fmeerror = false;
 		try{
-			$result = file_get_contents($fmeurl);
+			$result = @file_get_contents($fmeurl);
 			$xmlresponse = new SimpleXMLElement($result);
-			if($xmlresponse->statusInfo->status == 'failure'){
+			if($xmlresponse->statusInfo->status == 'success'){
+				$fmeerror = false;
+			}else{
 				$fmeerror = true;
 			}
 		}catch (Exception $e){
 			$fmeerror = true;
 			print_r($e->getMessage());
-		}
+		} 
 		
 
 	?>
@@ -72,7 +110,7 @@ if ( $order ) : ?>
 	
 	<?php if ( in_array( $order->status, array( 'failed' ) ) || $fmeerror == true ) : ?>
 
-		<p><?php _e( 'Unfortunately there was a problem with your Download request.<br>'.curl_error($ch), 'woocommerce' ); ?></p>
+		<p><?php _e( 'Unfortunately there was a problem with your Download request.<br>'.var_dump($result), 'woocommerce' ); ?></p>
 
 		<p><?php
 			if ( is_user_logged_in() )
@@ -96,7 +134,7 @@ if ( $order ) : ?>
 			</li>
 			<li class="order">
 				<?php _e( 'Process ID:', 'woocommerce' ); ?>
-				<strong><?php echo $xmlresponse->jobID[0].'    <a href="'.$fmeurl.'" > Direct URL</a>';; ?></strong>
+				<strong><?php echo $xmlresponse->jobID[0].'    <a href='.$fmeurl.' > Direct URL</a>';; ?></strong>
 			</li>
 		</ul>
 		<div class="clear"></div>

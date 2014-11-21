@@ -141,18 +141,17 @@ function custom_override_checkout_fields( $fields ) {
                         )                       
     );
 	
-    $fields['billing']['format_type']= array(
+    $fields['billing']['vector_format_type']= array(
 	    'type' => 'select',
-	    'label'     => __('Format', 'woocommerce'),
-    	'placeholder'   => _x('Format', 'placeholder', 'woocommerce'),
+	    'label'     => __('Vector Format', 'woocommerce'),
+    	'placeholder'   => _x('Vector Format', 'placeholder', 'woocommerce'),
     	'required'  => true,
      	'form' => 'FME',
     	'class'     => array('chosen-container'),
     	'clear'     => true,
-	    'id' => 'format_type',
+	    'id' => 'vector_format_type',
         'class'     => array('form-row-wide'),
  	    'options' => array(
- 	    	''        => __( 'Select A Format', 'woocommerce' ),
      		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
       		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
       		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
@@ -161,6 +160,23 @@ function custom_override_checkout_fields( $fields ) {
       		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
       		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
       		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
+                        )                       
+    );
+	
+	$fields['billing']['raster_format_type']= array(
+	    'type' => 'select',
+	    'label'     => __('Raster Format', 'woocommerce'),
+    	'placeholder'   => _x('Raster Format', 'placeholder', 'woocommerce'),
+    	'required'  => true,
+     	'form' => 'FME',
+    	'class'     => array('chosen-container'),
+    	'clear'     => true,
+	    'id' => 'raster_format_type',
+        'class'     => array('form-row-wide'),
+ 	    'options' => array(
+     		'JPEG2000'        => __( 'Jpeg 2000', 'woocommerce' ),
+      		'TIFF'       => __( 'Geo Tif', 'woocommerce' ),
+      		'MRSID'       => __( 'MrSID', 'woocommerce' ),
                         )                       
     );
     
@@ -249,11 +265,11 @@ function custom_override_checkout_fields( $fields ) {
         'class'     => array('form-row-wide'),
  	    'options' => array(
  	    	''        => __( 'Select A Projection', 'woocommerce' ),
-     		'EPSG:26915'        => __( 'NAD83 UTM- Zone 15N', 'woocommerce' ),
-      		'LL-WGS84'       => __( 'WGS84 Lat/Long', 'woocommerce' ), 	
-      		'LL-83'       => __( 'NAD83 Lat/Long', 'woocommerce' ), 
-      		'AR83-NF'       => __( 'Arkansas State Plane North Feet', 'woocommerce' ), 
-      		'AR83-SF'       => __( 'Arkansas State Plane South Feet', 'woocommerce' )
+     		'26915'        => __( 'NAD83 UTM- Zone 15N', 'woocommerce' ),
+      		'4324'       => __( 'WGS84 Lat/Long', 'woocommerce' ), 	
+      		'4269'       => __( 'NAD83 Lat/Long', 'woocommerce' ), 
+      		'3433'       => __( 'Arkansas State Plane North Feet', 'woocommerce' ), 
+      		'3434'       => __( 'Arkansas State Plane South Feet', 'woocommerce' )
                         )                       
     );
   
