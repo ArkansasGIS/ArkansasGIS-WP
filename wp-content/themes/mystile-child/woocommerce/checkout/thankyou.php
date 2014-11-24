@@ -24,9 +24,9 @@ if ( $order ) : ?>
 		        }
 			}	
 			if($product->get_attribute('imagery')){
-				$rastersku .= $product_cat.'.'.$product->get_sku().' ';
+				$rastersku .= $product_cat.'.'.$product->get_sku().'%20';
 			}else{
-				$vectorsku .= $product_cat.'.'.$product->get_sku().' ';
+				$vectorsku .= $product_cat.'.'.$product->get_sku().'%20';
 			}
 		}
 
