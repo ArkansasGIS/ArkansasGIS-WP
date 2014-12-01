@@ -50,10 +50,12 @@ if ( $order ) : ?>
 		switch($order->clip_type){
 			case 'County':
 				$whereclause = "county_nam%20LIKE%20'".$order->county_clipper."'";
+				$whereclause = str_replace(" ", "%20", $whereclause);
 				$clipper = "Boundaries.COUNTIES_AHTD";
 				break;
 			case 'City':
-				$whereclause = "city_nam LIKE '".$order->city_clipper."'";
+				$whereclause = "city_name%20LIKE%20'".$order->city_clipper."'";
+				$whereclause = str_replace(" ", "%20", $whereclause);
 				$clipper .= "Boundaries.CITY_LIMITS_AHTD";
 				break;
 			case 'Extent':
@@ -93,6 +95,7 @@ if ( $order ) : ?>
 		$fmeerror = false;
 		try{
 			$result = @file_get_contents($fmeurl);
+			
 			$xmlresponse = new SimpleXMLElement($result);
 			if($xmlresponse->statusInfo->status == 'success'){
 				$fmeerror = false;
