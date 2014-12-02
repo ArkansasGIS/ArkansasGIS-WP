@@ -28,7 +28,7 @@ if ( $order ) : ?>
 				$rastersource = $product->get_attribute('imagery');
 			}else{
 				$vectorsku .= $product_cat.'.'.$product->get_sku().'%20';
-				$rastersource = "";
+				$rastersource = "MRSID";
 			}
 		}
 
