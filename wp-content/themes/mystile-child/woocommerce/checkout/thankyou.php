@@ -74,7 +74,7 @@ if ( $order ) : ?>
 		
 		
 		
-   		$fmeurl = "https://guest:agioguest@geostor-agio-test.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads_2015.fmw?";
+   		$fmeurl = "https://guest:agioguest@geostor-agio.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads_2015.fmw?";
    		$fmeurl .= "DestDataset_GENERIC=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
    		$fmeurl .= "&RASTER_FORMAT=".$raster_type;
    		$fmeurl .= "&OUTPUT=%22%24(FME_SHAREDRESOURCE_TEMP)%22";
