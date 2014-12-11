@@ -42,10 +42,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 echo '<strong>Publisher: </strong>'.$publisher.'<br><br>'; 
 	 echo '<strong>Publication Date: </strong>'.$pubdate.'<br><br>'; 
 	 if($imagery){
+	 	if($imagery == 'lidar'){
+	 		
+	 		echo '<a href="http://geostor-elevation.geostor.org/LAZ/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Browse The LIDAR Repository</a><br><br>'; 
+	 		//echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$product->get_sku().'.zip"><img src="'.wp_get_attachment_url(210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Download the Statewide ZIP file</a><br><br>'; 
+	 	}else{
+	 		echo '<a href="http://geostor-imagery.geostor.org/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Browse the Imagery Repository</a><br><br>'; 
 	 	
+	 	}
 	 }else{
 	 	echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$product->get_sku().'.zip"><img src="'.wp_get_attachment_url(210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Download the Statewide ZIP file</a><br><br>'; 
-	 	echo '<a href="http://www.geostor.arkansas.gov/ArcGIS/rest/services/FEATURE_SERVICES/'.$product->get_sku().'/MapServer/0"><img src="'.wp_get_attachment_url(211).'" height="42" width="60">&nbsp;&nbsp;&nbsp;&nbsp;Connect To Web Feature Services</a><br><br>'; /* apply_filters( 'woocommerce_short_description', $post->post_excerpt ) */ 
+	 	// GEOSTOR uncomment for WFS url
+	 	//echo '<a href="http://www.geostor.arkansas.gov/ArcGIS/rest/services/FEATURE_SERVICES/'.$product->get_sku().'/MapServer/0"><img src="'.wp_get_attachment_url(211).'" height="42" width="60">&nbsp;&nbsp;&nbsp;&nbsp;Connect To Web Feature Services</a><br><br>'; /* apply_filters( 'woocommerce_short_description', $post->post_excerpt ) */ 
 	 }
 	 ?>
 </div>

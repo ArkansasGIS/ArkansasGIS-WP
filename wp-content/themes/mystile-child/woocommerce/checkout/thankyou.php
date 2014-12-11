@@ -140,7 +140,7 @@ if ( $order ) : ?>
 			</li>
 			<li class="order">
 				<?php _e( 'Process ID:', 'woocommerce' ); ?>
-				<strong><?php echo $xmlresponse->jobID[0].'    <a href='.$fmeurl.' > Direct URL</a>';; ?></strong>
+				<strong><?php echo $xmlresponse->jobID[0] ; ?></strong>
 			</li>
 		</ul>
 		<div class="clear"></div>
