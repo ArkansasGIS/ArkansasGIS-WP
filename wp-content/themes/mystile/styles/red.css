@@ -228,7 +228,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, sans-serif;
+  font-family:  "Helvetica", sans-serif;;
 }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover,
@@ -299,7 +299,7 @@ body {
   font-size: 1.4em;
   line-height: 1.618;
   color: #6c6060;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
@@ -336,6 +336,9 @@ a:hover {
 	All typography (and layout) based on a modular scale using 12 & 14 px values scaled in accordance the golden ratio (1.618)
 	http://modularscale.com/scale/?px1=14&px2=12&ra1=1.618&ra2=0
 	Remember to keep margins consistent and try to avoid margin-top. If everything has an appropriate margin-bottom we don't need one and vertical rhythm will be kept consistent
+    TD: 20141209- Changed "font family" from "Bree Serif" "to "Helvetica"
+    TD: 20141209- Changed "color" from "363030" to "002147"
+    TD: 20141209- Changed "font-weight" from "normal" to "bold"
 */
 h1,
 h2,
@@ -343,10 +346,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bree Serif", sans-serif;
-  color: #363030;
+  font-family: "Helvetica", sans-serif;
+  color: #002147;
   margin: 0 0 .618em;
-  font-weight: normal;
+  font-weight: bold;
 }
 h1 a,
 h2 a,
@@ -611,6 +614,7 @@ ul.nav li a {
   overflow: hidden;
   clear: both;
 }
+/*TD: 20141209- Changed the colors from an orange to Old Glory Red gradient*/
 #header .nav-toggle {
   position: absolute;
   top: .53em;
@@ -618,19 +622,19 @@ ul.nav li a {
   width: 1.618em;
   height: 1.618em;
   cursor: pointer;
-  font-family: sans-serif;
-  background-color: #ff0c00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff0c00), to(#ee0000));
+  font-family: "helvetica", sans-serif;
+  background-color: #BB133E;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BB133E), to(#BB133E));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #ff0c00, #ee0000);
+  background-image: -webkit-linear-gradient(top, #BB133E, #BB133E);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #ff0c00, #ee0000);
+  background-image: -moz-linear-gradient(top, #BB133E, #BB133E);
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, #ff0c00, #ee0000);
+  background-image: -ms-linear-gradient(top, #BB133E, #BB133E);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #ff0c00, #ee0000);
+  background-image: -o-linear-gradient(top, #BB133E, #BB133E);
   /* Opera 11.10+ */
-  background-image: linear-gradient(to bottom, #ff0c00, #ee0000);
+  background-image: linear-gradient(to bottom, #BB133E, #BB133E);
   border: 0.202em solid #bb0000;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -709,6 +713,7 @@ ul.nav li a {
 }
 /*-------------------------------------------------------------------------------------------*/
 /* 3. POSTS */
+/* TD: 20141209- Changed ".archive-header .archive-rss a:before" color from "orange" to "BB133E"*/
 /*-------------------------------------------------------------------------------------------*/
 #breadcrumb,
 .post .video {
@@ -733,7 +738,7 @@ ul.nav li a {
   margin-right: .618em;
   font-weight: normal;
   content: "r";
-  color: orange;
+  color: #BB133E;
 }
 .archive-description {
   clear: both;
@@ -770,7 +775,8 @@ ul.nav li a {
 }
 .post .post-meta li a:hover,
 .type-page .post-meta li a:hover {
-  color: #ff0c00;
+    /*TD: 20141209- Changed color from #ff0c00 to Glory Red*/
+  color: #BB133E;
 }
 .post .post-meta li.post-category:before,
 .type-page .post-meta li.post-category:before,
@@ -1212,7 +1218,7 @@ ul.nav li a {
   right: 0;
   height: .236em;
   background: #ff0c00;
-  border-top: 1px solid #ff1d11;
+  border-top: 1px solid #BB133E;
   -webkit-border-top-left-radius: 2px;
   -webkit-border-top-right-radius: 2px;
   border-top-left-radius: 2px;
@@ -1965,7 +1971,8 @@ ul.products li.product h3 {
   margin-bottom: 0;
 }
 ul.products li.product a:hover h3 {
-  color: #ff0c00;
+    /*TD 20121209- Changed from red to Old Glory Red when hovering over a product*/
+  color: #BB133E;
 }
 ul.products li.product .price {
   display: block;
@@ -2918,18 +2925,19 @@ button.button {
   -webkit-font-smoothing: subpixel-antialiased;
   font-weight: bold;
   text-shadow: 0 1px 0 #cc0000;
-  background-color: #ff1d11;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff1d11), to(#dd0000));
+  /*TD: 20141209- Changed the colors to an Old Glory Red Gradient*/
+  background-color: #BB133E;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BB133E), to(#BB133E));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #ff1d11, #dd0000);
+  background-image: -webkit-linear-gradient(top, #BB133E, #BB133E);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #ff1d11, #dd0000);
+  background-image: -moz-linear-gradient(top, #BB133E, #BB133E);
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, #ff1d11, #dd0000);
+  background-image: -ms-linear-gradient(top, #BB133E, #BB133E);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #ff1d11, #dd0000);
+  background-image: -o-linear-gradient(top, #BB133E, #BB133E);
   /* Opera 11.10+ */
-  background-image: linear-gradient(to bottom, #ff1d11, #dd0000);
+  background-image: linear-gradient(to bottom, #BB133E, #BB133E);
   border: 1px solid #bb0000;
   -webkit-border-radius: 0.202em;
   border-radius: 0.202em;
@@ -3050,18 +3058,19 @@ input[type=submit]:hover,
 input.button:hover,
 button.button:hover {
   text-decoration: none;
-  background-color: #ff1d11;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff1d11), to(#ee0000));
+  /*TD: 20141209- Changed the Background and Gradient to BB133E to make buttons Glory Red*/
+  background-color: #cc0000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BB133E), to(#cc0000));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #ff1d11, #ee0000);
+  background-image: -webkit-linear-gradient(top, #BB133E, #cc0000);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #ff1d11, #ee0000);
+  background-image: -moz-linear-gradient(top, #BB133E, #cc0000);
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, #ff1d11, #ee0000);
+  background-image: -ms-linear-gradient(top, #BB133E, #cc0000);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #ff1d11, #ee0000);
+  background-image: -o-linear-gradient(top, #BB133E, #cc0000);
   /* Opera 11.10+ */
-  background-image: linear-gradient(to bottom, #ff1d11, #ee0000);
+  background-image: linear-gradient(to bottom, #BB133E, #cc0000);
 }
 a.button:active,
 a.comment-reply-link:active,
@@ -3070,18 +3079,18 @@ a.comment-reply-link:active,
 input[type=submit]:active,
 input.button:active,
 button.button:active {
-  background-color: #ee0000;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ee0000), to(#ff1d11));
+  background-color: #002147;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#002147), to(#BB133E));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #ee0000, #ff1d11);
+  background-image: -webkit-linear-gradient(top, #002147, #BB133E);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #ee0000, #ff1d11);
+  background-image: -moz-linear-gradient(top, #002147, #BB133E);
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, #ee0000, #ff1d11);
+  background-image: -ms-linear-gradient(top, #002147, #BB133E);
   /* IE10 */
-  background-image: -o-linear-gradient(top, #ee0000, #ff1d11);
+  background-image: -o-linear-gradient(top, #002147, #BB133E);
   /* Opera 11.10+ */
-  background-image: linear-gradient(to bottom, #ee0000, #ff1d11);
+  background-image: linear-gradient(to bottom, #002147, #BB133E);
   -webkit-box-shadow: 0 0 0 0.327em rgba(0, 0, 0, 0.075), inset 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0 0.327em rgba(0, 0, 0, 0.075), inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -3538,7 +3547,8 @@ INDEX
     margin-right: .618em;
     font-weight: normal;
     content: "r";
-    color: orange;
+    /*TD: 20141209- Changed from orange*/
+    color: #BB133E;
   }
   .type-post:after {
     content: "\0020";
@@ -3564,7 +3574,8 @@ INDEX
   .type-post .meta .month {
     text-transform: uppercase;
     font-weight: bold;
-    background: #ff0c00;
+    /*TD: 20141209- Changed font on calendars to Old Glory Red from "ff0c00"*/
+    background: #BB133E;
     border-top: 0.202em solid #dd0000;
     color: #fff;
     font-size: .857em;
@@ -3937,7 +3948,7 @@ INDEX
     right: 0;
     height: .236em;
     background: #ff0c00;
-    border-top: 1px solid #ff1d11;
+    border-top: 1px solid #BB133E;
     -webkit-border-top-left-radius: 2px;
     -webkit-border-top-right-radius: 2px;
     border-top-left-radius: 2px;
