@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @searchtext  GEOSTOREDITS
  */
  global $product;
- 
+ $pa_attributes = $product->get_attributes();
   		$terms = get_the_terms( $product->ID, 'product_cat' );
         if($terms && ! is_wp_error($terms)){
 	        foreach ($terms as $term) {
@@ -23,15 +23,27 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	            break;
 	        }
 		}
-		$publisher = $product->get_attribute('pa_publisher');
-		if($publisher == ''){
-			$publisher = 'Not Assigned';
+		if(!$pa_attributes['pa_publisher']){
+			if($pa_attributes['publisher']){
+				$publisher = $product->get_attribute('publisher');
+			}else{
+				$publisher = 'Not Available';
+			}
+		}else{
+			$publisher = $product->get_attribute('pa_publisher');
 		}
-		$pubdate = $product->get_attribute('pa_pubdate');
-		if($pubdate == ''){
-			$pubdate = 'Not Assigned';
+		
+		if(!$pa_attributes['pa_pubdate']){
+			if($pa_attributes['pubdate']){
+				$pubdate = $product->get_attribute('pubdate');
+			}else{
+				$pubdate = 'Not Available';
+			}
+		}else{
+			$pubdate = $product->get_attribute('pa_pubdate');
 		}
-		$imagery = $product->get_attribute('imagery');
+		
+		
 //if ( ! $post->post_excerpt ) return;
 ?>
 
@@ -41,13 +53,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 echo '<strong>Updated: </strong> '.$product->post->post_date.'<br><br>'; 
 	 echo '<strong>Publisher: </strong>'.$publisher.'<br><br>'; 
 	 echo '<strong>Publication Date: </strong>'.$pubdate.'<br><br>'; 
-	 if($imagery){
-	 	if($imagery == 'lidar'){
+	 if($pa_attributes['imagery']){
+	 	if($product->get_attribute('imagery') == 'lidar'){
 	 		
-	 		echo '<a href="http://geostor-elevation.geostor.org/LAZ/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Browse The LIDAR Repository</a><br><br>'; 
+	 		echo '<a href="http://geostor-elevation.geostor.org/LAZ/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse The LIDAR Repository</a><br><br>'; 
 	 		//echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$product->get_sku().'.zip"><img src="'.wp_get_attachment_url(210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Download the Statewide ZIP file</a><br><br>'; 
 	 	}else{
-	 		echo '<a href="http://geostor-imagery.geostor.org/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Browse the Imagery Repository</a><br><br>'; 
+	 		echo '<a href="http://geostor-imagery.geostor.org/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse the Imagery Repository</a><br><br>'; 
 	 	
 	 	}
 	 }else{
