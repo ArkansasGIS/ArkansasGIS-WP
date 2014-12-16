@@ -58,9 +58,10 @@ add_filter('ngettext',  'translate_text');
 	$translated = str_ireplace('Free',  'Downloadable Data',  $translated);
 	$translated = str_ireplace('Customer',  'User',  $translated);
 	$translated = str_ireplace('Billing',  'Download',  $translated);
-	$translated = str_ireplace('Checkout',  'Feeless Checkout',  $translated);
 	$translated = str_ireplace('Orders',  'Downloads',  $translated);
 	$translated = str_ireplace('Order',  'Download',  $translated);
+	$translated = str_ireplace('Checkout',  'Download',  $translated);
+	$translated = str_ireplace('Cart',  'Bin',  $translated);
 
 	     
 	     return $translated;

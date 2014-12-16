@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'geostor-dev');
+define('DB_NAME', 'database_name_here');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'username_here');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'agioroot');
+define('DB_PASSWORD', 'password_here');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -42,14 +42,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'nz50-I8;Efpf /~UhRgD3v2]8Ebg cCBh;hi;BHG/KNS]a;327[FS:F&+VMzihD^');
-define('SECURE_AUTH_KEY',  'P{A--/nWGTobV@ex<7][|]4b>h#PjOH^%R}B02+TrE)5uxyS+8#a0jq;5O|tghb.');
-define('LOGGED_IN_KEY',    '+./!KWy#r5+#iN%fKOG.7N,2CMSmr0ngz;MN11 3b|{!0EIOw-2X=V[;}(zSLcKZ');
-define('NONCE_KEY',        'MQ;a,&CHU^Z^EQP_q||ipm<RycQd+O1g7@(4,a}ve#mEwYb0M-Uc)zSpd03*lPSk');
-define('AUTH_SALT',        '}%(`2fuNiyyuzB~7Oi*];@PxD/oNtW+o00z)+2Jtf%EK}~S*V{VzJsWIMAqCi0lV');
-define('SECURE_AUTH_SALT', 'hAH.]guqy1zo) UMhN2Fh8-5f3NK&L%8#AN&yu4|?o;A]<hd5_J0ep(dFWp<Z+e0');
-define('LOGGED_IN_SALT',   'W&[&+#%)m5{Pdk+]&z@i&- 3&J>IDN2edL,`HzCnYgIwCD0UXT6k|&!h<VCSbOx.');
-define('NONCE_SALT',       'm<V<^85fWzH)yU[+SgI3+)S!Z[UFt&V7T=DUd6hl~?c!&StZbU i+T TkqgVSX77');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 
