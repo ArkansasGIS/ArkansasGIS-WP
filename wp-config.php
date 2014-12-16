@@ -19,10 +19,10 @@
 define('DB_NAME', 'geostor-dev');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', '[Replace with your username]');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'agioroot');
+define('DB_PASSWORD', '[replace with your password]');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
