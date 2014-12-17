@@ -176,8 +176,7 @@ function custom_override_checkout_fields( $fields ) {
         'class'     => array('form-row-wide'),
  	    'options' => array(
      		'JPEG2000'        => __( 'Jpeg 2000', 'woocommerce' ),
-      		'TIFF'       => __( 'Geo Tif', 'woocommerce' ),
-      		'MRSID'       => __( 'MrSID', 'woocommerce' ),
+      		'TIFF'       => __( 'Geo Tif', 'woocommerce' )
                         )                       
     );
     
@@ -197,7 +196,6 @@ function custom_override_checkout_fields( $fields ) {
  	    	''        => __( 'Select a Clipper', 'woocommerce' ),
      		'County'        => __( 'County', 'woocommerce' ),
       		'City'        => __( 'City', 'woocommerce' ),
-      		'Extent'        => __( 'Map Extent', 'woocommerce' ),
       		'State'        => __( 'Statewide', 'woocommerce' )
                         )                       
     );

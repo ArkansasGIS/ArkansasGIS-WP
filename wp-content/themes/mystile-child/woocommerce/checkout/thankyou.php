@@ -65,7 +65,8 @@ if ( $order ) : ?>
 				//$fmeurl .= '&WhereClause='.urlencode($order->extent_clipper).'&Clipper=DEFAULT';
 				break;
 			case 'State':
-				
+				$whereclause = "";
+				$clipper = "";
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
