@@ -56,10 +56,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 if($pa_attributes['imagery']){
 	 	if($product->get_attribute('imagery') == 'lidar'){
 	 		
-	 		echo '<a href="http://geostor-elevation.geostor.org/LAZ/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse The LIDAR Repository</a><br><br>'; 
+	 		echo '<a href="http://www.geostor.org/S3Browser/Default.aspx?bucketname=geostor-elevation.geostor.org"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse The LIDAR Repository</a><br><br>'; 
 	 		//echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$product->get_sku().'.zip"><img src="'.wp_get_attachment_url(210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Download the Statewide ZIP file</a><br><br>'; 
 	 	}else{
-	 		echo '<a href="http://geostor-imagery.geostor.org/bucketlist.html"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse the Imagery Repository</a><br><br>'; 
+	 		echo '<a href="http://www.geostor.org/S3Browser/Default.aspx?bucketname=geostor-imagery.geostor.org"><img src="'.wp_get_attachment_url(7210).'" height="42" width="42">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse the Imagery Repository</a><br><br>'; 
 	 	
 	 	}
 	 }else{
