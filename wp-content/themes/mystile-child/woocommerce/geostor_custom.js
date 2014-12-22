@@ -4,6 +4,7 @@ function toggleClipper(){
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
+	document.getElementById('imagerynotecontainer').style.display = 'none';
 	switch(cliptype) {
 		case 'County':
 			document.getElementById('county_clipper_field').style.display = 'block';
@@ -16,6 +17,9 @@ function toggleClipper(){
 			showExtentMapWindow();
 			break;
 		case 'State':
+			if(hasImagery != ''){
+				document.getElementById('imagerynotecontainer').style.display = 'block';
+			}
 			break;
 	}
 }

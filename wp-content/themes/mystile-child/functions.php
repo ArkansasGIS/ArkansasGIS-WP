@@ -68,6 +68,28 @@ add_filter('ngettext',  'translate_text');
 	     
 	 }
 
+add_filter('woocommerce_after_order_notes','custom_after_order_notes');
+function custom_after_order_notes($order){
+	echo '<div id="imagerynotecontainer" >';
+	echo '<table class="imagerynotetable">';
+	echo '<thead><tr><td class="imagerynotetitle">NOTE!</td></tr></thead>';
+	echo '<tbody>';
+	echo '<tr>';
+	echo '<td class="imagerynotetd">Due to file size limitations, statewide download of this imagery is not available</td>';
+	echo '</tr>';
+	echo '<tr>';
+	echo '<td class="imagerynotetd">Your imagery selection will be removed from the result file.</td>';
+	echo '</tr>';
+	echo '<tr>';
+	echo '<td class="imagerynotetd">You can browse the Imagery FTP Repository to download the individual files</td>';
+	echo '</tr>';
+	echo '<tr>';
+	echo '<td class="imagerynotetd"><a href="http://www.geostor.org/S3Browser/Default.aspx?bucketname=geostor-imagery.geostor.org" target="_blank">Click Here To Browse Imagery FTP Repository</a></td>';
+	echo '</tr>';
+	echo '</tbody>';
+	echo '</table>';
+	echo '</div>';
+}
 
 // RDP added Hook for FME details on My Account Page GEOSTOREDITS
 add_filter('woocommerce_order_details_after_order_table','custom_order_details_after_order_table');
