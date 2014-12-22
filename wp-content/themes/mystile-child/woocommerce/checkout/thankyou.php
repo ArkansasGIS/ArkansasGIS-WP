@@ -67,6 +67,8 @@ if ( $order ) : ?>
 			case 'State':
 				$whereclause = "";
 				$clipper = "";
+				$rastersku = "";
+				$rastersource = "";
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}

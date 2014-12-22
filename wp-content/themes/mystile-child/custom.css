@@ -135,7 +135,27 @@ a.button.view {
 #extent_clipper_field {
 	display: none;
 }
+/* added for Imagery note */
+#imagerynotecontainer{
+	height: 300px;
+	display: none;
+}
+.imagerynotetable{
+	border: 1px solid black;
+	padding: 10px;
+}
 
+.imagerynotetd{
+	padding-top:20px;
+  	padding-bottom:20px;
+  	padding-left:20px;  
+}
+.imagerynotetitle{
+	text-align: center;
+	font-weight: bold;
+	background-color: red;
+	color: white;
+}
 /* 
 DESKTOP STYLES
 -----------------
