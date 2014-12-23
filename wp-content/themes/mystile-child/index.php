@@ -21,7 +21,7 @@ if ( ! function_exists( 'wp' ) && ! empty( $_SERVER['SCRIPT_FILENAME'] ) && base
     <?php if ( $woo_options[ 'woo_homepage_banner' ] == "true" ) { ?>
     	<!-- TD: 20141223- Changes the <div> in order to clear up banner on homepage if selected
     	<div class="homepage-banner">-->
-       <div class="">
+       <div align="center"class="">
     		<?php
 				if ( $woo_options[ 'woo_homepage_banner' ] == "true" ) { $banner = $woo_options['woo_homepage_banner_path']; }
 				if ( $woo_options[ 'woo_homepage_banner' ] == "true" && is_ssl() ) { $banner = preg_replace("/^http:/", "https:", $woo_options['woo_homepage_banner_path']); }
