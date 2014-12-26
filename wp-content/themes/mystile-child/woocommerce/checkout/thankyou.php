@@ -87,7 +87,7 @@ if ( $order ) : ?>
    		$fmeurl .= "&SCHEMA_IN_REAL_FORMAT_SCHEMA=POSTGIS";
    		$fmeurl .= "&WHERE=".$whereclause;
    		$fmeurl .= "&CLIPPER=".$clipper;
-		$fmeurl .= "&RASTER_SOURCE_FORMAT=".$rastersource;
+		$fmeurl .= "&RASTER_SOURCE_FORMAT=MRSID"; //.$rastersource;
    		$fmeurl .= "&opt_showresult=false";
    		$fmeurl .= "&opt_servicemode=async";
    		$fmeurl .= "&opt_requesteremail=".$order->email;
