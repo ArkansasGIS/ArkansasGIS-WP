@@ -20,15 +20,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		}else{
 			array_push($feature_type,'vector');
 		}
+		
 		if(in_array('imagery',$feature_type)){
-			$imagery = 'block';
+			$imagery_style = 'block';
 		}else{
-			$imagery = 'none';
+			$imagery_style = 'none';
 		}
 		if(in_array('vector',$feature_type)){
-			$vector = 'block';
+			$vector_style = 'block';
 		}else{
-			$vector = 'none';
+			$vector_style = 'none';
 		}
 		
 	} ?>
@@ -88,12 +89,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 </div>
 <!-- RDP added to enable proper clipper from user preferences GEOSTOREDTIS -->
 <script type="text/javascript">
+	var hasImagery = '<?php echo $_product->get_attribute('imagery'); ?>';
 	var cliptype = document.getElementById('clip_type').value;
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
-	document.getElementById('raster_format_type_field').style.display = "<?=$imagery; ?>";
-	document.getElementById('vector_format_type_field').style.display = "<?=$vector; ?>";
+	document.getElementById('raster_format_type_field').style.display = "<?=$imagery_style; ?>";
+	document.getElementById('vector_format_type_field').style.display = "<?=$vector_style; ?>";
 	switch(cliptype) {
 		case 'County':
 			document.getElementById('county_clipper_field').style.display = 'block';

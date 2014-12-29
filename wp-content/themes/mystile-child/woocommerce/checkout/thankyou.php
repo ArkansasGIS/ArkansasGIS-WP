@@ -67,7 +67,10 @@ if ( $order ) : ?>
 				//$fmeurl .= '&WhereClause='.urlencode($order->extent_clipper).'&Clipper=DEFAULT';
 				break;
 			case 'State':
-				
+				$whereclause = "";
+				$clipper = "";
+				$rastersku = "";
+				$rastersource = "";
 				//$fmeurl .= '&WhereClause=&LargeClippee=DEFAULT';
 				break;
 		}
