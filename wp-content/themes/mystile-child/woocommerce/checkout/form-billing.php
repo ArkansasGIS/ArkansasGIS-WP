@@ -13,26 +13,30 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	
 	<?PHP 
 	$feature_type = array();
+	$imagerycount = 0;
+	$hasparcellayer = false;
+	$carturl = WC()->cart->get_cart_url();
 	foreach (WC()->cart->get_cart() as $cart_item_key => $values){
 		$_product = $values['data'];
 		if($_product->get_attribute('imagery')){
 			array_push($feature_type,'imagery');
+			$imagerycount++;
 		}else{
 			array_push($feature_type,'vector');
 		}
-		
-		if(in_array('imagery',$feature_type)){
+	} 
+	if(in_array('imagery',$feature_type)){
 			$imagery_style = 'block';
 		}else{
 			$imagery_style = 'none';
-		}
-		if(in_array('vector',$feature_type)){
+	}
+	if(in_array('vector',$feature_type)){
 			$vector_style = 'block';
 		}else{
 			$vector_style = 'none';
-		}
-		
-	} ?>
+	}
+	
+	?>
 	<?php if ( WC()->cart->ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
 		<h3><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
@@ -89,7 +93,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 </div>
 <!-- RDP added to enable proper clipper from user preferences GEOSTOREDTIS -->
 <script type="text/javascript">
-	var hasImagery = '<?php echo $_product->get_attribute('imagery'); ?>';
+	var hasImagery = <?=$imagerycount; ?>;
+	if(hasImagery > 1){
+		location.href = '<?=$carturl; ?>';
+	}
 	var cliptype = document.getElementById('clip_type').value;
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';

@@ -25,8 +25,8 @@ global $woo_options, $woocommerce;
 <link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!-- RDP Added to include Sencha javascript library GEOSTOREDITS -->
-<link rel="stylesheet" type="text/css" href="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/resources/css/ext-all-gray.css" />
-<script type="text/javascript" src="http://www.geostor.arkansas.gov/Sencha/ext-4.2.2.1144/ext-all-debug.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.geostor.org/Sencha/ext-4.2.2.1144//resources/css/ext-all-gray.css" />
+<script type="text/javascript" src="http://www.geostor.org/Sencha/ext-4.2.2.1144/ext-all-debug.js"></script>
 <!-- RDP Added to include Leaflet javascript library GEOSTOREDITS -->
   <!-- Load Leaflet from CDN-->
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />

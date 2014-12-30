@@ -17,7 +17,7 @@ function toggleClipper(){
 			showExtentMapWindow();
 			break;
 		case 'State':
-			if(hasImagery != ''){
+			if(hasImagery > 0){
 				document.getElementById('imagerynotecontainer').style.display = 'block';
 			}
 			break;
