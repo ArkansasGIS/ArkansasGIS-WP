@@ -26,9 +26,11 @@ if ( $order ) : ?>
 			if($product->get_attribute('imagery')){
 				$rastersku .= $product_cat.'.'.$product->get_sku().'%20';
 				$rastersource = $product->get_attribute('imagery');
+                $priority='2';
 			}else{
 				$vectorsku .= $product_cat.'.'.$product->get_sku().'%20';
 				$rastersource = "MRSID";
+                $priority='1';
 			}
 		}
 
@@ -90,7 +92,8 @@ if ( $order ) : ?>
    		$fmeurl .= "&SCHEMA_IN_REAL_FORMAT_SCHEMA=POSTGIS";
    		$fmeurl .= "&WHERE=".$whereclause;
    		$fmeurl .= "&CLIPPER=".$clipper;
-		$fmeurl .= "&RASTER_SOURCE_FORMAT=".$rastersource;
+		$fmeurl .= "&RASTER_SOURCE_FORMAT=MRSID"; //.$rastersource;
+        $fmeurl .= "&TM_priority=".$priority;
    		$fmeurl .= "&opt_showresult=false";
    		$fmeurl .= "&opt_servicemode=async";
    		$fmeurl .= "&opt_requesteremail=".$order->email;
