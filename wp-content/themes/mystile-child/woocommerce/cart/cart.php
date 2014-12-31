@@ -11,16 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $woocommerce;
 
-$imagerycount = 0;
-foreach (WC()->cart->get_cart() as $cart_item_key => $values){
-		$_product = $values['data'];
-		if($_product->get_attribute('imagery')){
-			$imagerycount++;
-		}
-} 
-if($imagerycount > 1){
-	wc_add_notice('Due to space restrictions, you can only download one imagery layer at a time. Please remove one!','error');
-}
 
 
 wc_print_notices();
@@ -29,8 +19,6 @@ do_action( 'woocommerce_before_cart' );
 
 
 ?>
-
-
 
 <form action="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" method="post">
 
