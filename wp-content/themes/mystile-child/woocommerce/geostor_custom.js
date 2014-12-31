@@ -4,6 +4,16 @@ function toggleClipper(){
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
+	var vector_formats = document.getElementById('vector_format_type');
+			var vector_options = vector_formats.getElementsByTagName("option");
+			for(var v = 0; v < vector_options.length; v++){
+				vector_options[v].disabled = false;
+			}
+			var projection_types = document.getElementById('projection');
+			var projection_options = projection_types.getElementsByTagName("option");
+			for(var v = 0; v < projection_options.length; v++){
+				projection_options[v].disabled = false;
+			}
 	switch(cliptype) {
 		case 'County':
 			document.getElementById('county_clipper_field').style.display = 'block';
