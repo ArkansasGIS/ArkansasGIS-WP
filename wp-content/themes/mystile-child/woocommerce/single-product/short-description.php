@@ -65,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 }else{
 	 	
 	 	echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/SHP/'.$product->get_sku().'.zip" class="button product_type_simple"><span>&nbsp;&nbsp;&nbsp;&nbsp;Statewide ZIP file (Shapefile - UTM Zone 15N)</span></a><br><br>'; 
-	 	echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/FGDB/'.$product->get_sku().'.zip" class="button product_type_simple"><span>&nbsp;&nbsp;&nbsp;&nbsp;Statewide ZIP file (FGDB - UTM Zone 15N)</span></a><br><br>';
+	 	echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/FGDB/'.$product->get_sku().'.gdb.zip" class="button product_type_simple"><span>&nbsp;&nbsp;&nbsp;&nbsp;Statewide ZIP file (FGDB - UTM Zone 15N)</span></a><br><br>';
 	 	echo '<strong>Or to clip by County or City</strong><br><br>';
 	 	// GEOSTOR uncomment for WFS url
 	 	//echo '<a href="http://www.geostor.arkansas.gov/ArcGIS/rest/services/FEATURE_SERVICES/'.$product->get_sku().'/MapServer/0"><img src="'.wp_get_attachment_url(211).'" height="42" width="60">&nbsp;&nbsp;&nbsp;&nbsp;Connect To Web Feature Services</a><br><br>'; /* apply_filters( 'woocommerce_short_description', $post->post_excerpt ) */ 
