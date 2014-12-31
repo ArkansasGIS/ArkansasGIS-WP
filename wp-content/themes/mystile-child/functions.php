@@ -126,45 +126,8 @@ function custom_override_checkout_fields( $fields ) {
      unset($fields['billing']['billing_postcode']);
      unset($fields['billing']['billing_email']);
      unset($fields['billing']['billing_phone']);
-     $fields['billing']['dl_type']= array(
-	    'type' => 'select',
-	    'label'     => __('Download Type', 'woocommerce'),
-    	'placeholder'   => _x('Download Type', 'placeholder', 'woocommerce'),
-    	'required'  => false,
-     	'form' => 'FME',
-    	'class'     => array('chosen-container'),
-    	'clear'     => true,
-	    'id' => 'DT',
-        'class'     => array('form-row-wide'),
- 	    'options' => array(
-     		'async'        => __( 'E-Mail', 'woocommerce' ),
-      		'sync'       => __( 'Desktop', 'woocommerce' ) 	
-                        )                       
-    );
-	
-    $fields['billing']['vector_format_type']= array(
-	    'type' => 'select',
-	    'label'     => __('Vector Format', 'woocommerce'),
-    	'placeholder'   => _x('Vector Format', 'placeholder', 'woocommerce'),
-    	'required'  => true,
-     	'form' => 'FME',
-    	'class'     => array('chosen-container'),
-    	'clear'     => true,
-	    'id' => 'vector_format_type',
-        'class'     => array('form-row-wide'),
- 	    'options' => array(
-     		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
-      		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
-      		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
-      		'DWF'       => __( 'AutoCAD DWF', 'woocommerce' ),
-      		'MAPINFO'       => __( 'MapInfo TAB', 'woocommerce' ),
-      		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
-      		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
-      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
-                        )                       
-    );
-	
-   $fields['billing']['clip_type']= array(
+	 
+	 $fields['billing']['clip_type']= array(
 	    'type' => 'select',
 	    'label'     => __('Clip by: ', 'woocommerce'),
     	'placeholder'   => _x('Select', 'placeholder', 'woocommerce'),
@@ -234,6 +197,28 @@ function custom_override_checkout_fields( $fields ) {
         'id' => 'extent_clipper',
         'clear'     => true
      );
+	
+    $fields['billing']['vector_format_type']= array(
+	    'type' => 'select',
+	    'label'     => __('Vector Format', 'woocommerce'),
+    	'placeholder'   => _x('Vector Format', 'placeholder', 'woocommerce'),
+    	'required'  => true,
+     	'form' => 'FME',
+    	'class'     => array('chosen-container'),
+    	'clear'     => true,
+	    'id' => 'vector_format_type',
+        'class'     => array('form-row-wide'),
+ 	    'options' => array(
+     		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
+      		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
+      		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
+      		'DWF'       => __( 'AutoCAD DWF', 'woocommerce' ),
+      		'MAPINFO'       => __( 'MapInfo TAB', 'woocommerce' ),
+      		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
+      		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
+      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
+                        )                       
+    );
      
 	
      $fields['billing']['projection']= array(
