@@ -1,0 +1,118 @@
+﻿Imports System.Xml
+
+Module Module1
+    Sub Main()
+        'get our data from the fme tables
+        Dim conn As New SqlClient.SqlConnection
+        conn.ConnectionString = "Data Source=source;Initial Catalog=Catalog;Persist Security Info=True;User ID=username;Password=password;MultipleActiveResultSets=True;"
+        Dim cmd As New SqlClient.SqlCommand
+        Dim rdr As SqlClient.SqlDataReader
+        Dim status As String
+        Dim latestjob As Integer
+
+        'connection to update stats table
+        Dim conn1 As New SqlClient.SqlConnection
+        conn1.ConnectionString = "Data Source=source;Initial Catalog=GeoStor;Persist Security Info=True;User ID=username;Password=password;MultipleActiveResultSets=True;"
+        Dim cmd1 As New SqlClient.SqlCommand
+        Dim rdr1 As SqlClient.SqlDataReader
+
+        'data variables
+        Dim jobid, proctime As Integer
+        Dim coordsys, lclippee, sclippee, clippee, clipper, email, whereclause, format, ftype As String
+        Dim maxx, maxy, minx, miny As String
+        Dim todebug As Boolean = False
+
+        Try
+            'open our db connections
+            'stats output table
+            cmd1.Connection = conn1
+            conn1.Open()
+            'fme table
+            cmd.Connection = conn
+            conn.Open()
+            cmd1.CommandText = "select max(jobid) from fme_reporting"
+            rdr1 = cmd1.ExecuteReader
+            If rdr1.HasRows Then
+                While rdr1.Read
+                    latestjob = rdr1.GetInt32(0)
+                End While
+            End If
+            rdr1.Close()
+            cmd.CommandText = "SELECT fme_jobs.job_id,fme_job_request.request,DATEDIFF(ss,fme_jobs.date_started,fme_jobs.date_finished) as proctime FROM fme_jobs, fme_job_result, fme_job_request" _
+                            & " WHERE fme_jobs.job_status IN (SELECT status FROM fme_job_status WHERE status_name IN ('SUCCESS'))" _
+                            & " AND fme_job_result.job_id = fme_jobs.job_id and fme_job_request.job_id = fme_jobs.job_id and fme_jobs.job_id > " & latestjob.ToString()
+            rdr = cmd.ExecuteReader
+            If todebug Then Debug.Print(cmd.CommandText)
+            Console.WriteLine("Gathering data...")
+            While rdr.Read
+                Dim xmldoc As New XmlDocument
+                Dim n As XmlNode
+                jobid = rdr.GetInt32(0)
+                status = rdr.GetString(1)
+                proctime = rdr.GetInt32(2)
+                'trim out the xml
+                status = Microsoft.VisualBasic.Right(status, status.Length - status.IndexOf("<"))
+                If todebug Then Debug.Print(status)
+                'load the xml into a xml object
+                xmldoc.LoadXml(status)
+                If todebug Then Debug.Print("Job id = " & jobid.ToString)
+                ' Scroll through the nodes
+                For Each n In xmldoc.SelectNodes("/TRANSFORMATION_REQUEST/PUBLISHED_PARAMETER")
+                    'assign parameters
+                    Select Case n.Attributes("name").Value
+                        Case "--Clippee"
+                            ftype = "R"
+                            clippee = n.InnerText
+                        Case "--LargeClippee"
+                            ftype = "V"
+                            lclippee = n.InnerText
+                        Case "--CoordinateSystem"
+                            coordsys = n.InnerText
+                        Case "--Clipper"
+                            clipper = n.InnerText
+                        Case "--WhereClause"
+                            whereclause = removequotes(n.InnerText)
+                        Case "--Format"
+                            format = n.InnerText
+                        Case "--SmallClippee"
+                            sclippee = n.InnerText
+                        Case "--MAXX"
+                            maxx = n.InnerText
+                        Case "--MAXY"
+                            maxy = n.InnerText
+                        Case "--MINX"
+                            minx = n.InnerText
+                        Case "--MINY"
+                            miny = n.InnerText
+                        Case "--OPT_requesterEmail"
+                            email = n.InnerText
+                    End Select
+                Next
+                'check to see if jobid exists
+                cmd1.CommandText = "select jobid from Geostor.dbo.fme_reporting where jobid = " & jobid
+                If todebug Then Debug.Print(cmd1.CommandText)
+                rdr1 = cmd1.ExecuteReader
+                If Not rdr1.HasRows Then
+                    cmd1.CommandText = "insert into Geostor.dbo.fme_reporting values('" & jobid & "', '" & coordsys & "', '" & lclippee & "', '" & clipper & "', '" & email & "', '" _
+                                        & whereclause & "', '" & format & "', '" & sclippee & "', '" & maxx & "', '" & maxy & "', '" & minx & "', '" & miny & "', '" _
+                                        & clippee & "', '" & ftype & "', '" & proctime & "')"
+                    If todebug Then Debug.Print(cmd1.CommandText)
+                    rdr1.Close()
+                    'Dim count As Integer = cmd1.ExecuteNonQuery
+                End If
+                rdr1.Close()
+            End While
+            rdr.Close()
+            conn.Close()
+        Catch ex As SqlClient.SqlException
+            MsgBox("There was an error: " & ex.Message) ' & " & " & ex.InnerException.ToString)
+        End Try
+        Console.WriteLine("Operation complete.")
+    End Sub
+
+    Function removequotes(ByRef data As String)
+        data = data.Replace("'", "")
+        Return data
+    End Function
+End Module
+

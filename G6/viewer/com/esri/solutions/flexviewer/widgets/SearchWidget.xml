@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<layers>
+		<layer>
+			<name>Census Tracts</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/1</url>
+			<expression>TRT2000 like '%[value]%'</expression>
+			<textsearchlabel>Search by Tract Number: [ Example: 030501 ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select Tract Number</graphicalsearchlabel>
+			<fields>TRT2000,STFID,TRACTID</fields>
+			<titlefield>TRT2000</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Quadrangles</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/2</url>
+			<expression>QUAD_NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by Quad Name: [ Example: CONGO ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select Quad Name</graphicalsearchlabel>
+			<fields>QUAD_NAME</fields>
+			<titlefield>QUAD_NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Quarter Quadrangles</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/3</url>
+			<expression>QUAD_NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by Quad Name: [ Example: CONGO ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select Quad Name</graphicalsearchlabel>
+			<fields>QUAD_NAME,DIRECTION</fields>
+			<titlefield>QUAD_NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Congressional District</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/4</url>
+			<expression>DISTRICT = [value]</expression>
+			<textsearchlabel>Search by District Number: [ Example: 3 ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select  District Number</graphicalsearchlabel>
+			<fields>DISTRICT</fields>
+			<titlefield>DISTRICT</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>House District</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/5</url>
+			<expression>NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by Representative's Name: [ Example: Clemmer ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select  Representative's Name</graphicalsearchlabel>
+			<fields>NDISTRICT,NAME</fields>
+			<titlefield>NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>School District</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/6</url>
+			<expression>NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by District's Name: [ Example: Bryant ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select  District's Name</graphicalsearchlabel>
+			<fields>NAME,UNIFIED,LEA</fields>
+			<titlefield>NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Senate District</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/7</url>
+			<expression>NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by Senator's Name: [ Example: Broadway ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select  Senator's Name</graphicalsearchlabel>
+			<fields>NDISTRICT,NAME</fields>
+			<titlefield>NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>HUC 12</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/8</url>
+			<expression>HU_12_NAME like '%[value]%'</expression>
+			<textsearchlabel>Search by the HUC 12 Name: [ Example: Saline ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select  HUC 12 Name</graphicalsearchlabel>
+			<fields>HU_12_NAME,HUC_12</fields>
+			<titlefield>HU_12_NAME</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Sections</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/9</url>
+			<expression>S_T_R like '%[value]%'</expression>
+			<textsearchlabel>Search by S_T_R: [ Example: Clemmer ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select S_T_R</graphicalsearchlabel>
+			<fields>S_T_R,COUNTY</fields>
+			<titlefield>S_T_R</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Townships</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/10</url>
+			<expression>T_R like '%[value]%'</expression>
+			<textsearchlabel>Search by S_T_R: [ Example: Clemmer ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select T_R</graphicalsearchlabel>
+			<fields>T_R,COUNTY</fields>
+			<titlefield>T_R</titlefield>
+			<linkfield></linkfield>
+		</layer>
+		<layer>
+			<name>Census Blocks</name>
+			<url>http://www.geostor.arkansas.gov/ArcGIS/rest/services/Basemap_Dynamic/MapServer/11</url>
+			<expression>TRACT like '%[value]%'</expression>
+			<textsearchlabel>Search by Tract Number: [ Example: 030501 ]:</textsearchlabel>
+			<graphicalsearchlabel>Use one of the graphical search tools to select Tract Number</graphicalsearchlabel>
+			<fields>TRACT,GROUP,STFID,TOT_POP</fields>
+			<titlefield>TRACT</titlefield>
+			<linkfield></linkfield>
+		</layer>
+	</layers>
+	<zoomscale>5000</zoomscale>
+</configuration>

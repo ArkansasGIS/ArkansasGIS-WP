@@ -1,0 +1,2487 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="API_files/filelist.xml">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Glen Rhea</o:Author>
+  <o:LastAuthor>Glen Rhea</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>549</o:TotalTime>
+  <o:Created>2009-10-14T16:36:00Z</o:Created>
+  <o:LastSaved>2009-10-14T16:36:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>1273</o:Words>
+  <o:Characters>7261</o:Characters>
+  <o:Lines>60</o:Lines>
+  <o:Paragraphs>17</o:Paragraphs>
+  <o:CharactersWithSpaces>8517</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=themeData href="API_files/themedata.thmx">
+<link rel=colorSchemeMapping href="API_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 4.0pt 0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 4.0pt 0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 4.0pt 0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD 1.0pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 4.0pt 0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+pre
+	{mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:2.0in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level4 lfo1;
+	background:#E5E5CC;
+	border:none;
+	mso-border-alt:solid #F0F0E0 .5pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Courier New";
+	color:black;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:26.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Courier New";
+	color:black;
+	background:#E5E5CC;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	margin-bottom:10.0pt;
+	line-height:115%;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:735318422;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1724891874 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1098481026;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2104534754 67698689 67698691 67698693 -1450384828 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"HTML Preformatted";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin-top:0in;
+	mso-para-margin-right:0in;
+	mso-para-margin-bottom:10.0pt;
+	mso-para-margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="6146">
+  <o:colormenu v:ext="edit" fillcolor="none [3212]"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
+mso-border-bottom-themecolor:accent1;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle align=center style='text-align:center'>GeoStor 6.0 API</p>
+
+</div>
+
+<p class=MsoNormal>This document will cover all the services we are offering
+with GeoStor 6.0. We hope that people will develop applications that can
+utilize them for whatever needs they may have.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><u>Index</u></b> (you
+can click the links to go to that section)</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#AGS"><span class=SpellE><span
+style='font-size:10.0pt;line-height:115%'>ArcGIS</span></span><span
+style='font-size:10.0pt;line-height:115%'> Server Services</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#G6WS"><span style='font-size:10.0pt;
+line-height:115%'>GeoStor Web Services</span></a><span style='font-size:10.0pt;
+line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#G6URL"><span style='font-size:10.0pt;
+line-height:115%'>GeoStor URL Parameters</span></a><span style='font-size:10.0pt;
+line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#DFA"><span style='font-size:10.0pt;
+line-height:115%'>Streamline Web Services</span></a><span style='font-size:
+10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#FORMATS"><span style='font-size:10.0pt;
+line-height:115%'>Download Formats table</span></a><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></u></b></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l0 level1 lfo4'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="#WIDGET"><span style='font-size:10.0pt;
+line-height:115%'>Widget</span></a><b style='mso-bidi-font-weight:normal'><u><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l1 level1 lfo1'><a
+name=AGS><![if !supportLists]><span style='font-size:10.0pt;line-height:115%;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]></a><span class=SpellE><span style='mso-bookmark:
+AGS'><span style='font-size:10.0pt;line-height:115%'>ArcGIS</span></span></span><span
+style='mso-bookmark:AGS'><span style='font-size:10.0pt;line-height:115%'> Server
+Services<o:p></o:p></span></span></p>
+
+<span style='mso-bookmark:AGS'></span>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>These
+are thoroughly documented on ESRI’s site<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://resources.esri.com/arcgisserver/index.cfm?fa=applications"><span
+style='font-size:10.0pt;line-height:115%'>http://resources.esri.com/arcgisserver/index.cfm?fa=applications</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>You
+can access our AGS REST API here:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/arcgis/rest/services/"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/arcgis/rest/services/</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l1 level1 lfo1'><a
+name=G6WS><![if !supportLists]><span style='font-size:10.0pt;line-height:115%;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>GeoStor
+Web Services<o:p></o:p></span></a></p>
+
+<span style='mso-bookmark:G6WS'></span>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>They
+all output JSON, so you will need JavaScript or any language that understands
+JSON<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>TODO – provide examples of input/output<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Here
+is the address:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/geostorwebservice/geostorws.asmx"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/geostorwebservice/geostorws.asmx</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>WSDL:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/geostorwebservice/geostorws.asmx?WSDL"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/geostorwebservice/geostorws.asmx?WSDL</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Here
+is a breakdown of parameters per web service<span style='mso-tab-count:1'>   </span><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>adv_search</span></span><span
+style='font-size:10.0pt;line-height:115%'> – used for the advanced search page,
+most developers won’t use this one.<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:.25in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level4 lfo1;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E5E5CC;border:none;mso-border-alt:solid #F0F0E0 .5pt;padding:0in;
+mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:black'>&lt;category&gt;</span><span style='font-size:10.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Courier New";
+color:darkblue'>string</span><span style='font-size:10.0pt;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Courier New";color:black'>&lt;/category&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:.25in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level4 lfo1;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E5E5CC;border:none;mso-border-alt:solid #F0F0E0 .5pt;padding:0in;
+mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:black'>&lt;publisher&gt;</span><span style='font-size:10.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Courier New";
+color:darkblue'>string</span><span style='font-size:10.0pt;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Courier New";color:black'>&lt;/publisher&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:.25in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level4 lfo1;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E5E5CC;border:none;mso-border-alt:solid #F0F0E0 .5pt;padding:0in;
+mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:black'>&lt;<span class=SpellE>dltype</span>&gt;</span><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:darkblue'>string</span><span style='font-size:10.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Courier New";
+color:black'>&lt;/<span class=SpellE>dltype</span>&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:.25in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level4 lfo1;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E5E5CC;border:none;mso-border-alt:solid #F0F0E0 .5pt;padding:0in;
+mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:black'>&lt;<span class=SpellE>strtdate</span>&gt;</span><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:darkblue'>string</span><span style='font-size:10.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Courier New";
+color:black'>&lt;/<span class=SpellE>strtdate</span>&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:.25in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level4 lfo1;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E5E5CC;border:none;mso-border-alt:solid #F0F0E0 .5pt;padding:0in;
+mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:black'>&lt;<span class=SpellE>enddate</span>&gt;</span><span
+style='font-size:10.0pt;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Courier New";color:darkblue'>string</span><span style='font-size:10.0pt;
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Courier New";
+color:black'>&lt;/<span class=SpellE>enddate</span>&gt;<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>fmeProxy</span></span><span
+style='font-size:10.0pt;line-height:115%'> – this acts as a proxy service
+between FME Server and the Internet<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;site&gt;</span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:darkblue'>string</span><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;/site&gt;<span
+style='mso-spacerun:yes'>  </span>Values =<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov"><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New"'>www.geostor.arkansas.gov</span></a><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>dev.geostor.arkansas.gov<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;<span class=SpellE>postvars</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:darkblue'>string</span><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;/<span class=SpellE>postvars</span>&gt;<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>These are the URL parameters for the FME Server workspace<span
+style='mso-tab-count:1'>    </span><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Parameters<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Either type of download, vector or raster<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:3.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a href="mailto:OPT_requesterEmail=a@a.com"><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New"'>OPT_requesterEmail=a@a.com</span></a><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'> – Email to send results to<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>OPT_serviceMode</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>=<span class=SpellE>async</span> – Download <span class=GramE>type,</span>
+just put it in there…<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>WhereClause</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>=where COUNTY_NAM = |Pulaski| - See “Clip by feature” section for
+more info. Not used for extent clip but still required<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>Clipper=ADMIN.COUNTIES_AHTD –
+the feature to clip by. See “Clip by feature” section for more info<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>Format=SHAPE – the format you
+want your download to come in. See the “Formats” section at the bottom for the
+allowed formats<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>CoordinateSystem</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>=LL-WGS84 – Self explanatory, see Coordinate Systems section for
+allowed values<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&amp;MAXX=&amp;MAXY=&amp;MINX=&amp;MINY=
+- Used for extent clipping, required even if not used<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Vector Specific: See “Features to clip from” for more info<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:3.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>SmallClippee</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>LargeClippee</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'><o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Raster Specific<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:3.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>Clippee</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'> – what layer you want to clip from<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Ways to Clip<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Clip by extent (Uses the MINX, MINY, MAXX, MAXY parameters)
+currently in UTM – Zone 15N<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:3.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>The Clipper Parameter must be
+set to EXTENTS<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Clip by feature<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:3.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>Allowed Clippers:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>The second value is what you
+would use in the Where clause parameter<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>Clipper,WhereClause</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>ADMIN.COUNTIES_AHTD,COUNTY_NAM<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>ADMIN.CITY_LIMITS_AHTD,CITY_NAME<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>WATER.BASINS_HUC8_NRCS,HUC_8<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>ADMIN.QUADRANGLES_CAST,QUAD_NAME<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level7 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>E.g. &amp;<span class=SpellE>WhereClause</span>=where
+COUNTY_NAM = |Pulaski|&amp;Clipper=ADMIN.COUNTIES_AHTD<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Features to clip from<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Anything you search in GeoStor of the type DL is downloadable<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><u><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:red'>CAVEAT:</span></u></b><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New"'>
+FOR VECTORS ONLY: Everything goes in the <span class=SpellE>SmallClippee</span>
+parameter except TRANSP.ROADS_ACF and CADAS.PARCEL_POLYGON_CAMP, those go in
+the <span class=SpellE>LargeClippee</span> parameter. Put DEFAULT in the one
+you aren’t using.<b style='mso-bidi-font-weight:normal'><u><span
+style='color:black'><o:p></o:p></span></u></b></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Make sure you put an ampersand between each parameter<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Example:<span style='mso-spacerun:yes'>  </span>(Raster) </span><a
+href="mailto:OPT_requesterEmail=geostor@arkansas.gov&amp;OPT_serviceMode=async&amp;WhereClause=where%20QUAD_NAME%20=%20%7CO'KEAN%7C&amp;Clipper=ADMIN.QUADRANGLES_CAST&amp;Format=JPEG&amp;CoordinateSystem=EPSG:26915&amp;Clippee=IMAGE.ORTHO_DOQQ_RGB_ASLIB2006&amp;MAXX=&amp;MAXY=&amp;MINX=&amp;MINY"><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New"'>OPT_requesterEmail=geostor@arkansas.gov&amp;OPT_serviceMode=async&amp;WhereClause=where%20QUAD_NAME%20=%20%7CO'KEAN%7C&amp;Clipper=ADMIN.QUADRANGLES_CAST&amp;Format=JPEG&amp;CoordinateSystem=EPSG:26915&amp;Clippee=IMAGE.ORTHO_DOQQ_RGB_ASLIB2006&amp;MAXX=&amp;MAXY=&amp;MINX=&amp;MINY</span></a><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>=<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Example: (Vector)<span style='mso-spacerun:yes'>  </span></span><a
+href="mailto:OPT_requesterEmail=geostor@arkansas.gov&amp;OPT_serviceMode=async&amp;WhereClause=where%20HUC_8%20=%20%7C08040205%7C&amp;Clipper=WATER.BASINS_HUC8_NRCS&amp;Format=PDF2D&amp;CoordinateSystem=LL-WGS84&amp;LargeClippee=DEFAULT&amp;SmallClippee=STRUC.FIRE_STATIONS_TGS&amp;MAXX=&amp;MAXY=&amp;MINX=&amp;MINY"><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New"'>OPT_requesterEmail=geostor@arkansas.gov&amp;OPT_serviceMode=async&amp;WhereClause=where%20HUC_8%20=%20%7C08040205%7C&amp;Clipper=WATER.BASINS_HUC8_NRCS&amp;Format=PDF2D&amp;CoordinateSystem=LL-WGS84&amp;LargeClippee=DEFAULT&amp;SmallClippee=STRUC.FIRE_STATIONS_TGS&amp;MAXX=&amp;MAXY=&amp;MINX=&amp;MINY</span></a><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>=<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;<span class=SpellE>dltype</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:darkblue'>string</span><span style='font-size:10.0pt;line-height:115%;
+mso-bidi-font-family:"Courier New";color:black'>&lt;/<span class=SpellE>dltype</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%;color:black'><o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Values = V or R depending upon whether the download is a vector or
+raster. See Format table at the bottom of the document.</span><span
+style='font-size:10.0pt;line-height:115%;color:black'><o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;color:black'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+color:black'>&lt;<span class=SpellE>fmesvc</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%;color:darkblue'>string</span><span
+style='font-size:10.0pt;line-height:115%;color:black'>&lt;/<span class=SpellE>fmesvc</span>&gt;<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.25in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level5 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New";color:black'><span style='mso-list:Ignore'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>Values = <o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:2.75in;margin-right:0in'>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:
+"Courier New";color:black'>fmedatadownload</span></span><span style='font-size:
+10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:
+"Courier New";color:black'>fmedatastreaming</span></span><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:
+"Courier New";color:black'>fmejobsubmitter</span></span><span style='font-size:
+10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:
+"Courier New";color:black'>fmekmllink</span></span><span style='font-size:10.0pt;
+line-height:115%;mso-bidi-font-family:"Courier New";color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>WFS&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.25in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level6 lfo1;background:#E5E5CC;border:none;
+mso-border-alt:solid #F0F0E0 .5pt;padding:0in;mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings;color:black'><span style='mso-list:
+Ignore'>§<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:"Courier New";
+color:black'>WMS&nbsp;<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>getData</span></span><span
+style='font-size:10.0pt;line-height:115%'> – This fills the drop down lists
+that are populated dynamically, again not used by most developers<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.5in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>search – Search our database for data
+<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #F0F0E0 1.0pt;mso-border-alt:
+solid #F0F0E0 .5pt;padding:2.0pt 2.0pt 2.0pt 2.0pt;background:#E5E5CC;
+margin-left:1.75in;margin-right:0in'><pre style='margin-left:.25in;background:
+#E5E5CC'><![if !supportLists]><span style='font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>&lt;input&gt;<span
+style='color:darkblue'>string</span>&lt;/input&gt; - This is the keywords you want to search by</pre><pre
+style='margin-left:.25in;background:#E5E5CC'><![if !supportLists]><span
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>&lt;<span
+class=SpellE>stradv</span>&gt;<span style='color:darkblue'>string</span>&lt;/<span
+class=SpellE>stradv</span>&gt; - if you are doing an advanced search</pre><pre
+style='margin-left:.25in;background:#E5E5CC'><![if !supportLists]><span
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>&lt;ID&gt;string&lt;/ID&gt; - Searching by a metadata record’s unique id which is found in the metadata (<span
+style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>see below in the URL parameters section)</span></pre></div>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l1 level1 lfo1'><a
+name=G6URL><![if !supportLists]><span style='font-size:10.0pt;line-height:115%;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>GeoStor
+URL Parameters<o:p></o:p></span></a></p>
+
+<span style='mso-bookmark:G6URL'></span>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Caveats:
+You must use the + sign instead of spaces, %20 will not work.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>?q=<span
+class=SpellE>searchterm</span> - adding this to the end of the homepage URL
+will allow you to search from a URL or link. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>Examples:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/G6/Home.html?q=water"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/G6/Home.html?q=water</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/G6/Home.html?q=county+ortho+miller"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/G6/Home.html?q=county+ortho+miller</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>?id=<span
+class=SpellE>uniqueid</span> - adding this to the end of the homepage URL will
+give you the unique metadata record associated with the ID you gave<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>Examples:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/G6/Home.html?id=bbf7f1801f53d2c3a3fcf719bef46f84"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/G6/Home.html?id=bbf7f1801f53d2c3a3fcf719bef46f84</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/G6/Home.html?id=a72da817e217d59c0110915b5e568ffd"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/G6/Home.html?id=a72da817e217d59c0110915b5e568ffd</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l1 level1 lfo1'><a
+name=DFA><![if !supportLists]><span style='font-size:10.0pt;line-height:115%;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Streamline
+Web Services<o:p></o:p></span></a></p>
+
+<span style='mso-bookmark:DFA'></span>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>These
+only output SOAP (XML)<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Address<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/zip9lookupws/zip9lookup.asmx"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/zip9lookupws/zip9lookup.asmx</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>WSDL<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><a
+href="http://www.geostor.arkansas.gov/zip9lookupws/zip9lookup.asmx?WSDL"><span
+style='font-size:10.0pt;line-height:115%'>http://www.geostor.arkansas.gov/zip9lookupws/zip9lookup.asmx?WSDL</span></a><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>CAVEATS<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>This service is based upon the
+Streamline Tax data ONLY!<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>It is NOT for bulk lookups, if you
+wish to do that contact us and we can run any of these as an offline process<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level2 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Here
+is a breakdown of the parameters per web service<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>getCities</span></span><span
+style='font-size:10.0pt;line-height:115%'> - returns all the cities within a
+zip code<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+color:black'>&lt;<span class=SpellE>Zipcode</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%;color:darkblue'>string</span><span
+style='font-size:10.0pt;line-height:115%;color:black'>&lt;/<span class=SpellE>Zipcode</span>&gt;</span><span
+style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>getStreamlineData</span></span><span
+style='font-size:10.0pt;line-height:115%'> – this will give you the tax rates
+for the supplied zip and zip4<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;Zip&gt;string&lt;/Zip&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;Zip9&gt;string&lt;/Zip9&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%'>getZip9 - returns a cleaned address
+with the Zip4<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;Street&gt;string&lt;/Street&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;City&gt;string&lt;/City&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;Zip&gt;string&lt;/Zip&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:1.5in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level3 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>§<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+class=SpellE><span style='font-size:10.0pt;line-height:115%'>getZipsbyCity</span></span><span
+style='font-size:10.0pt;line-height:115%'> – returns all the zips within a city<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:2.0in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l1 level4 lfo1'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>&lt;City&gt;string&lt;/City&gt;<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l1 level1 lfo1'><a
+name=WIDGET><![if !supportLists]><span style='font-size:10.0pt;line-height:
+115%;font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol'><span style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%'>Widgets<o:p></o:p></span></a></p>
+
+<span style='mso-bookmark:WIDGET'></span>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level2 lfo1;mso-layout-grid-align:
+none;text-autospace:none'><![if !supportLists]><span style='font-size:10.0pt;
+font-family:"Courier New";mso-fareast-font-family:"Courier New";color:black'><span
+style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt'>You can embed a
+GeoStor search widget on your site, just insert this code where you want the
+widget to go:</span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:1.0in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:normal;mso-list:l1 level2 lfo1;mso-layout-grid-align:
+none;text-autospace:none'><![if !supportLists]><span style='font-size:10.0pt;
+font-family:"Courier New";mso-fareast-font-family:"Courier New";color:black'><span
+style='mso-list:Ignore'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:navy'>&lt;<span class=SpellE>iframe</span></span><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:teal'>src</span></span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:purple'> =</span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:#7F007F'>&quot;http://www.geostor.arkansas.gov/g6/dev/widget.html&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>width</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;190&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>height</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;160&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;&lt;p&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'>Your
+browser does not support <span class=SpellE>iframes</span>.</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&lt;/p&gt;&lt;/<span
+class=SpellE>iframe</span>&gt;</span><span style='font-size:10.0pt;font-family:
+"Arial","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=FORMATS><b style='mso-bidi-font-weight:normal'><u><span
+style='font-size:10.0pt;line-height:115%'>Formats</span></u></b></a><span
+style='mso-bookmark:FORMATS'><span style='font-size:10.0pt;line-height:115%'><o:p></o:p></span></span></p>
+
+<span style='mso-bookmark:FORMATS'></span>
+
+<p class=MsoNormal><span class=SpellE><span style='font-size:10.0pt;line-height:
+115%'>SName</span></span><span style='font-size:10.0pt;line-height:115%'> is
+the value you would send to the <span class=SpellE>fmeproxy</span> <span
+class=SpellE>webservice</span>, type: V is for vector, R is for raster<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='mso-cellspacing:0in;background:white;mso-yfti-tbllook:1184'>
+ <thead>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+   <td colspan=3 style='border:none;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p class=MsoNormal><span class=SpellE><b><span style='font-size:10.0pt;
+   line-height:115%'>DLFormats</span></b></span><span style='font-size:10.0pt;
+   line-height:115%'><o:p></o:p></span></p>
+   </td>
+  </tr>
+  <tr style='mso-yfti-irow:1'>
+   <td style='border:inset black 1.0pt;mso-border-alt:inset black .75pt;
+   background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p class=MsoNormal><b><span style='font-size:10.0pt;line-height:115%'>Type<o:p></o:p></span></b></p>
+   </td>
+   <td style='border:inset black 1.0pt;mso-border-alt:inset black .75pt;
+   background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p class=MsoNormal><span class=SpellE><b><span style='font-size:10.0pt;
+   line-height:115%'>SName</span></b></span><b><span style='font-size:10.0pt;
+   line-height:115%'><o:p></o:p></span></b></p>
+   </td>
+   <td style='border:inset black 1.0pt;mso-border-alt:inset black .75pt;
+   background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p class=MsoNormal><span class=SpellE><b><span style='font-size:10.0pt;
+   line-height:115%'>LName</span></b></span><b><span style='font-size:10.0pt;
+   line-height:115%'><o:p></o:p></span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:2'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>SHAPE<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRI Shape<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>OGCKML<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>Keyhole
+  Markup Language (KML)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GEODATABASE_FILE<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRI File <span
+  class=SpellE>Geodatabase</span><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GEODATABASE_MDB<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRI
+  Personal <span class=SpellE>Geodatabase</span><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>PDF2D<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span class=SpellE><span style='font-size:10.0pt;
+  line-height:115%'>GeoPDF</span></span><span style='font-size:10.0pt;
+  line-height:115%'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GIF<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GIF Image<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>MITAB<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>MapInfo
+  TAB<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>DWF<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>AutoCAD
+  DWF<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ACAD<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>AutoCAD
+  DXF/DWG<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>DGNV8<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span class=SpellE><span style='font-size:10.0pt;
+  line-height:115%'>Microstation</span></span><span style='font-size:10.0pt;
+  line-height:115%'> Design V8<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>SVG<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>Scalable
+  Vector Graphics (SVG)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>V<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>VML<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>Vector
+  Markup Language<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:14'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GEOTIFF<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GEOTIFF<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:15'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRIASCIIGRID<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRI ASCII
+  GRID<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:16'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRIHDR<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ESRI BIL<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:17'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>JPEG2000<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>JPEG2000<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:18'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>JPEG<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>JPEG<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:19'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GIFRASTER<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>GIF<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:20'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ERDAS<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ERDAS IMG<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:21;mso-yfti-lastrow:yes'>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>R<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ERDASRAW<o:p></o:p></span></p>
+  </td>
+  <td valign=top style='border:inset #D0D7E5 1.0pt;mso-border-alt:inset #D0D7E5 .75pt;
+  padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>ERDAS RAW<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%'>Examples:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;mso-layout-grid-align:none;text-autospace:none'><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:navy'>&lt;form</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>action</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;http://www.geostor.arkansas.gov/geostorwebservice/geostorws.asmx/search<span
+class=GramE>&quot;<span style='color:purple'><span style='mso-spacerun:yes'> 
+</span></span><span style='color:teal'>method</span></span></span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;POST&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;mso-layout-grid-align:none;text-autospace:none'><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:black'><span
+style='mso-spacerun:yes'>        </span></span><span style='font-size:10.0pt;
+font-family:"Arial","sans-serif";color:navy'>&lt;input</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>name</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;input&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;&lt;/input&gt;&lt;<span
+class=SpellE>br</span></span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:purple'> </span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:navy'>/&gt;</span><span style='font-size:10.0pt;font-family:"Arial","sans-serif";
+color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;mso-layout-grid-align:none;text-autospace:none'><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:black'><span
+style='mso-spacerun:yes'>        </span></span><span style='font-size:10.0pt;
+font-family:"Arial","sans-serif";color:navy'>&lt;input</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>name</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;<span
+class=SpellE>stradv</span>&quot;</span><span style='font-size:10.0pt;
+font-family:"Arial","sans-serif";color:purple'> </span><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:teal'>type</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;hidden&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;&lt;/input&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;mso-layout-grid-align:none;text-autospace:none'><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:black'><span
+style='mso-spacerun:yes'>       </span></span><span style='font-size:10.0pt;
+font-family:"Arial","sans-serif";color:navy'>&lt;input</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>name</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;id&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>type</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;hidden&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;&lt;/input&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;mso-layout-grid-align:none;text-autospace:none'><span style='font-size:
+10.0pt;font-family:"Arial","sans-serif";color:black'><span
+style='mso-spacerun:yes'>        </span></span><span style='font-size:10.0pt;
+font-family:"Arial","sans-serif";color:navy'>&lt;input</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>type</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;submit&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:teal'>value</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:purple'>=</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:#7F007F'>&quot;Enter&quot;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'> </span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:navy'>&lt;/input&gt;</span><span
+style='font-size:10.0pt;font-family:"Arial","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%;font-family:
+"Arial","sans-serif";color:navy'>&lt;/form&gt;</span><span style='font-size:
+10.0pt;line-height:115%'><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

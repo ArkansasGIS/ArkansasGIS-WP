@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>GeoStor 6.0</title>
+<!-- TemplateEndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link type="text/css" href="../css/GeoStor.css" rel="stylesheet" />
+<link type="text/css" href="../css/jquery.jgrowl.css" rel="stylesheet" />
+<link type="text/css" href="css/cupertino/jquery-ui-1.7.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.selectboxes.min.js"></script>
+<script type="text/javascript" src="js/geostor.js"></script>
+<script type="text/javascript" src="js/jquery.geturlparams.js"></script>
+<script type="text/javascript" src="js/jquery.jgrowl.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>	
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+</head>
+<body>
+<div id="containerall">
+<div id="layout"> 
+    <div id="argovbanner">
+<a href="http://www.arkansas.gov" title="Arkansas.gov"><div id="argovlogo"></div></a>
+  <div id="argovnav"><span class="argovText8em"><a href="http://www.arkansas.gov/government_name.php">State 
+	Agencies</a> | <a href="http://www.arkansas.gov/online_services_alpha.php">Online 
+	Services</a> | <a href="http://www.arkansas.gov/directory/index.html">State 
+	Directory</a></span><span class="argovText8em" style="padding-left: 198px; font-size: 0.7em;"><a href="javascript:increaseSize();">A+</a> 
+	| <a href="javascript:decreaseSize();">A-</a> | <a href="javascript:for(i=0;i<document.styleSheets.length;i++)%7Bvoid(document.styleSheets.item(i).disabled=true);%7Del=document.getElementsByTagName('*');for(i=0;i<el.length;i++)%7Bvoid(el%5Bi%5D.style.cssText='');%7D">Text</a> 
+	| <a href="javascript:window.print();">Print</a></span></div>
+</div>
+<div id="agHeader_home"><span style="position:absolute;text-align:right;width:900px;margin:15px;"><img src="../images/AGIO_logo_really_small.gif" width="85" height="64" /></span></div>
+<div id="agTopNav">
+<span style="width:400px;font-size: large;">
+<a href="Home.html">Home</a> |
+<a href="viewer/">Viewer</a> |
+<a href="Services.html">Services</a> |
+<a href="Home.html?q=ftp">FTP</a> |
+<a href="/G6_ASP/Feedback.aspx">Feedback</a> |
+<a href="http://geostor.blogspot.com" target="_blank">Blog</a>
+</span>
+</div>
+<div id="middleArea" class="clearfix"> 
+      <div id="main"> 
+	<div class="ui-widget" style="width: 960px;">
+		<div  id="maininfo" class="ui-state-highlight ui-corner-all" style="margin-top: 0px; padding: 0 .7em; display: none; font-size: small;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>GeoStor Message:</strong> <span id="maininfodata"></span></p>
+		</div>
+	</div>
+<!-- TemplateBeginEditable name="body" -->body <!-- TemplateEndEditable --> 
+
+  </div>
+      
+      <div id="agFooter" style="clear: both;"><span class="argovText8em"><a href="http://www.gis.state.ar.us/AGIO_index.htm">Arkansas 
+        Geographic Information Office</a> | <a href="mailto:geostor@arkansas.gov">Contact Us</a> | <a href="Disclaimer.html">Disclaimer</a></span></div>
+
+
+<div id="arPolicy" class="agText8em_blue">Arkansas Internet Policies: <a href="http://www.arkansas.gov/ina_policy.php#Accessibility" target="_blank">Accessibility</a> | <a href="http://www.arkansas.gov/ina_policy.php#Privacy" target="_blank">Privacy</a> | <a href="http://www.arkansas.gov/ina_policy.php#Security" target="_blank">Security</a> | <a href="http://www.arkansas.gov/ina_policy.php#Use" target="_blank">Acceptable
+    Use</a></div>
+	  
+</div>
+  
+</div>
+</div>
+  <input type="hidden" id="server" value="server_name"/>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-1537624-1";
+	urchinTracker();
+</script>
+
+</body>
+</html>

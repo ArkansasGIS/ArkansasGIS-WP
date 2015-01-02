@@ -1,0 +1,566 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Services;
+using Newtonsoft.Json;
+using System.IO;
+using System.Data;
+using System.Data.OleDb;
+using System.Text.RegularExpressions;
+//using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Web;
+
+namespace GeoStorWS
+{
+    /// <summary>
+    /// Summary description for Service1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    [System.Web.Script.Services.ScriptService]
+    public class Service1 : System.Web.Services.WebService
+    {
+        //fills drop down lists
+        [WebMethod(CacheDuration=1200)]
+        public String getData(string dtype)
+        {
+            OleDbConnection conn = new OleDbConnection();
+            DataSet ds = new DataSet();
+            string sqlquery = null;
+            string tablename = null;
+            //damn case sensitivity
+            dtype = dtype.ToLower();
+            //connection string
+            conn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=d:\\inetpub\\wwwroot\\GeoStorWebService\\App_Data\\Data.mdb;User ID=Admin;Password=";
+
+            conn.Open();
+
+            //Set query based upon type
+            switch (dtype)
+            {
+                case "publish":
+                    sqlquery = "SELECT [Publish] FROM [Publisher] ORDER BY [Publish] DESC";
+                    tablename = "Publish";
+                    break;
+                case "county":
+                    sqlquery = "SELECT [COUNTY_NAM] FROM [Counties] ORDER BY [COUNTY_NAM] DESC";
+                    tablename = "Counties";
+                    break;
+                case "city":
+                    sqlquery = "SELECT [CITY_NAME] FROM [Cities] ORDER BY [CITY_NAME] DESC";
+                    tablename = "Cities";
+                    break;
+                case "water":
+                    sqlquery = "SELECT [BASIN_NAME] FROM [Watershed] ORDER BY [BASIN_NAME] DESC";
+                    tablename = "Watershed";
+                    break;
+                case "quad":
+                    sqlquery = "SELECT [QUAD_NAME] FROM [QUADS] ORDER BY [QUAD_NAME] DESC";
+                    tablename = "QUADS";
+                    break;
+                case "townrange":
+                    sqlquery = "SELECT [ATTRIBUTE] FROM [PLSS] ORDER BY [ATTRIBUTE] DESC";
+                    tablename = "PLSS";
+                    break;
+                case "dltypevector":
+                    sqlquery = "SELECT [SName],[LName] FROM [DLFormats] where Type = 'V'";
+                    tablename = "DLFormats";
+                    break;
+                case "dltyperaster":
+                    sqlquery = "SELECT [SName],[LName] FROM [DLFormats] where Type = 'R'";
+                    tablename = "DLFormats";
+                    break;
+                default:
+                    //dummy query incase the proper type isn't sent
+                    sqlquery = "select rank from metadata where title = 'CITY LIMITS (polygon)'";
+                    tablename = "METADATA";
+                    break;
+            }
+
+            try
+            {
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlquery, conn);
+                adapter.Fill(ds, tablename);
+            }
+
+            catch (OleDbException ex)
+            {
+                //Show error message and exit
+                Console.WriteLine(ex.Message + System.Environment.NewLine + ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+
+                //Show error message and exit
+                Console.WriteLine(ex.Message + System.Environment.NewLine + ex.StackTrace);
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
+            //Return results
+            return this.Serialize(ds);
+
+        }
+
+        //gets search results
+        [WebMethod(CacheDuration = 120)]
+        public String search(String input, String stradv, String ID)
+        {
+            OleDbConnection conn = new OleDbConnection();
+            DataSet ds = new DataSet();
+
+            //connection string
+            conn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=d:\\inetpub\\wwwroot\\GeoStorWebService\\App_Data\\Data.mdb;User ID=Admin;Password=";
+
+            conn.Open();
+            
+            //search logic & generate sql
+            string whereclause = "";
+            string sqlquery = "";
+            bool metaidsearch = false;
+            //if (Strings.InStr(input, "\""))            
+            if (input.IndexOf("\"") >= 0)
+            {
+                //user has a specific phrase to search
+                int startchar = input.IndexOf("\"");
+                int endchar = input.IndexOf("\"", startchar + 1);
+                //gets the final keyword
+                string explicitinput = input.Substring(startchar + 1, (endchar - startchar) - 1);
+                //add to whereclause
+                whereclause = "(title like '%" + explicitinput + "%'" + " or keywords like '%" + explicitinput + "%' or publish like '%" + explicitinput + "%') and ";
+                //remove the explicit value from the search phrase
+                input = input.Remove(startchar, (endchar - startchar) + 1);
+                //input = input.Trim;
+            }
+            
+            ////words are separate keywords, use space as a delimiter
+            //string[] inputarray = Regex.Split(input, "\\s+");
+            ////build sql query
+            //for (int i = 0; i <= inputarray.Length - 1; i++)
+            //{
+            //    whereclause = whereclause + "(title like '%" + inputarray[i] + "%'" + " or keywords like '%" + inputarray[i] + "%' or publish like '%" + inputarray[i] + "%' or DownloadType like '%" + inputarray[i] + "%') and ";
+            //    if (i == inputarray.Length - 1)
+            //    {
+            //        //whereclause = Strings.Left(whereclause, whereclause.Length - 4);
+            //        whereclause = whereclause.Substring(0, whereclause.Length - 4);
+            //    }
+            //}
+            
+            whereclause = buildWC(input);
+            
+            //if we are doing an advanced search add the values from that form
+            if (!string.IsNullOrEmpty(stradv))
+            {
+                whereclause = whereclause + " " + stradv;
+            }
+
+            sqlquery = "select title, filename, rank, DownloadType, link, ftype from metadata where " + whereclause + " order by rank desc, title asc";
+            
+            //check for metadata id searches
+            if (!string.IsNullOrEmpty(ID))
+            {
+                sqlquery = "select a.title, a.filename, a.rank, a.DownloadType, a.link, a.ftype from metadata a, metadataid b where b.ID = '" + ID + "' and a.filename = b.filename order by rank desc, title asc";
+                metaidsearch = true;
+            }
+
+            try
+            {
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlquery, conn);
+                adapter.Fill(ds, "METADATA");
+                int rc = ds.Tables["METADATA"].Rows.Count;
+                //no records returned
+                if (rc == 0)
+                {
+                    //possibly a plural search, take off the trailing "s", but only if it is a string search not id search
+                    if (!metaidsearch)
+                    {
+                        input = input.Substring(0,input.Length - 1);
+                        whereclause = buildWC(input);
+                        sqlquery = "select title, filename, rank, DownloadType, link, ftype from metadata where " + whereclause + " order by rank desc, title asc";
+                        OleDbDataAdapter adapter1 = new OleDbDataAdapter(sqlquery, conn);
+                        adapter1.Fill(ds, "METADATA");
+                    }
+                }
+            }
+
+            catch (OleDbException ex)
+            {
+                //Show error message and exit
+                Console.WriteLine(ex.Message + System.Environment.NewLine + ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+
+                //Show error message and exit
+                Console.WriteLine(ex.Message + System.Environment.NewLine + ex.StackTrace);
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+
+            //Return results
+            return this.Serialize(ds);
+        }
+
+        private string buildWC(string input) {
+            string whereclause = "";
+            //words are separate keywords, use space as a delimiter
+            string[] inputarray = Regex.Split(input, "\\s+");
+            //build sql query
+            for (int i = 0; i <= inputarray.Length - 1; i++)
+            {
+                whereclause = whereclause + "(title like '%" + inputarray[i] + "%'" + " or keywords like '%" + inputarray[i] + "%' or publish like '%" + inputarray[i] + "%' or DownloadType like '%" + inputarray[i] + "%') and ";
+                if (i == inputarray.Length - 1)
+                {
+                    //whereclause = Strings.Left(whereclause, whereclause.Length - 4);
+                    whereclause = whereclause.Substring(0, whereclause.Length - 4);
+                }
+            }
+            return whereclause;
+        }
+
+
+        //creates where clause for advanced queries
+        [WebMethod(CacheDuration = 120)]
+        public string adv_search(string category, string publisher, string dltype, string strtdate, string enddate)
+        {
+            //check values of the advanced search drop down lists and dates, add conditions to sql query if so
+            string strquery = "";
+            if (!(category == "-- Any --"))
+            {
+                strquery = strquery + " and category like \\'%" + category + "%\\'";
+            }
+
+            if (!(publisher == "-- Any --"))
+            {
+                strquery = strquery + " and publish = \\'" + publisher + "\\'";
+            }
+
+            if (!(dltype == "-- Any --"))
+            {
+                strquery = strquery + " and downloadtype = \\'" + dltype + "\\'";
+            }
+
+            if (!string.IsNullOrEmpty(strtdate))
+            {
+                strquery = strquery + " and mddate >= #" + strtdate + "#";
+            }
+
+            if (!string.IsNullOrEmpty(enddate))
+            {
+                strquery = strquery + " and mddate <= #" + enddate + "#";
+            }
+
+            return strquery;
+        }
+
+        //sends email from feedback page
+        /*[WebMethod()]
+        public string sendEmail(string email, string name, string subj, string comment)
+        {
+            //check the key first before creating anything
+            //string[] keys = {"bee2b750-32d2-02fd-b39b-b7a055b033fe","c5c3bead-7389-eb27-02b0-5d0a0525e76e","4c1d17e0-05a5-c159-7158-62af550ab13e","5287aebd-3ebb-1aea-d0ed-8f9fa5fdd6ad","bee2b750-32d2-02fd-b39b-b7a055b033fe","c5c3bead-7389-eb27-02b0-5d0a0525e76e","4c1d17e0-05a5-c159-7158-62af550ab13e","5287aebd-3ebb-1aea-d0ed-8f9fa5fdd6ad","840cb62f-1566-25fe-a77b-6f2acc70e72a","fb7d2ee4-4ef3-f510-96a0-86b0fcd5a19a","a0c8b6ca-7f1f-ec41-6537-f3105c5a556f","19aa2e9d-0a3d-33ec-c4dd-aaa00d4d99bf","840cb62f-1566-25fe-a77b-6f2acc70e72a","fb7d2ee4-4ef3-f510-96a0-86b0fcd5a19a","a0c8b6ca-7f1f-ec41-6537-f3105c5a556f","19aa2e9d-0a3d-33ec-c4dd-aaa00d4d99bf","840cb62f-1566-25fe-a77b-6f2acc70e72a","fb7d2ee4-4ef3-f510-96a0-86b0fcd5a19a","a0c8b6ca-7f1f-ec41-6537-f3105c5a556f","19aa2e9d-0a3d-33ec-c4dd-aaa00d4d99bf"};
+            //DateTime today = new DateTime();
+            //create the mail message
+            MailMessage mail = new MailMessage();
+            //set the addresses
+            mail.From = new MailAddress(email);
+            mail.To.Add("geostor@arkansas.gov");
+            //set the content
+            mail.Subject = "GeoStor Feedback | " + subj + " from " + name;
+            mail.IsBodyHtml = false;
+            mail.Body = comment + System.Environment.NewLine + name;
+            //send the message
+            SmtpClient smtp = new SmtpClient();
+            try
+            {
+                smtp.Send(mail);
+                return "Email sent";
+            }
+            catch
+            {
+                return "There was an error sending the email!";
+            }
+            
+        }*/
+
+        //provides a proxy for cross domain js calls
+        [WebMethod()]
+        public string fmeProxy(string site, string postvars, string dltype, string fmesvc)
+        {
+            postvars = postvars.Replace("%7C", "%27");
+            //Our postvars
+            byte[] buffer = Encoding.UTF8.GetBytes(postvars);
+            //determine which repository to send it to
+            string url = "";
+            if (site.ToLower() == "dev.geostor.arkansas.gov" || site.ToLower() == "agio-c5mw3k1.hds.arkgov.net")
+            {
+                //url = "http://fme.geostor.arkansas.gov/fmedatadownload/GeoStor_DEV/geostor_" + dltype.ToLower() + "-dl_dev.fmw";
+                url = "http://fme.geostor.arkansas.gov/" + fmesvc + "/GeoStor_DEV/" + dltype.ToLower();
+            }
+            else if (site.ToLower() == "prod.geostor.arkansas.gov" || site.ToLower() == "beta.geostor.arkansas.gov" || site.ToLower() == "www.geostor.arkansas.gov" || site.ToLower() == "geostor.arkansas.gov")
+            {
+                //url = "http://fme.geostor.arkansas.gov/fmedatadownload/GeoStor/geostor_" + dltype.ToLower() + "-dl.fmw";
+                url = "http://fme.geostor.arkansas.gov/" + fmesvc + "/GeoStor/" + dltype.ToLower();
+            }
+            
+            HttpWebRequest WebReq = (HttpWebRequest)WebRequest.Create(url);
+            //Our method is post, otherwise the buffer (postvars) would be useless
+            WebReq.Method = "POST";
+            //We use form contentType, for the postvars.
+            WebReq.ContentType = "application/x-www-form-urlencoded";
+            //The length of the buffer (postvars) is used as contentlength.
+            WebReq.ContentLength = buffer.Length;
+            //We open a stream for writing the postvars
+            try
+            {
+                Stream PostData = WebReq.GetRequestStream();
+                //Now we write, and afterwards, we close. Closing is always important!
+                PostData.Write(buffer, 0, buffer.Length);
+                PostData.Close();
+                //Get the response handle, we have no true response yet!
+                HttpWebResponse WebResp = (HttpWebResponse)WebReq.GetResponse();
+
+                return "<pre>" + WebResp.Server + " returned code " + WebResp.StatusDescription + " using URL: " + url + "?" + postvars + "</pre>" + WebResp.GetResponseStream();
+                //return "successful" + System.Environment.NewLine + url;
+            }
+            catch (Exception ex)
+            {
+
+                //Show error message and exit
+                //Console.WriteLine(ex.Message + System.Environment.NewLine + ex.StackTrace);
+                return "There was an error!" + System.Environment.NewLine + ex.Message + System.Environment.NewLine + ex.StackTrace + " using URL: " + url;
+            }
+            finally
+            {
+                //return "There was an error!";
+            }
+            
+        }
+
+        //all the methods below were gotten from http://www.west-wind.com/Weblog/
+        //serializes data* objects
+        private string Serialize(object value)
+        {
+            Type type = value.GetType();
+
+            Newtonsoft.Json.JsonSerializer json = new Newtonsoft.Json.JsonSerializer();
+
+            json.NullValueHandling = NullValueHandling.Ignore;
+
+            json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;
+            json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
+            json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            if (type == typeof(DataRow))
+                json.Converters.Add(new DataRowConverter());
+            else if (type == typeof(DataTable))
+                json.Converters.Add(new DataTableConverter());
+            else if (type == typeof(DataSet))
+                json.Converters.Add(new DataSetConverter());
+            
+
+            StringWriter sw = new StringWriter();
+            Newtonsoft.Json.JsonTextWriter writer = new JsonTextWriter(sw);
+            /*
+            if (this.FormatJsonOutput)
+                writer.Formatting = Formatting.Indented;
+            else
+                writer.Formatting = Formatting.None;
+            */
+            writer.QuoteChar = '"';
+            json.Serialize(writer, value);
+
+            string output = sw.ToString();
+            writer.Close();
+            sw.Close();
+
+            return output;
+        }
+
+        private object Deserialize(string jsonText, Type valueType)
+        {
+            Newtonsoft.Json.JsonSerializer json = new Newtonsoft.Json.JsonSerializer();
+
+            json.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            json.ObjectCreationHandling = Newtonsoft.Json.ObjectCreationHandling.Replace;
+            json.MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
+            json.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            StringReader sr = new StringReader(jsonText);
+            Newtonsoft.Json.JsonTextReader reader = new JsonTextReader(sr);
+            object result = json.Deserialize(reader, valueType);
+            reader.Close();
+
+            return result;
+        }
+        
+    } //end service
+
+    /// <summary>
+    /// Converts a <see cref="DataRow"/> object to and from JSON.
+    /// </summary>
+    public class DataRowConverter : JsonConverter
+    {
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
+        /// <param name="value">The value.</param>
+        public override void WriteJson(JsonWriter writer, object dataRow)
+        {
+            DataRow row = dataRow as DataRow;
+
+            // *** HACK: need to use root serializer to write the column value
+            //     should be fixed in next ver of JSON.NET with writer.Serialize(object)
+            JsonSerializer ser = new JsonSerializer();
+
+            writer.WriteStartObject();
+            foreach (DataColumn column in row.Table.Columns)
+            {
+                writer.WritePropertyName(column.ColumnName);
+                ser.Serialize(writer, row[column]);
+            }
+            writer.WriteEndObject();
+        }
+
+        /// <summary>
+        /// Determines whether this instance can convert the specified value type.
+        /// </summary>
+        /// <param name="valueType">Type of the value.</param>
+        /// <returns>
+        ///     <c>true</c> if this instance can convert the specified value type; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool CanConvert(Type valueType)
+        {
+            return typeof(DataRow).IsAssignableFrom(valueType);
+        }
+
+        /// <summary>
+        /// Reads the JSON representation of the object.
+        /// </summary>
+        /// <param name="reader">The <see cref="JsonReader"/> to read from.</param>
+        /// <param name="objectType">Type of the object.</param>
+        /// <returns>The object value.</returns>
+        public override object ReadJson(JsonReader reader, Type objectType)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// Converts a DataTable to JSON. Note no support for deserialization
+    /// </summary>
+    public class DataTableConverter : JsonConverter
+    {
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
+        /// <param name="value">The value.</param>
+        public override void WriteJson(JsonWriter writer, object dataTable)
+        {
+            DataTable table = dataTable as DataTable;
+            DataRowConverter converter = new DataRowConverter();
+
+            writer.WriteStartObject();
+
+            writer.WritePropertyName("Rows");
+            writer.WriteStartArray();
+
+            foreach (DataRow row in table.Rows)
+            {
+                converter.WriteJson(writer, row);
+            }
+
+            writer.WriteEndArray();
+            writer.WriteEndObject();
+        }
+
+        /// <summary>
+        /// Determines whether this instance can convert the specified value type.
+        /// </summary>
+        /// <param name="valueType">Type of the value.</param>
+        /// <returns>
+        ///     <c>true</c> if this instance can convert the specified value type; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool CanConvert(Type valueType)
+        {
+            return typeof(DataTable).IsAssignableFrom(valueType);
+        }
+
+        /// <summary>
+        /// Reads the JSON representation of the object.
+        /// </summary>
+        /// <param name="reader">The <see cref="JsonReader"/> to read from.</param>
+        /// <param name="objectType">Type of the object.</param>
+        /// <returns>The object value.</returns>
+        public override object ReadJson(JsonReader reader, Type objectType)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts a <see cref="DataSet"/> object to JSON. No support for reading.
+    /// </summary>
+    public class DataSetConverter : JsonConverter
+    {
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
+        /// <param name="value">The value.</param>
+        public override void WriteJson(JsonWriter writer, object dataset)
+        {
+            DataSet dataSet = dataset as DataSet;
+
+            DataTableConverter converter = new DataTableConverter();
+
+            writer.WriteStartObject();
+
+            writer.WritePropertyName("Tables");
+            writer.WriteStartArray();
+
+            foreach (DataTable table in dataSet.Tables)
+            {
+                converter.WriteJson(writer, table);
+            }
+            writer.WriteEndArray();
+            writer.WriteEndObject();
+        }
+
+        /// <summary>
+        /// Determines whether this instance can convert the specified value type.
+        /// </summary>
+        /// <param name="valueType">Type of the value.</param>
+        /// <returns>
+        ///     <c>true</c> if this instance can convert the specified value type; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool CanConvert(Type valueType)
+        {
+            return typeof(DataSet).IsAssignableFrom(valueType);
+        }
+
+        /// <summary>
+        /// Reads the JSON representation of the object.
+        /// </summary>
+        /// <param name="reader">The <see cref="JsonReader"/> to read from.</param>
+        /// <param name="objectType">Type of the object.</param>
+        /// <returns>The object value.</returns>
+        public override object ReadJson(JsonReader reader, Type objectType)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
