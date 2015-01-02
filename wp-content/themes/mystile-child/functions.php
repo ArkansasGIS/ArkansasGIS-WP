@@ -68,28 +68,6 @@ add_filter('ngettext',  'translate_text');
 	     
 	 }
 
-add_filter('woocommerce_after_order_notes','custom_after_order_notes');
-function custom_after_order_notes($order){
-	echo '<div id="imagerynotecontainer" >';
-	echo '<table class="imagerynotetable">';
-	echo '<thead><tr><td class="imagerynotetitle">NOTE!</td></tr></thead>';
-	echo '<tbody>';
-	echo '<tr>';
-	echo '<td class="imagerynotetd">Due to file size limitations, statewide download of this imagery is not available</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td class="imagerynotetd">Your imagery selection will be removed from the result file.</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td class="imagerynotetd">You can browse the Imagery FTP Repository to download the individual files</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td class="imagerynotetd"><a href="http://www.geostor.org/S3Browser/Default.aspx?bucketname=geostor-imagery.geostor.org" target="_blank">Click Here To Browse Imagery FTP Repository</a></td>';
-	echo '</tr>';
-	echo '</tbody>';
-	echo '</table>';
-	echo '</div>';
-}
 
 // RDP added Hook for FME details on My Account Page GEOSTOREDITS
 add_filter('woocommerce_order_details_after_order_table','custom_order_details_after_order_table');
@@ -148,61 +126,8 @@ function custom_override_checkout_fields( $fields ) {
      unset($fields['billing']['billing_postcode']);
      unset($fields['billing']['billing_email']);
      unset($fields['billing']['billing_phone']);
-     $fields['billing']['dl_type']= array(
-	    'type' => 'select',
-	    'label'     => __('Download Type', 'woocommerce'),
-    	'placeholder'   => _x('Download Type', 'placeholder', 'woocommerce'),
-    	'required'  => false,
-     	'form' => 'FME',
-    	'class'     => array('chosen-container'),
-    	'clear'     => true,
-	    'id' => 'DT',
-        'class'     => array('form-row-wide'),
- 	    'options' => array(
-     		'async'        => __( 'E-Mail', 'woocommerce' ),
-      		'sync'       => __( 'Desktop', 'woocommerce' ) 	
-                        )                       
-    );
-	
-    $fields['billing']['vector_format_type']= array(
-	    'type' => 'select',
-	    'label'     => __('Vector Format', 'woocommerce'),
-    	'placeholder'   => _x('Vector Format', 'placeholder', 'woocommerce'),
-    	'required'  => true,
-     	'form' => 'FME',
-    	'class'     => array('chosen-container'),
-    	'clear'     => true,
-	    'id' => 'vector_format_type',
-        'class'     => array('form-row-wide'),
- 	    'options' => array(
-     		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
-      		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
-      		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
-      		'DWF'       => __( 'AutoCAD DWF', 'woocommerce' ),
-      		'MAPINFO'       => __( 'MapInfo TAB', 'woocommerce' ),
-      		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
-      		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
-      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
-                        )                       
-    );
-	
-	$fields['billing']['raster_format_type']= array(
-	    'type' => 'select',
-	    'label'     => __('Raster Format', 'woocommerce'),
-    	'placeholder'   => _x('Raster Format', 'placeholder', 'woocommerce'),
-    	'required'  => true,
-     	'form' => 'FME',
-    	'class'     => array('chosen-container'),
-    	'clear'     => true,
-	    'id' => 'raster_format_type',
-        'class'     => array('form-row-wide'),
- 	    'options' => array(
-     		'JPEG2000'        => __( 'Jpeg 2000', 'woocommerce' ),
-      		'TIFF'       => __( 'Geo Tif', 'woocommerce' )
-                        )                       
-    );
-    
-   $fields['billing']['clip_type']= array(
+	 
+	 $fields['billing']['clip_type']= array(
 	    'type' => 'select',
 	    'label'     => __('Clip by: ', 'woocommerce'),
     	'placeholder'   => _x('Select', 'placeholder', 'woocommerce'),
@@ -272,6 +197,28 @@ function custom_override_checkout_fields( $fields ) {
         'id' => 'extent_clipper',
         'clear'     => true
      );
+	
+    $fields['billing']['vector_format_type']= array(
+	    'type' => 'select',
+	    'label'     => __('Vector Format', 'woocommerce'),
+    	'placeholder'   => _x('Vector Format', 'placeholder', 'woocommerce'),
+    	'required'  => true,
+     	'form' => 'FME',
+    	'class'     => array('chosen-container'),
+    	'clear'     => true,
+	    'id' => 'vector_format_type',
+        'class'     => array('form-row-wide'),
+ 	    'options' => array(
+     		'SHAPE'        => __( 'Shapefile', 'woocommerce' ),
+      		'FILEGDB'       => __( 'File Geodatabase (Esri)', 'woocommerce' ),
+      		'ACAD'       => __( 'AutoCAD DXF/DWG', 'woocommerce' ),
+      		'DWF'       => __( 'AutoCAD DWF', 'woocommerce' ),
+      		'MAPINFO'       => __( 'MapInfo TAB', 'woocommerce' ),
+      		'GEOJSON'       => __( 'Geo JSON', 'woocommerce' ),
+      		'PDF2D'       => __( 'GeoPDF', 'woocommerce' ),
+      		'OGCKML'       => __( 'Keyhole Markup Language (KML)', 'woocommerce' )
+                        )                       
+    );
      
 	
      $fields['billing']['projection']= array(

@@ -4,7 +4,16 @@ function toggleClipper(){
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
-	document.getElementById('imagerynotecontainer').style.display = 'none';
+	var vector_formats = document.getElementById('vector_format_type');
+			var vector_options = vector_formats.getElementsByTagName("option");
+			for(var v = 0; v < vector_options.length; v++){
+				vector_options[v].disabled = false;
+			}
+			var projection_types = document.getElementById('projection');
+			var projection_options = projection_types.getElementsByTagName("option");
+			for(var v = 0; v < projection_options.length; v++){
+				projection_options[v].disabled = false;
+			}
 	switch(cliptype) {
 		case 'County':
 			document.getElementById('county_clipper_field').style.display = 'block';
@@ -17,8 +26,27 @@ function toggleClipper(){
 			showExtentMapWindow();
 			break;
 		case 'State':
-			if(hasImagery != ''){
-				document.getElementById('imagerynotecontainer').style.display = 'block';
+			var allowed_vectors = ['SHAPE','FILEGDB'];
+			var allowed_projections = ['26915'];
+			var vector_formats = document.getElementById('vector_format_type');
+			var vector_options = vector_formats.getElementsByTagName("option");
+			for(var v = 0; v < vector_options.length; v++){
+				if(allowed_vectors.indexOf(vector_options[v].value) == -1){
+					vector_options[v].disabled = true;
+				}else{
+					if(vector_options[v].value == allowed_vectors[0]){
+						vector_options[v].selected = 'selected';
+					}
+				}
+			}
+			var projection_types = document.getElementById('projection');
+			var projection_options = projection_types.getElementsByTagName("option");
+			for(var v = 0; v < projection_options.length; v++){
+				if(allowed_projections.indexOf(projection_options[v].value) == -1){
+					projection_options[v].disabled = true;
+				}else{
+					projection_options[v].selected = 'selected';
+				}
 			}
 			break;
 	}

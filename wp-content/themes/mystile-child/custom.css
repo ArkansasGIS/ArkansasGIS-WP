@@ -120,6 +120,12 @@ a.button.add_to_cart_button.product_type_simple {
 a.button.product_type_simple {
 	color: white !important;
 }
+
+a.button.product_type_simple span{
+	padding-left: 20px;
+	background: url('http://www.geostor.org/Sencha/icons/zip.png') no-repeat;	
+}
+
 a.button.view {
 	color: white !important;
 }
