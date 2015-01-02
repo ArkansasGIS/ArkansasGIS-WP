@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<locator>http://beta.geostor.arkansas.gov/ArcGIS/rest/services/GeoStor_Locator/GeocodeServer</locator>
+	<minscore>40</minscore>
+	<zoomscale>5000</zoomscale>
+</configuration>

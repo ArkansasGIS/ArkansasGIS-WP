@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<title>Sample Flex Viewer</title>
+	<subtitle></subtitle>
+	<version>Version 1.0 [Build: 01.13.09]</version>
+	<description>Team:   Bruce Harrison | Dave Wrazien | Moxie Zhang | Sajit Thomas</description>
+	<copyright>© Copyright 2008 ESRI. All rights reserved.</copyright>
+</configuration>

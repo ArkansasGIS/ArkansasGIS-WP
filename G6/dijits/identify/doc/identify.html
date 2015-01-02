@@ -1,0 +1,442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Reference: Identify Dijit</title>
+    <link rel="stylesheet" type="text/css" href="ref.css"/>
+  </head>
+  <body>
+  <div id="content">
+    <a name="class_dijits.identify.Identify"></a>
+    <h2><span class="mw-headline"> class dijits.identify.Identify </span></h2>
+    <div style="font-family: consolas, monospace;">
+      <p>
+        dojo.require("dijits.identify.Identify");
+        <br/>
+        defined in dijits/identify/Identify.js
+      </p>
+    </div>
+    <p>
+      This dijit lets the users identify features on the map. The identify operation is performed when the users click on the map. A list of features will be displayed upon completion of the identify operation. When the users move the cursor over a feature, a focus link will be displayed and the corresponding feature will be highlighted on the map. Clicking the focus link will zoom the map to the corresponding feature. The users can also click a feature in the list to get information about the attribute fields and values associated with the feature.
+    </p>
+    <p>
+      By default, the dijit is attached to the map like an info-window. But it can also be detached and moved anywhere within the page so that the map area is uncluttered. It has an options panel that lets the users change settings such as the map services on which the identify operation is performed and the tolerance.
+    </p>
+    <a name="Class_hierarchy"></a>
+    <h3><span class="mw-headline"> Class hierarchy </span></h3>
+    <pre style="background-color: white; border: none;">
+             +------------------------------+
+             ¦            Object            ¦
+             +------------------------------+
+                  &Delta;                   &Delta;
+                  |                   | 
+                  |                   |
+         +----------------+  +--------------------+
+         ¦  dijit._Widget ¦  ¦  dijit._Templated  ¦
+         +----------------+  +--------------------+
+                  &Delta;                   &Delta;
+                  |                   | 
+                  |                   |
+             +------------------------------+
+             ¦   dijits.identify.Identify   ¦
+             +------------------------------+
+</pre>
+    <a name="Constructor"></a>
+    <h3><span class="mw-headline"> Constructor </span></h3>
+    <table class="gmaps">
+      <tr>
+        <th>
+          new dijits.identify.Identify( params, srcNodeRef? )
+        </th>
+      </tr>
+      <tr>
+        <td>
+          Creates a new identify dijit using the given DOM node.
+          <br/>
+          <p>
+            <b>Parameters:</b>
+            <br/>
+          </p>
+          <table class="gmaps" style="width:auto;">
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Type
+              </th>
+              <th>
+                Description
+              </th>
+            </tr>
+            <tr>
+              <td class="code">
+                params
+              </td>
+              <td class="code">
+                Object
+              </td>
+              <td>
+                Various parameters to configure this dijit. See the list below for details.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                srcNodeRef
+              </td>
+              <td class="code">
+                DOMNode | String
+              </td>
+              <td>
+                Optional. Reference or id of a HTML element that this dijit is rendered into. The HTML element will be replaced by the dijit.
+              </td>
+            </tr>
+          </table>
+          <p>
+            <br/>
+            The following parameters are supported:
+          </p>
+          <table class="gmaps" style="width:auto;">
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Type
+              </th>
+              <th>
+                Description
+              </th>
+            </tr>
+            <tr>
+              <td class="code">
+                map
+              </td>
+              <td class="code">
+                <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi_start.htm#jsapi/map.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi_start.htm#jsapi/map.htm" rel="nofollow">Map</a>
+              </td>
+              <td>
+                Map object that this dijit is associated with. This parameter is always required.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                label
+              </td>
+              <td class="code">
+                String
+              </td>
+              <td>
+                Optional. A name/label for the dijit, to be displayed on the title bar. Default is <span class="code">"Identify"</span>.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                mapServices
+              </td>
+              <td class="code">
+                Object[]
+              </td>
+              <td>
+                Optional. Specifies the map services on which to perform the identify operation. In the absence of this option, the list of map services is obtained directly from the map object at the time of creation of this dijit. It is an array of object literals with the following properties:
+                <br/>
+                <br/>
+                <table class="gmaps" style="width:auto;">
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Type
+                    </th>
+                    <th>
+                      Description
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="code">
+                      url
+                    </td>
+                    <td class="code">
+                      String
+                    </td>
+                    <td>
+                      URL to the ArcGIS Server REST resource that represents a map service.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="code">
+                      name
+                    </td>
+                    <td class="code">
+                      String
+                    </td>
+                    <td>
+                      Optional. This value is used when displaying the list of map services in the options panel of the dijit.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="code">
+                      layerIds
+                    </td>
+                    <td class="code">
+                      Number[]
+                    </td>
+                    <td>
+                      Optional. The layers to perform the identify operation on. When both the <span class="code">layerIds</span>
+                      and <span class="code">layerOption</span>
+                      properties are specified, the server processes them with a boolean "AND" operator. See <span class="code">layerOption</span>
+                      property for more ways to specify the layers.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="code">
+                      layerOption
+                    </td>
+                    <td class="code">
+                      String
+                    </td>
+                    <td>
+                      Optional. The layers to perform the identify operation on. See the <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/identifyparameters.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/identifyparameters.htm" rel="nofollow">Constants</a>
+                      table for valid values. Default value is <span class="code">esri.tasks.IdentifyParameters.LAYER_OPTION_TOP</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="code">
+                      displayOptions
+                    </td>
+                    <td class="code">
+                      Object
+                    </td>
+                    <td>
+                      Optional. It is an object literal that contains a property for each layer that you want to customize. You need to specify the layer id as the name of the property whose value is an object literal with the following optional properties:
+                      <br/>
+                      <p>
+                        <span class="code">displayFieldName</span>
+                        - Name of an attribute field, the value of which will be used to represent an identified feature (like a title). A list of such attribute fields can be found in the layer resource <a href="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/Portland_ESRI_LandBase_AGO/MapServer//1" class="external text" title="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/Portland_ESRI_LandBase_AGO/MapServer//1" rel="nofollow">page</a>
+                        for each layer in a map service. By default, a layer's default display field is used for this purpose.
+                        <br/>
+                        <br/>
+                        <span class="code">layerAlias</span>
+                        - This option is used to specify user-friendly name for a layer. In the absence of this option, <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/identifyresult.htm#layerName" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/identifyresult.htm#layerName" rel="nofollow">layerName</a>
+                        returned in the result of the identify operation will be used.
+                        <br/>
+                        <br/>
+                        <span class="code">attributes</span>
+                        - A list of attribute fields to be displayed when the user selects an identified feature.
+                        <br/>
+                        <br/>
+                        <span class="code">fieldAliases</span>
+                        - Alias names for certain attributes specified as a set of name-value pairs where name represents an attribute field and the value represents the corresponding alias.
+                        <br/>
+                        <br/>
+                        See an example below.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+                <p>
+                  Example:
+                </p>
+                <pre style="border: none;">
+[
+ {
+   url: &quot;http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/Portland_ESRI_LandBase_AGO/MapServer/&quot;,
+
+   name: &quot;Portland Landbase&quot;,
+
+   layerOption: esri.tasks.IdentifyParameters.LAYER_OPTION_ALL,
+
+   displayOptions: {
+     &quot;2&quot;&nbsp;: {
+       displayFieldName&nbsp;: &quot;TLID&quot;,
+       layerAlias: &quot;Tax lot&quot;,
+       attributes: [ &quot;TLID&quot;, &quot;RNO&quot; ],
+       fieldAliases: { &quot;TLID&quot;: &quot;Tax Lot ID&quot; }
+     }
+   }
+ }
+]
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                id
+              </td>
+              <td class="code">
+                String
+              </td>
+              <td>
+                Optional. Unique identifier for this dijit.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                defaultTolerance
+              </td>
+              <td class="code">
+                Number
+              </td>
+              <td>
+                Optional. The distance in screen pixels from the selected location within which to perform the identify operation. Default value is <span class="code">1</span>
+                pixel. Maximum allowed value is <span class="code">5</span>
+                pixels.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                fillSymbol
+              </td>
+              <td class="code">
+                <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/fillsymbol.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/fillsymbol.htm" rel="nofollow">FillSymbol</a>
+              </td>
+              <td>
+                Optional. Symbol used to draw polygon features.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                lineSymbol
+              </td>
+              <td class="code">
+                <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/linesymbol.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/linesymbol.htm" rel="nofollow">LineSymbol</a>
+              </td>
+              <td>
+                Optional. Symbol used to draw polyline features.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                markerSymbol
+              </td>
+              <td class="code">
+                <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/markersymbol.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/markersymbol.htm" rel="nofollow">MarkerSymbol</a>
+              </td>
+              <td>
+                Optional. Symbol used to draw point features.
+              </td>
+            </tr>
+            <tr>
+              <td class="code">
+                locationMarker
+              </td>
+              <td class="code">
+                <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/markersymbol.htm" class="external text" title="http://resources.esri.com/help/9.3/arcgisserver/apis/javascript/arcgis/help/jsapi/markersymbol.htm" rel="nofollow">MarkerSymbol</a>
+              </td>
+              <td>
+                Optional. Symbol used to represent the location where the user clicked on the map.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <br/>
+    </p>
+    <a name="Methods"></a>
+    <h3><span class="mw-headline"> Methods </span></h3>
+    <table class="gmaps">
+      <tr>
+        <th>
+          Methods
+        </th>
+        <th>
+          Return Value
+        </th>
+        <th>
+          Description
+        </th>
+      </tr>
+      <tr>
+        <td class="code">
+          startup()
+        </td>
+        <td class="code">
+          none
+        </td>
+        <td>
+          Finalizes the creation of this dijit. This method should be called after the constructor for this dijit is called and before letting the users interact with it.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">
+          getInfoWindowConnector()
+        </td>
+        <td class="code">
+          <a href="./iwconnector.html" title="InfoWindowConnector">InfoWindowConnector</a>
+        </td>
+        <td>
+          Returns a reference to the connector that manages this dijit like an info-window.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">
+          destroy()
+        </td>
+        <td class="code">
+          none
+        </td>
+        <td>
+          Releases all resources used by the dijit. This method should be called when an instance of this dijit is no longer needed in your application.
+        </td>
+      </tr>
+    </table>
+    <p>
+      <br/>
+    </p>
+    <a name="Usage"></a>
+    <h3><span class="mw-headline"> Usage </span></h3>
+    <a name="Create_the_dijit_with_default_parameters"></a>
+    <h4><span class="mw-headline"> Create the dijit with default parameters </span></h4>
+    <pre style="border: none;">
+ var identifyDijit = new dijits.identify.Identify({ map: map });
+ identifyDijit.startup();
+</pre>
+    <p>
+      When the dijit is created in this fashion, the identify operation will be performed on all map service layers added to the map. However, the users will be able to select the map services from the "options" panel in the dijit.
+    </p>
+    <a name="Create_the_dijit_with_custom_parameters"></a>
+    <h4><span class="mw-headline"> Create the dijit with custom parameters </span></h4>
+    <pre style="border: none;">
+ var identifyDijit = new dijits.identify.Identify({ 
+   map: map,
+   defaultTolerance: 2,
+   mapServices: [
+     {
+       url: &quot;http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/Portland_ESRI_LandBase_AGO/MapServer/&quot;,
+       name: &quot;Portland Landbase&quot;,
+       displayOptions: {
+         &quot;2&quot;: { layerAlias: &quot;Tax lot&quot;, attributes: [ &quot;TLID&quot;, &quot;RNO&quot; ] },
+         &quot;3&quot;: { displayFieldName: &quot;BUILD_ID&quot; },
+         &quot;4&quot;: { displayFieldName: &quot;ZONEGEN_CL&quot; }
+       }
+     }
+   ],
+   fillSymbol: new esri.symbol.SimpleFillSymbol(
+     esri.symbol.SimpleFillSymbol.STYLE_SOLID, 
+     new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASHDOT, new dojo.Color([ 64, 64, 64, 1 ]), 2), 
+     new dojo.Color([ 0, 0, 255, 0.5 ])
+   ),
+   locationMarker: new esri.symbol.PictureMarkerSymbol(&quot;./information_frame.png&quot;, 16, 16)
+ });
+ identifyDijit.startup();
+</pre>
+    <p>
+      In this case, the dijit will perform the identify operation on the map services listed in the constructor with a tolerance of 2 pixels and value of the given display fields will be used to represent each identified feature. Also, the given <span class="code">fillSymbol</span>
+      and <span class="code">locationMarker</span>
+      will be used in place of their defaults.
+    </p>
+    <p>
+      <br/>
+    </p>
+    <a name="See_Also"></a>
+    <h3><span class="mw-headline"> See Also </span></h3>
+    <p>
+      <a href="./iwconnector.html" title="InfoWindowConnector">InfoWindowConnector</a>
+    </p>
+  </div>
+  </div>
+</body>
+</html>

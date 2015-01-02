@@ -1,0 +1,52 @@
+DECLARE @idoc int, @doc varchar(2000), @query nvarchar(200), @param NVARCHAR(50)
+declare requests cursor for select request from fme_job_request r, fme_jobs j where r.job_id between 2000 and 2020 and r.job_id = j.job_id and j.job_status = 8;
+open requests
+fetch next from requests INTO @doc
+while @@FETCH_STATUS = 0
+	begin
+	--remove the first part of the string to get the xml
+	--set @doc = right(@doc,len(@doc) - charindex(' <?xml', @doc))
+	--check to see if it is a vector or raster download
+	--if charindex('vector', @doc) > 0
+		--set sql here
+	--set quoted_identifier off
+--		select @query = N'SELECT *
+--	FROM OPENXML (@idoc, ''/TRANSFORMATION_REQUEST/PUBLISHED_PARAMETER'',3)
+--		WITH (PARAMETER varchar(50) ''@name'',
+--		PARAMETER_VAL varchar(50) ''text()'')
+--		where PARAMETER = ''--CoordinateSystem'' or PARAMETER = ''--Clipper'''
+--	select @query = "SELECT *
+--	FROM OPENXML (@idoc, '/TRANSFORMATION_REQUEST/PUBLISHED_PARAMETER',3)
+--		WITH (PARAMETER varchar(50) '@name',
+--		PARAMETER_VAL varchar(50) 'text()')
+--		where PARAMETER = '--CoordinateSystem' or PARAMETER = '--Clipper'"
+	--set quoted_identifier on
+	--print @query;
+	--Create an internal representation of the XML document.
+	--EXEC sp_xml_preparedocument @idoc OUTPUT, @doc
+	--select @param = N'@idoc INT'
+	--EXEC sp_executesql @query, @param, @idoc
+	--if charindex('raster', @doc) > 0
+		--set sql here
+	-- Execute a SELECT statement that uses the OPENXML rowset provider.
+	--print charindex('vector', @doc)
+	if charindex('vector', @doc) > 0
+		print @doc
+		set @doc = right(@doc,len(@doc) - charindex(' <?xml', @doc))
+		EXEC sp_xml_preparedocument @idoc OUTPUT, @doc
+		SELECT *
+		FROM OPENXML (@idoc, '/TRANSFORMATION_REQUEST/PUBLISHED_PARAMETER',3)
+			WITH (PARAMETER varchar(50) '@name',
+			PARAMETER_VAL varchar(50) 'text()')
+			where PARAMETER = '--CoordinateSystem' or PARAMETER = '--Clipper'or PARAMETER = '--Clippee'
+	/*SELECT name
+	FROM OPENXML (@idoc, '/TRANSFORMATION_REQUEST/PUBLISHED_PARAMETER',3)
+		WITH (name varchar(50))
+		where name = '--CoordinateSystem'*/
+	--clean up
+	exec sp_xml_removedocument @idoc;
+	fetch next from requests INTO @doc;
+	end
+close requests
+deallocate requests
+go

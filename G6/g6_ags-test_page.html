@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>GeoStor AGS Test Page
+    </title>
+     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/1.6/js/dojo/dijit/themes/tundra/tundra.css">
+     <style type="text/css">
+      html, body { 
+        height: 100%; width: 100%; margin: 0; 
+      } 
+      body{
+        background-color:white; overflow:hidden; 
+        font-family: "Trebuchet MS"; 
+      }
+      #header {
+        /*background-image: url('images/banner.jpg'); background-repeat: repeat-x;*/
+        margin: 2px;
+        border: solid 4px #224a54;
+        color:black; font-size:18pt; 
+        text-align:center; font-weight:bold; height:70px;
+      }
+      #subheader {
+        font-size:small;
+        color:white;
+        padding-left:20px;
+      }
+      #rightPane{
+        background-color:white;
+        color:#3f3f3f;
+        border: solid 2px #224a54;
+        width:20%;
+      }
+      #leftPane{
+        margin: 5px;
+        padding:2px;
+        background-color:white;
+        color:#3f3f3f;
+        border: solid 2px #224a54;
+        width:20%;
+     }
+      #map {
+        margin: 5px;
+        border:solid 4px #224a54;
+        -moz-border-radius: 4px;
+      }
+      #footer {
+        margin: 2px;
+        border: solid 2px #224a54;
+        background-color:#ecefe4;color:#3f3f3f;
+       font-size:10pt; text-align:center; height:40px;
+      }
+      .dijitTabInnerDiv{
+        background-color:#ecefe4;
+      }
+      #tabs{
+        padding:5px;
+      }
+    </style>
+    <script type="text/javascript">
+      var djConfig = {
+        parseOnLoad: true
+      };
+    </script>
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=1.6">
+    </script>
+    <script type="text/javascript">
+      dojo.require("dijit.dijit"); // optimize: load dijit layer
+      dojo.require("dijit.layout.BorderContainer");
+      dojo.require("dijit.layout.ContentPane");
+      dojo.require("esri.map");
+      dojo.require("dijit.layout.TabContainer");
+	  dojo.require("dijit.form.Select");
+      
+       //this global object contains all references needed across functions 
+       var globals = {}, visible = [], map, dyn_layer, base_layer, app_layer, env, qString;
+	   
+	   var strHref = location.href;
+		var qString = "";
+		if ( strHref.search("#|\\?") > -1 ){
+			var strQueryString = strHref.substr(strHref.search("#|\\?")+1);
+			qString = strQueryString.split("=");
+			if (qString[0] == "env") {
+				switch(qString[1]) {
+					case "prod":
+						env = "www.geostor.arkansas.gov";
+						break;
+					case "dev":
+						env = "dev.geostor.arkansas.gov";
+						break;
+					case "ags1":
+						env = "cm-sas-geo-ags1";
+						break;
+					case "ags2":
+						env = "cm-sas-geo-ags2";
+						break;
+					case "ags3":
+						env = "cm-sas-geo-ags3";
+						break;
+					case "ags4":
+						env = "cm-sas-geo-ags4";
+						break;
+					default:
+						env = "www.geostor.arkansas.gov";
+				}
+			} else {
+				env = "www.geostor.arkansas.gov";
+			}
+		}
+		
+      function init() {
+        map = new esri.Map("map");
+		if (!( strHref.search("#|\\?") > -1) ){ env = "www.geostor.arkansas.gov" }
+		//dijit.byId('envsel').attr('displayedValue',qString[1].toUpperCase());
+		//dijit.byId('envsel').attr('value',env);
+		if (qString[1]) {
+			dojo.byId("envdisp").innerHTML = qString[1].toUpperCase();
+		}
+	//load basemap dynamic
+        dyn_layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://" + env + "/ArcGIS/rest/services/BASEMAP_DYNAMIC/MapServer");
+		dyn_layer.setOpacity(".5")
+	//load basemap
+	base_layer = new esri.layers.ArcGISTiledMapServiceLayer("http://" + env + "/ArcGIS/rest/services/BASEMAP/MapServer");
+	//base_layer.format="jpg";
+	map.addLayer(base_layer);
+	//load app layer
+	app_layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://" + env + "/ArcGIS/rest/services/APPS/APP_GOVMAP-9.3/MapServer");
+	
+	//build dynamic list from layer's features
+        if (dyn_layer.loaded) {
+          buildLayerList(dyn_layer);
+        }
+        else {
+          dojo.connect(dyn_layer, "onLoad", buildLayerList);
+        }
+      }
+	//build dynamic list from layer's features
+      function buildLayerList(blayer) {
+        var infos = blayer.layerInfos, info;
+        var items = [];
+        for (var i=0, il=infos.length; i<il; i++) {
+          info = infos[i];
+          if (info.defaultVisibility) {
+            visible.push(info.id);
+          }
+          items[i] = "<input type='checkbox' class='dyn_list_item' id='" + info.id + "' onclick='updateLayerVisibility();' /><label for='" + info.id + "'>" + info.name + "</label><br>";
+        }
+        dojo.byId("layer_list").innerHTML = items.join("");
+
+        blayer.setVisibleLayers(visible);
+        map.addLayer(blayer);
+      }
+      
+
+      function updateBaseLayerVisibility() {
+        var inputs = dojo.query(".base_list_item"), input;
+        for (var i=0, il=inputs.length; i<il; i++) {
+		if (inputs[i].checked) {
+			map.removeLayer(base_layer);
+			if (inputs[i].id == "DEM" || inputs[i].id == "LULC") {
+				base_layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://" + env + "/ArcGIS/rest/services/" + inputs[i].id + "/MapServer");
+			} else {
+				base_layer = new esri.layers.ArcGISTiledMapServiceLayer("http://" + env + "/ArcGIS/rest/services/" + inputs[i].id + "/MapServer");
+			}
+			map.addLayer(base_layer);
+			reorderLayers();
+		}
+        }
+      }
+      
+	function updateAppLayerVisibility() {
+        var inputs = dojo.query(".app_list_item"), input;
+        for (var i=0, il=inputs.length; i<il; i++) {
+		if (inputs[i].checked) {
+			
+			if (app_layer.loaded) {
+			  map.removeLayer(app_layer);
+			}
+			app_layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://" + env + "/ArcGIS/rest/services/APPS/" + inputs[i].id + "/MapServer");
+			map.addLayer(app_layer);
+			reorderLayers();
+		}
+        }
+      }
+      
+      function updateAISLayerVisibility() {
+        var inputs = dojo.query(".ais_list_item"), input;
+        for (var i=0, il=inputs.length; i<il; i++) {
+		if (inputs[i].checked) {
+			map.removeLayer(base_layer);
+			var params = new esri.layers.ImageServiceParameters();
+			params.format = "jpg";
+			base_layer = new esri.layers.ArcGISImageServiceLayer ("http://" + env + "/ArcGIS/rest/services/IMAGE_SERVICES/" + inputs[i].id + "/ImageServer",{imageServiceParameters: params});
+			map.addLayer(base_layer);
+			reorderLayers();
+		}
+        }
+      }
+      
+      function updateLayerVisibility() {
+        var inputs = dojo.query(".dyn_list_item"), input;
+        visible = [];
+        for (var i=0, il=inputs.length; i<il; i++) {
+          if (inputs[i].checked) {
+            visible.push(inputs[i].id);
+          }
+        }
+        dyn_layer.setVisibleLayers(visible);
+	reorderLayers();
+      }
+      
+      function reorderLayers(){
+	map.reorderLayer(base_layer,0);
+	map.reorderLayer(dyn_layer,1);
+	map.reorderLayer(app_layer,2);
+      }
+
+      function resizeMap() {
+        //resize the map when the browser resizes - view the 'Resizing and repositioning the map' section in 
+        //the following help topic for more details http://help.esri.com/EN/webapi/javascript/arcgis/help/jshelp_start.htm#jshelp/inside_guidelines.htm
+        var resizeTimer;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          globals.map.resize();
+          globals.map.reposition();
+        }, 500);
+      }
+	  
+	  function changeEnv() {
+		if (location.href.search("#|\\?") > -1 ){
+			window.location.replace(location.href.substring(0,location.href.search("#|\\?")) + "?env=" + dijit.byId('envsel').attr('displayedValue').toLowerCase());
+		} else {
+			window.location.replace(location.href + "?env=" + dijit.byId('envsel').attr('displayedValue').toLowerCase());
+		}
+	  }
+	  
+      //show map on load 
+      dojo.addOnLoad(init);
+    </script>
+  </head>
+  
+  <body class="tundra">
+    <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline"
+    gutters="false" style="width:100%; height:100%;">
+      <div id="header" dojotype="dijit.layout.ContentPane" region="top">
+        GeoStor AGS Test Page  (<span id="envdisp">PROD</span>)<br />
+		<select id="envsel" dojoType="dijit.form.Select" onChange="changeEnv();">
+			<option value="default">-- Select an Env --</option>
+			<option value="www.geostor.arkansas.gov">PROD</option>
+			<option value="dev.geostor.arkansas.gov">DEV</option>
+			<option value="cm-sas-geo-ags1">AGS1</option>
+			<option value="cm-sas-geo-ags2">AGS2</option>
+			<option value="cm-sas-geo-ags3">AGS3</option>
+			<option value="cm-sas-geo-ags4">AGS4</option>
+			</select>
+       <div id="subheader">subheader</div>
+      </div>
+      <div dojotype="dijit.layout.ContentPane" id="leftPane" region="left">
+        <div dojotype="dijit.layout.TabContainer" >
+          <div dojotype="dijit.layout.ContentPane" title = "Base" selected="true">
+		<input type="radio" name="group1" class='base_list_item'  id='BASEMAP' checked onclick='updateBaseLayerVisibility();' /> BASEMAP<br>
+		<input type="radio" name="group1" class='base_list_item'  id='BASEMAP_HYBRID' onclick='updateBaseLayerVisibility();' /> BASEMAP_HYBRID<br>
+		<input type="radio" name="group1" class='base_list_item'  id='ORTHO2006' onclick='updateBaseLayerVisibility();' /> ORTHO2006<br>
+		<input type="radio" name="group1" class='base_list_item'  id='DRG_24K' onclick='updateBaseLayerVisibility();' /> DRG_24K<br>
+		<input type="radio" name="group1" class='base_list_item'  id='DRG_24K_HSHADE' onclick='updateBaseLayerVisibility();' /> DRG_24K_HSHADE<br>
+		<input type="radio" name="group1" class='base_list_item'  id='DEM' onclick='updateBaseLayerVisibility();' /> DEM<br>
+		<input type="radio" name="group1" class='base_list_item'  id='LULC' onclick='updateBaseLayerVisibility();' /> LULC<br>
+          </div>
+          <div dojotype="dijit.layout.ContentPane"  title="AIS" >
+		<input type="radio" name="group3" class='ais_list_item'  id='2006_1M_Statewide_Ortho' onclick='updateAISLayerVisibility();' /> 2006_1M_Statewide_Ortho<br>
+		<input type="radio" name="group3" class='ais_list_item'  id='2006_1M_Statewide_CIR' onclick='updateAISLayerVisibility();' /> 2006_1M_Statewide_CIR<br>
+		<input type="radio" name="group3" class='ais_list_item'  id='DRG_24K' onclick='updateAISLayerVisibility();' /> DRG_24K<br>
+		<input type="radio" name="group3" class='ais_list_item'  id='DRG_24K_HILLSHADE' onclick='updateAISLayerVisibility();' /> DRG_24K_HILLSHADE<br>
+		<input type="radio" name="group3" class='ais_list_item'  id='HIGH_RES' onclick='updateAISLayerVisibility();' /> HIGH_RES<br>
+          </div>
+	  <div dojotype="dijit.layout.ContentPane"  title="Apps" >
+		<input type="radio" name="group2" class='app_list_item'  id='APP_ADE' onclick='updateAppLayerVisibility();' /> APP_ADE<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_ADEQ' onclick='updateAppLayerVisibility();' /> APP_ADEQ<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_AGFC' onclick='updateAppLayerVisibility();' /> APP_AGFC<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_AOGC' onclick='updateAppLayerVisibility();' /> APP_AOGC<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_CRAWFORD_COUNTY' onclick='updateAppLayerVisibility();' /> APP_CRAWFORD_COUNTY<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_GOVMAP-9.3' onclick='updateAppLayerVisibility();' /> APP_GOVMAP-9.3<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_Hope' onclick='updateAppLayerVisibility();' /> APP_Hope<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_Districts' onclick='updateAppLayerVisibility();' /> APP_Districts<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_JONESBORO' onclick='updateAppLayerVisibility();' /> APP_JONESBORO<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_METH' onclick='updateAppLayerVisibility();' /> APP_METH<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_SALINE' onclick='updateAppLayerVisibility();' /> APP_SALINE<br>
+		<input type="radio" name="group2" class='app_list_item'  id='APP_UAMS' onclick='updateAppLayerVisibility();' /> APP_UAMS<br>
+	</div>
+	  <div dojotype="dijit.layout.ContentPane"  title="Dynamic" >
+            <span id="layer_list"></span><br />
+          </div>
+        </div>
+      </div>
+      <div id="map" dojotype="dijit.layout.ContentPane" region="center">
+      </div>
+      
+    </div>
+  </body>
+
+</html>
