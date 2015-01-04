@@ -46,6 +46,17 @@ foreach ( $includes as $i ) {
 // Added to get access to MySQL database tables
 global $wpdb;
 
+// Filter added for Login Form URL GEOSTOREDIT
+//http://dev.geostor.org/wp-content/uploads/2014/12/Logo1-300x100.png
+// custom admin login logo
+function custom_login_logo() {
+	echo '<style type="text/css">
+	h1 a { background-image: url(http://dev.geostor.org/wp-content/uploads/2014/12/ARGIS_Avatar.png) !important; width:200px; }
+	</style>';
+}
+add_action('login_head', 'custom_login_logo');
+
+
 //  Action to add 'Add To Cart' button with the product thumbnails
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
 
