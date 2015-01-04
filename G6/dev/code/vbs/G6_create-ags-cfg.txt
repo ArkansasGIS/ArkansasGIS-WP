@@ -1,0 +1,216 @@
+'DO NOT MODIFY THIS SCRIPT UNLESS YOU KNOW WHAT YOU ARE DOING!!!!!
+on error resume next
+'create AGS cfg files for each of the servers from templates
+Const ForReading = 1
+Const ForWriting = 2
+Set objArgs = WScript.Arguments.Unnamed
+'set this to the path that your templates and output files are going to go
+rootPath = "D:\GeoStor6\ArcGIS_Server\Cfg\"
+updatedata = false
+Set FSO = CreateObject("Scripting.FileSystemObject")
+
+'check for commandline args, else prompt user
+Select Case objArgs.Count
+    Case 1
+        input = ucase(objArgs.Item(0))
+        'only update data from ftp site if script is run from commmandline args (scheduled task)
+        updatedata = true
+    Case Else
+        wScript.StdOut.writeline "Press D for Dev, P for Prod [D,P]?"
+        wScript.StdOut.writeline "(Don't forget to hit Enter afterwards)"
+        input = ucase(WScript.StdIn.ReadLine)
+End Select
+if ucase(input) = "D" then
+    'dev
+	servers = Array("cm-sas-geo-ags3","cm-sas-geo-ags4")
+    'servers = Array("cm-sas-geo-ags1","cm-sas-geo-ags2")
+    wscript.echo "Deploying to DEV"
+elseif ucase(input) = "P" then
+    'prod
+	'servers = Array("cm-sas-geo-ags3","cm-sas-geo-ags4")
+    servers = Array("cm-sas-geo-ags1","cm-sas-geo-ags2")
+    wscript.echo "Deploying to PROD"
+else
+    wscript.echo "Invalid selection, please try again."
+    wscript.quit
+end if
+wscript.echo ""
+for each server in servers
+    wscript.echo "Working on: " & server
+    workingFolder = rootPath & server & "\cfg"
+    outFolder = rootPath & server & "\cfg"
+    'delete existing cfg folder
+    if fso.folderexists(workingfolder) then fso.deletefolder workingFolder
+    'create cfg folder
+    fso.createfolder workingFolder
+    'start process
+    getFiles rootPath & "templates",server
+    'delete existing cfg folder on servers
+    fso.deletefolder "\\" & server & "\d$\Program Files\ArcGIS\server\user\cfg"
+    'copy the modified cfg files out to the servers
+    fso.copyfolder workingFolder,"\\" & server & "\d$\Program Files\ArcGIS\server\user\", true
+    'finished, finally
+    wscript.echo "Templates modified and copied out to server"
+    'restart SOMs
+    if updatedata = false then 
+		WScript.stdout.Write "Stopping IIS: "
+		service_control server,"World Wide Web Publishing Service","stop" 	
+		wscript.echo " "
+		WScript.stdout.Write "Restarting SOM: "
+		service_control server,"ArcGIS Server Object Manager","restart" 	
+		wscript.echo " "
+		WScript.stdout.Write "Starting IIS: "
+		service_control server,"World Wide Web Publishing Service","start" 			
+	end if
+    wscript.echo " "
+    wscript.echo "Operation completed!"
+    wscript.echo " "
+next
+
+'for err handling in master script
+if Err <> 0 then
+	DisplayErrorInfo()
+	wscript.quit(1)
+else
+	wscript.quit(0)
+end if
+
+Sub DisplayErrorInfo
+    WScript.Echo "Error:      : " & Err
+    WScript.Echo "Error (hex) : &H" & Hex(Err)
+    WScript.Echo "Source      : " & Err.Source
+    WScript.Echo "Description : " & Err.Description
+    'Err.Clear
+End Sub
+
+sub getFiles(strfolder,server)
+    Set folder = fso.GetFolder(strFolder)
+    Set files = folder.files
+    temp = split(folder,"\")
+    newfolder = temp(ubound(temp))
+    For Each file In files
+        filename = strFolder & "\" & file.name
+        set infile = fso.opentextfile(filename,forreading)
+        cfg = infile.readall()
+        'each template has the generic name SERVERNAME where the real server needs to go
+        cfg = replace(cfg,"SERVERNAME",server)
+		'change the output dir based upon the servername
+		if server = "cm-sas-geo-ags1" or server = "cm-sas-geo-ags3" then
+			cfg = replace(cfg,"OUTPUT","arcgisoutput1")
+		elseif server = "cm-sas-geo-ags2" or server = "cm-sas-geo-ags4" then
+			cfg = replace(cfg,"OUTPUT","arcgisoutput2")
+		end if
+		'finally, change the VD to the proper DNS name
+		if ucase(input) = "D" then
+			cfg = replace(cfg,"DNS","dev.geostor.arkansas.gov")
+		elseif ucase(input) = "P" then
+			cfg = replace(cfg,"DNS","www.geostor.arkansas.gov")
+		end if
+        infile.close()
+        temppath = rootpath & server & "\cfg\"
+        'set to the new file
+        if newfolder = "cfg" or newfolder = "templates" then
+            filename = temppath & file.name
+        else
+            'create a corresponding output folder
+            if not fso.folderexists(temppath & newfolder) then fso.createfolder temppath & newfolder end if
+            filename = temppath & newfolder & "\" & file.name
+        end if
+        set outfile = fso.CreateTextFile(filename,forwriting)
+        outfile.writeline cfg
+        outfile.close
+    Next
+    'now get all files in any template subfolders
+    for each folder in folder.subfolders
+        getFiles folder, server
+    next
+end sub
+
+'********* dont touch anything below this line! *************
+Sub service_control(strComputer,sname,purpose)
+	'strComputer is the computer you want to connect To
+	'sname is the service name
+	'purpose is whether or not you want to start, stop or restart a service
+	Dim delay, err_return
+	dim outchar : outchar = "#"
+	delay = 5000	'20 seconds
+	WScript.stdout.Write outchar
+	Set objWMIService = GetObject("winmgmts:" _
+	    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+	Set colListOfServices = objWMIService.ExecQuery _
+	        ("Select * from Win32_Service where DisplayName = '" & sname & "'")
+	For Each objService In colListOfServices
+		'Just to double check we have the right service
+		If objService.displayname = sname Then
+			WScript.stdout.Write outchar
+			If purpose = "stop" Or purpose = "restart" Then
+					err_return = objService.stopservice
+					'service has dependencies, so we need to stop those first
+					If err_return = 3 Then
+						'GOTCHA - you have to use the service.name NOT service.displayname for this query!!
+						'even if you change Win32_Service.Name to Win32_Service.DisplayName
+						Set colServiceList2 = objWMIService.ExecQuery("Associators of " _
+						   & "{Win32_Service.Name='" & objService.name & "'} Where " _
+						        & "AssocClass=Win32_DependentService " & "Role=Antecedent" )
+						For Each objService2 in colServiceList2
+						    objService2.StopService()
+						    If Not objService2.state = "Stopped" Then
+								'you have to pause because the service wont start unless it is completely stopped
+								WScript.Sleep delay
+								service_control strComputer,sname,"stop"
+							Else
+								'WScript.Echo objService2.displayname & " has been stopped."
+							End If
+						Next
+						'stop the original service that had dependencies
+						objService.stopservice
+					Else
+						If Not objService.state = "Stopped" Then
+							'you have to pause because the service wont start unless it is completely stopped
+							WScript.Sleep delay
+							service_control strComputer,sname,"stop"
+						Else
+							'WScript.Echo objService.displayname & " has been stopped."
+						End If
+					End If
+					'if restart was sent, start service after it has stopped
+					If purpose = "restart" Then service_control strComputer, sname, "start" End if
+			Elseif purpose = "start" Then	
+					WScript.stdout.Write outchar
+					err_return = objService.startservice
+					If NOT err_return = 10 Then
+						'GOTCHA - you have to use the service.name NOT service.displayname for this query!!
+						'even if you change Win32_Service.Name to Win32_Service.DisplayName
+						Set colServiceList2 = objWMIService.ExecQuery("Associators of " _
+						   & "{Win32_Service.Name='" & objService.name & "'} Where " _
+						        & "AssocClass=Win32_DependentService " & "Role=Antecedent" )
+						For Each objService2 in colServiceList2
+						    objService2.StartService()
+							If Not objService2.state = "Running" Then
+								'you have to pause because the service wont start unless it is completely stopped
+								WScript.Sleep delay
+								service_control strComputer,sname,"start"
+							Else
+								WScript.Echo objService.displayname & " has been started."
+							End If
+						Next
+						err_return = objService.startservice
+						'service has dependencies, so we need to start those first
+						If err_return = 3 Then
+							'start the original service that had dependencies
+							objService.startservice
+							'End If
+							If Not objService.state = "Running" then
+								'you have to pause because the service wont start unless it is completely stopped
+								WScript.Sleep delay
+								service_control strComputer,sname,"start"
+							Else
+								'WScript.Echo objService.displayname & " has been started."
+							End If
+						End If
+					End If
+					'WScript.Echo objService.displayname & " has been started."
+			End If
+		End If
+	Next
+End Sub 'service_control

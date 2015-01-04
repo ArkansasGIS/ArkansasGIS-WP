@@ -126,6 +126,11 @@ a.button.product_type_simple span{
 	background: url('http://www.geostor.org/Sencha/icons/zip.png') no-repeat;	
 }
 
+a.button.product_type_wms span{
+	padding-left: 20px;
+	background: url('http://www.geostor.org/Sencha/icons/layer_wms.png') no-repeat;	
+}
+
 a.button.view {
 	color: white !important;
 }

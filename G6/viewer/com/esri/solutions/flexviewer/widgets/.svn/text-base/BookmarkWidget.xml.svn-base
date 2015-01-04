@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<bookmarks>
+		<bookmark name="Contiguous USA">-122.2 24.89 -70.59 46.92</bookmark>
+		<bookmark name="Louisville, KY">-85.935 38.07 -85.15 38.325</bookmark>
+	</bookmarks>
+</configuration>

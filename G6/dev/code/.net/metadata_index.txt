@@ -1,0 +1,444 @@
+﻿Imports System.IO
+Imports System.Xml
+Imports System.Data
+Imports System.Data.OleDb
+
+Module Module1
+
+    Sub Main(ByVal args() As String)
+        Dim ID As String = ""
+        Dim j As Integer = 0, k As Integer = 0
+        Dim fileName As New ArrayList()
+        Dim paths() As String = Split(Command, " ")
+        Dim folderName, dataLoc As String
+        'Dim hostname As String = System.Net.Dns.GetHostName
+
+        'get commandline arguments
+        Try
+            folderName = paths(0)
+            dataLoc = paths(1)
+        Catch e As IndexOutOfRangeException
+            Usage()
+            Environment.Exit(1)
+        End Try
+
+        Dim cn As New OleDbConnection
+        Dim cmd As New OleDbCommand
+        Dim metaTable As Boolean = False
+        Dim pubTable As Boolean = False
+        Dim status As Boolean
+        Dim skipped As Integer = 0
+        Dim modified As Integer = 0
+        Dim createMeta As String = "Create table Metadata (Title text, Filename text, Keywords memo, MDDate date, DownloadType text," _
+            & "Publish text, Link text, Category text, Rank Integer, Ftype text)"
+        Dim createPub As String = "Create table Publisher (Publish text)"
+
+        If File.Exists(dataLoc) And Directory.Exists(folderName) Then
+
+            Dim directory As New IO.DirectoryInfo(folderName)
+            Dim allFiles As IO.FileInfo() = directory.GetFiles("*.xml")
+            Dim singleFile As IO.FileInfo
+            Dim indexList As New List(Of String)
+            Dim sitemapList As New List(Of String)
+            'read in all file names to an arrayList
+            For Each singleFile In allFiles
+                fileName.Add(singleFile.Name)
+                j = j + 1
+            Next
+            'create an index page for the metadata directory
+            indexList.Add("<html><head><style type='text/css'>body{text-align:center;}tr{text-align:center;}img{border:2px solid black;}</style></head>" _
+                          & "<body><center><h1>GeoStor Metadata</h1><hr><br />To view the metadata simply click the link.<br /> To download" _
+                          & " it, right click and save as.<br /><br /><table border='2px'><tr>")
+            sitemapList.Add("<?xml version='1.0' encoding='UTF-8'?><urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9' " _
+                        & "xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation = 'http://www.sitemaps.org/schemas/sitemap/0.9'" _
+                        & "http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd>")
+
+            'make a backup copy of the db in case something goes south...
+            File.Copy(dataLoc, dataLoc & ".bak")
+
+            Try
+                'Open the connection
+                cn = New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" & dataLoc & "';Persist Security Info=False")
+                cn.Open()
+                cmd = New OleDbCommand("select * from table1", cn)
+
+                Console.WriteLine("Dropping and creating tables...")
+                'check to see if tables exist and then drop/add the metadata table  (the publisher table is recreated at the end)
+                cmd.CommandText = "drop table metadata"
+                cmd.ExecuteNonQuery()
+                'delete publisher table
+                cmd.CommandText = "drop table publisher"
+                cmd.ExecuteNonQuery()
+                'recreate metadata table
+                cmd.CommandText = createMeta
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+                cn.Close()
+                System.Threading.Thread.Sleep(3000)
+                File.Delete(dataLoc)
+                File.Copy(dataLoc & ".bak", dataLoc)
+                Environment.Exit(1)
+            End Try
+
+
+            Console.WriteLine("Starting metadata indexing...")
+            While k < j
+                Dim xmldoc As New XmlDocument
+                Dim nodelist As XmlNodeList
+                Dim node As XmlNode
+                Dim titleString As String = " "
+                Dim mdate As String = "0000-00-00"
+                Dim resdesc As String = " "
+                Dim publish As String = " "
+                Dim ftype As String = " "
+                Dim category As String = " "
+                Dim link As String = ""
+                Dim rank As Integer = 0
+                Dim curFile As String = fileName.Item(k)
+                Dim thumbnail As String
+                Try
+                    xmldoc.Load(folderName & "\" & curFile)
+                
+
+
+                    'check to make sure that the pointer to the xsl stylesheet is included in the file
+                    status = Style(folderName & "\" & curFile, xmldoc)
+                    If status Then
+                        skipped = skipped + 1
+                    Else
+                        modified = modified + 1
+                    End If
+                    'Get the title of the File
+                    node = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/title")
+                    If node IsNot Nothing Then
+                        titleString = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/title").InnerText
+                    Else
+                        titleString = "None Provided"
+                    End If
+
+                    'get keywords
+                    Dim keywords As String = " "
+                    nodelist = xmldoc.SelectNodes("/metadata/idinfo/keywords/theme")
+                    For Each node In nodelist
+                        Dim a As Integer
+                        For a = 0 To node.ChildNodes.Count - 1
+                            keywords = node.ChildNodes.Item(a).InnerText & "," & keywords
+                        Next
+                    Next
+
+                    'Get the rest of the keywords
+                    nodelist = xmldoc.SelectNodes("/metadata/idinfo/keywords/place")
+                    For Each node In nodelist
+                        Dim a As Integer
+                        For a = 0 To node.ChildNodes.Count - 1
+                            keywords = node.ChildNodes.Item(a).InnerText & "," & keywords
+                        Next
+                    Next
+                    If keywords.Length > 2 Then
+                        keywords = keywords.Substring(0, keywords.Length - 2)
+                    Else
+                        keywords = "None Provided"
+                    End If
+
+                    ''date
+                    'node = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/pubdate")
+                    'If node IsNot Nothing Then
+                    '    mdate = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/pubdate").InnerText
+                    '    mdate = mdate.Substring(0, 4) & "-" & mdate.Substring(4, 2) & "-" & mdate.Substring(6, 2)
+                    '    Console.WriteLine(curFile & " date = " & mdate)
+                    'Else
+                    '    mdate = "None Provided"
+                    '    Console.WriteLine(curFile & " date = " & mdate)
+                    'End If
+
+                    'check two places for the modified date, if none in either place use the create Date
+                    node = xmldoc.SelectSingleNode("/metadata/mdDateSt")
+                    If node IsNot Nothing Then
+                        mdate = xmldoc.SelectSingleNode("/metadata/mdDateSt").InnerText
+                        mdate = mdate.Substring(0, 4) & "-" & mdate.Substring(4, 2) & "-" & mdate.Substring(6, 2)
+                    Else
+                        node = xmldoc.SelectSingleNode("/metadata/Esri/ModDate")
+                        If node IsNot Nothing Then
+                            mdate = xmldoc.SelectSingleNode("/metadata/Esri/ModDate").InnerText
+                            mdate = mdate.Substring(0, 4) & "-" & mdate.Substring(4, 2) & "-" & mdate.Substring(6, 2)
+                        Else
+                            mdate = xmldoc.SelectSingleNode("/metadata/Esri/CreaDate").InnerText
+                            mdate = mdate.Substring(0, 4) & "-" & mdate.Substring(4, 2) & "-" & mdate.Substring(6, 2)
+                        End If
+                    End If
+
+                    'get DownloadType
+                    node = xmldoc.SelectSingleNode("/metadata/distinfo/resdesc")
+                    If node IsNot Nothing Then
+                        resdesc = xmldoc.SelectSingleNode("/metadata/distinfo/resdesc").InnerText
+                        'shorten down the long ones
+                        Select Case resdesc
+                            Case "Downloadable Data"
+                                resdesc = "DL"
+                            Case "Offsite Publisher"
+                                resdesc = "OFF"
+                            Case "Applications"
+                                resdesc = "APP"
+                            Case "Help"
+                                resdesc = "HLP"
+                            Case "Disaster Event"
+                                resdesc = "EMG"
+                            Case "Web Feature Service"
+                                resdesc = "WFS"
+                            Case "Web Map Service"
+                                resdesc = "WMS"
+                            Case "File Transfer Protocol"
+                                resdesc = "FTP"
+                        End Select
+                    Else
+                        resdesc = "NP"
+                    End If
+
+                    'get Publisher name if there
+                    node = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/pubinfo/publish")
+                    If node IsNot Nothing Then
+                        publish = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/pubinfo/publish").InnerText
+                    Else
+                        publish = "None Provided"
+                    End If
+
+                    'get feature type if there
+                    node = xmldoc.SelectSingleNode("/metadata/spdoinfo/direct")
+                    If node IsNot Nothing Then
+                        ftype = xmldoc.SelectSingleNode("/metadata/spdoinfo/direct").InnerText
+                        If ftype = "Raster" Then
+                            ftype = "R"
+                        ElseIf ftype = "Vector" Then
+                            ftype = "V"
+                        End If
+                    Else
+                        ftype = "NP"
+                    End If
+
+                    'check for categories (they are found in the same tag as the ISO 19115 Topic Category
+                    nodelist = xmldoc.SelectNodes("/metadata/idinfo/keywords/theme")
+                    Dim topic As String = "ISO 19115 Topic Category"
+                    Dim topic1 As String = "ISO 19115 Topic Categories"
+                    Dim topic2 As String
+                    For Each node In nodelist
+                        Dim b As Integer
+                        For b = 0 To node.ChildNodes.Count - 1
+                            topic2 = node.ChildNodes.Item(b).InnerText
+                            If topic2 = topic Or topic2 = topic1 Then
+                                If b <> node.ChildNodes.Count - 1 Then
+                                    While b < node.ChildNodes.Count - 1
+                                        b = b + 1
+                                        category = node.ChildNodes.Item(b).InnerText & "," & category
+                                    End While
+                                Else
+                                    category = node.FirstChild.InnerText & "," & category
+                                    Dim c = 0
+                                    While c < node.ChildNodes.Count - 2
+                                        c = c + 1
+                                        category = node.ChildNodes.Item(c).InnerText & "," & category
+                                    End While
+                                End If
+
+                            End If
+                        Next
+                    Next
+                    If category.Length > 1 Then
+                        category = category.Substring(0, category.Length - 2)
+                    ElseIf category.Length <= 1 Then
+                        category = "None Provided"
+                    End If
+
+                    'rank
+                    node = xmldoc.SelectSingleNode("/metadata/dataqual/attracc/qattracc/attraccv")
+                    If node IsNot Nothing Then
+                        rank = xmldoc.SelectSingleNode("/metadata/dataqual/attracc/qattracc/attraccv").InnerText
+                    Else
+                        rank = 1
+                    End If
+
+
+
+                    'create bmp thumbnail from base64 encoded text
+                    node = xmldoc.SelectSingleNode("/metadata/Binary/Thumbnail/Data")
+                    If node IsNot Nothing Then
+                        thumbnail = xmldoc.SelectSingleNode("/metadata/Binary/Thumbnail/Data").InnerText
+                        Dim imgByte As Byte() = FromBase64(thumbnail)
+                        Try
+                            File.WriteAllBytes(folderName & "\" & Replace(curFile, ".xml", "") & ".bmp", imgByte)
+                        Catch ex As Exception
+                            Console.WriteLine(ex.Message)
+                        End Try
+                        indexList.Add("<td><a href='" & curFile & "'><img src='" & Replace(curFile, ".xml", ".bmp") & "' /></a><br /><a href='" & curFile & "'>" & titleString & "</a></td>")
+                    Else
+                        indexList.Add("<td><a href='" & curFile & "'><img src='" & Replace(curFile, ".xml", ".bmp") & "' /></a><br /><a href='" & curFile & "'>" & titleString & "</a></td>")
+                    End If
+                    'create 3 column table
+                    If (k + 1) Mod 3 = 0 And Not k = 0 Then
+                        indexList.Add("</tr><tr>")
+                    End If
+
+                    'link
+                    node = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/onlink")
+                    If node IsNot Nothing Then
+                        link = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/onlink").InnerText
+                    Else
+                        link = "http://www.geostor.arkansas.gov"
+                    End If
+                
+                    'add link to sitemap xml file
+                    sitemapList.Add("<url><loc>http://www.geostor.arkansas.gov/metadata/" & curFile & "</loc><lastmod>" & DateTime.UtcNow.ToString("s") & "-0600</lastmod></url>")
+
+
+                    'populate Metadata Table
+                    'create unique id for each metadata record
+                    ID = getHash(folderName & "\" & curFile)
+                    'insert into metadata table
+                    cmd.CommandText = "Insert Into Metadata (Title, Filename, Keywords, MDDate, DownloadType, Publish, Link, Category, Rank, Ftype)" _
+                        & "Values ('" & titleString & "', '" & curFile & "', '" & keywords & "', '" & mdate & "', '" & resdesc & "', '" _
+                        & publish & "', '" & link & "', '" & category & "', '" & rank & "', '" & ftype & "');"
+                    cmd.ExecuteNonQuery()
+                    'now add it to the metadataID table, only if it doesn't already exist
+                    cmd.CommandText = "select count(a.filename) from metadata a, metadataid b where a.filename = b.filename and a.filename = '" & curFile & "'"
+                    Dim rows As Double = cmd.ExecuteScalar
+                    If rows = 0 Then
+                        'insert into metadataid tables
+                        cmd.CommandText = "insert into metadataid (ID, Filename) values ('" & ID & "', '" & curFile & "');"
+                        cmd.ExecuteNonQuery()
+                        addUrl(folderName & "\" & curFile, "http://www.geostor.arkansas.gov/G6/Home.html?id=" & ID, xmldoc)
+                    Else
+                        'already has metadataid value, we need to retrieve this to create the link
+                        cmd.CommandText = "select b.id from metadata a, metadataid b where a.filename = b.filename and a.filename = '" & curFile & "'"
+                        Dim currid As String = cmd.ExecuteScalar
+                        addUrl(folderName & "\" & curFile, "http://www.geostor.arkansas.gov/G6/Home.html?id=" & currid, xmldoc)
+                    End If
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                    cn.Close()
+                    System.Threading.Thread.Sleep(3000)
+                    File.Delete(dataLoc)
+                    File.Copy(dataLoc & ".bak", dataLoc)
+                    Environment.Exit(1)
+                End Try
+                k = k + 1
+                'we are done gathering our data, let's close the file handle and clean up
+                node = Nothing
+                nodelist = Nothing
+                xmldoc = Nothing
+            End While
+
+
+
+
+            Try
+                Console.WriteLine("Populating data...")
+                'Checking for Publisher Table, creating and populating table
+                cmd.CommandText = createPub
+                cmd.ExecuteNonQuery()
+
+                'insert distinct values into publisher table
+                cmd.CommandText = "INSERT INTO Publisher VALUES ('-- Any --')"
+                cmd.ExecuteNonQuery()
+                cmd.CommandText = "INSERT INTO Publisher SELECT Distinct Publish FROM Metadata"
+                cmd.ExecuteNonQuery()
+
+                Console.WriteLine("Creating database indexes...")
+                'create indexes
+                cmd.CommandText = "CREATE INDEX searchIndex ON Metadata (Title, Filename, Keywords, MDDate, DownloadType, Publish, Link, Category, Rank, Ftype);"
+                cmd.ExecuteNonQuery()
+                cmd.CommandText = "CREATE INDEX publishIndex ON Publisher(Publish);"
+                cmd.ExecuteNonQuery()
+                cmd.CommandText = "drop index idIndex on metadataid;"
+                cmd.ExecuteNonQuery()
+                cmd.CommandText = "CREATE INDEX idIndex ON MetadataID(ID, Filename);"
+                cmd.ExecuteNonQuery()
+
+                cn.Close()
+            Catch ex As Exception
+                Console.Write(ex.Message)
+                cn.Close()
+                System.Threading.Thread.Sleep(3000)
+                File.Delete(dataLoc)
+                File.Copy(dataLoc & ".bak", dataLoc)
+                Environment.Exit(1)
+            End Try
+
+            Console.WriteLine("Compacting database...")
+            If File.Exists("C:\Program Files\Microsoft Office\Office12\MSACCESS.EXE") Then
+                Shell("C:\Program Files\Microsoft Office\Office12\MSACCESS.EXE " & dataLoc & " /compact", , True, )
+            Else
+                Console.WriteLine("MS Office isn't installed, can't compact the database")
+            End If
+
+            Console.WriteLine("Writing index.html")
+            indexList.Add("</table></center></body></html>")
+            File.WriteAllText(folderName & "\" & "index.html", String.Join("", indexList.ToArray))
+
+            Console.WriteLine("Writing sitelist")
+            sitemapList.Add("</urlset>")
+            File.WriteAllText(folderName & "\" & "sitelist.xml", String.Join("", sitemapList.ToArray))
+
+            Console.WriteLine("Finished with " & skipped & " skipped files and " & modified & " modified files.")
+        Else
+            Console.WriteLine("The Folder and/or Database File that you entered does not exist, please check the names and try again.")
+            Usage()
+            Environment.Exit(1)
+        End If
+        'clean up our backup file
+        File.Delete(dataLoc & ".bak")
+    End Sub
+
+    Sub Usage()
+        Console.WriteLine("USAGE: binary name, XML Folder path, Database path")
+        Console.WriteLine("There cannot be any spaces in the path names")
+    End Sub
+
+    Private Function Style(ByRef filename As String, ByRef xmldoc As XmlDocument) As Boolean
+        Dim xslStyle As String = "type=""text/xsl"" href=""FGDC_Plus.xsl"""
+        Dim found As Boolean = False
+        Dim decl As XmlProcessingInstruction
+        If xmldoc.FirstChild.NextSibling.InnerText = xslStyle Then
+            found = True
+        End If
+        If found = False Then
+            decl = xmldoc.CreateProcessingInstruction("xml-stylesheet", "type=""text/xsl"" href=""FGDC_Plus.xsl""")
+            xmldoc.InsertAfter(decl, xmldoc.FirstChild)
+            xmldoc.Save(filename)
+        End If
+        Return found
+    End Function
+
+    Private Sub addUrl(ByRef filename As String, ByRef url As String, ByRef xmldoc As XmlDocument)
+        Dim currUrl As String = ""
+        Dim currNode As XmlNode = xmldoc.SelectSingleNode("/metadata/idinfo/citation/citeinfo/onlink")
+        'check to see if the unique url already exists
+        If Not InStr(currNode.InnerText, "?id=") > 0 Then
+            'insert url
+            Dim elem As XmlElement = xmldoc.CreateElement("onlink")
+            elem.InnerText = url
+            Dim commonParent As XmlNode = currNode.ParentNode
+            commonParent.InsertBefore(elem, currNode)
+        End If
+        xmldoc.Save(filename)
+    End Sub
+
+    Private Function FromBase64(ByVal base64 As String) As Byte()
+        If base64 Is Nothing Then Throw New ArgumentNullException("base64")
+        Return Convert.FromBase64String(base64)
+    End Function
+
+    Private Function getHash(ByVal Filename As String) As String
+        With New Security.Cryptography.MD5CryptoServiceProvider
+            Dim sr As New IO.StreamReader(Filename)
+            Dim result() As Byte = .ComputeHash(sr.BaseStream)
+            Dim Encoding As Text.Encoding = System.Text.Encoding.Default
+            Dim strMD5 As String = ""
+            For Each bytByte As Byte In result
+                strMD5 &= bytByte.ToString("x2")
+            Next
+            sr.Close()
+            Return strMD5
+        End With
+    End Function
+
+End Module

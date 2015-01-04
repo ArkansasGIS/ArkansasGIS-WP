@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="Templates/Main.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>GeoStor 6.0</title>
+<!-- InstanceEndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Arkansas State Agency</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<link type="text/css" href="css/jquery.jgrowl.css" rel="stylesheet" />
+<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<link type="text/css" href="css/GeoStor.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.selectboxes.min.js"></script>
+<script type="text/javascript" src="js/geostor.js"></script>
+<script type="text/javascript" src="js/jquery.geturlparams.js"></script>
+<script type="text/javascript" src="js/jquery.jgrowl.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script type="text/javascript" src="js/jquery.jgfeed-min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie-min.js"></script>
+<script type="text/javascript" src="js/jquery.twitter.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+/* jGrowl themes */
+div.jGrowl div.warn {
+	background-color: 		red;
+	color: 					white;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="headerTop">
+                <div id="headerTopLeft">
+                    <a href="http://portal.arkansas.gov" title="Arkansas.gov"><img src="images/arkansasGov.gif" class="noBorder" alt="Arkansas.gov" height="20" width="83" /></a>
+                </div><!-- end #headerTopLeft -->
+                <div id="headerTopCenter">
+                    <a href="http://portal.arkansas.gov/government/Pages/governmentAgencies.aspx" title="Agencies">Agencies</a>&nbsp;|&nbsp;
+                    <a href="http://portal.arkansas.gov/services/Pages/servicesAlpha.aspx" title="Online Services">Online Services</a>&nbsp;|&nbsp;
+                    <a href="http://www.arkansas.gov/directory/index.html" title="State Directory">State Directory</a>
+                </div><!-- end #headerTopCenter -->
+                <div id="headerTopRight">
+                    <a href="#" id="increase_font" title="Increase Text Size">A+</a>&nbsp;|&nbsp;
+                    <a href="#" id="decrease_font" title="Decrease Text Size">A-</a>&nbsp;|&nbsp;
+                    <a href="#" onclick="disable_stylesheets();" title="View Text Only">Text</a>&nbsp;|&nbsp;
+                    <a href="#" onclick="window.print();" title="Print Page">Print</a>
+                </div><!-- end #headerTopRight -->
+            </div><!-- end #headerTop -->
+            <div id="headerBanner">
+							<span style="position:absolute;text-align:right;width:900px;margin:22px;"><img src="images/AGIO_logo_really_small.gif" width="85" height="64" /></span>
+                <a href="/G6/Home.html" title="GeoStor 6.0"><img src="images/GeoStor_Header.jpg" class="noBorder" alt="GeoStor 6.0" height="120" width="1000" /></a>
+
+            </div><!-- end #headerBanner -->
+            <div id="headerNav">
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Viewer.html">Viewer</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Home.html?q=ftp">FTP</a></li>
+					<li><a href="files/GeoStor_Tutorial.pdf">Help</a></li>
+                    <li><a href="/G6_ASP/Feedback.aspx">Feedback</a></li>
+                    <li><a href="Dev.html">Developers</a></li>                    
+                    <li><a href="http://geostor.blogspot.com" target="_blank">Blog</a></li>
+                </ul>
+            </div><!-- end #headerNav -->
+
+        </div><!-- end #header -->
+        <div id="content">
+             <div id="main">
+			 <div class="ui-widget" style="width: 1000px;">
+		<div  id="maininfo" class="ui-state-highlight ui-corner-all" style="margin-top: 0px; padding: 0 .7em; display: none; font-size: small;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+			<strong>GeoStor Message:</strong> <span id="maininfodata"></span></p>
+		</div>
+	</div>
+<!-- InstanceBeginEditable name="body" -->
+<ul>
+<li><a href="Code_D.html?file=dev/code/.net/GeoStorWS.asmx.txt&type=cs">GeoStor Webservice</a></li>
+<li><a href="Code_D.html?file=dev/code/python/G6_Basemap-Update.txt&type=py">Our basemap FGDB update script</a></li>
+<li><a href="Code_D.html?file=dev/code/python/update_basemap_cache.txt&type=py">Our basemap cache update script</a></li>
+<li><a href="Code_D.html?file=js/geostorFULL.txt&type=js">The javascript that runs GeoStor</a></li>
+<li><a href="Code_D.html?file=js/viewerFULL.txt&type=js">The javascript that runs GeoStor's Viewer</a></li>
+<li><a href="Code_D.html?file=dev/code/sql/iis_stats.txt&type=sql">SQL that generates our web/ftp statistics</a></li>
+<li><a href="Code_D.html?file=dev/code/.net/fme_stats.txt&type=vb">.Net app that generates our FME statistics</a></li>
+<li><a href="Code_D.html?file=dev/code/.net/metadata_index.txt&type=vb">.Net app that indexes our metadata</a></li>
+<li><a href="Code_D.html?file=dev/code/vbs/G6_create-ags-cfg.txt&type=vb">VBScript that generates our AGS config files for our webfarm</a></li>
+</ul>
+ <!-- InstanceEndEditable --> 
+            </div><!-- end #contentHomeMiddle -->
+        </div><!-- end #content -->
+        <br class="clearFloat" />
+        <div id="footer">
+            <div id="footerTop">
+                <div id="blogposts" class="chunk">
+                    <strong>Latest Blog Posts</strong>
+                </div>
+                <div class="chunk" style="text-align:center;">
+                    <strong>Share</strong>
+                    <p>
+                        <!-- AddThis Button BEGIN -->
+                        <script type="text/javascript">var addthis_pub="4a007a630481430e";</script>
+                        <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+                        <script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script>
+                        <!-- AddThis Button END -->
+                    </p>
+                    <p>&nbsp;</p>
+                    <strong>Stay Informed</strong>
+                    <p>
+                     <a href="http://geostor.blogspot.com/feeds/posts/default" title="RSS Feed" target="_blank"><img src="images/rss.png" class="linkIcon" alt="RSS Feed" height="32" width="32" /></a>
+                    <a href="http://twitter.com/geostor" title="Twitter" target="_blank"><img src="images/twitter32.png" class="linkIcon" alt="Twitter" height="32" width="32" /></a>
+                    <a href="http://www.facebook.com/pages/GeoStor/224340503936" title="Facebook" target="_blank"><img src="images/FaceBook_32x32.png" class="linkIcon" alt="Facebook" height="32" width="32" /></a>
+                    </p>
+                </div>
+                <div class="chunk">
+                    <strong>Latest GeoStor Tweets</strong>
+			<div id="twitter"><p><a href="http://twitter.com/geostor">Twitter is experiencing technical difficulties.</a></p></div>
+		
+                </div>
+            </div><!-- end #footerTop -->
+            <div id="footerBottom">
+                <div id="footerBottomLeft">
+                    <a href="http://portal.arkansas.gov/Pages/policy.aspx#accessibility" title="Accessibility">Accessibility</a>&nbsp;|&nbsp;
+                    <a href="http://portal.arkansas.gov/Pages/policy.aspx#privacy" title="Privacy">Privacy</a>&nbsp;|&nbsp;
+                    <a href="http://portal.arkansas.gov/Pages/policy.aspx#security" title="Security">Security</a>&nbsp;|&nbsp;
+                    <a href="http://portal.arkansas.gov/Pages/policy.aspx#acceptable" title="Acceptable Use">Acceptable Use</a>&nbsp;|&nbsp;
+                    <a href="#" title="Public Domain Data">Public Domain Data</a>
+                    
+                </div><!-- end #footerBottomLeft -->
+                <div id="footerBottomRight">
+                    Copyright &copy; 2009&nbsp;&nbsp;<a href="http://www.gis.arkansas.gov/">Arkansas Geographic Information Office</a>.&nbsp;&nbsp;All Rights Reserved.
+                </div><!-- end #footerBottomRight -->
+            </div><!-- end #footerBottom -->
+            <br class="clearFloat" />
+        </div><!-- end #footer -->
+    </div><!-- end #container --><br/>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-1537624-1";
+	urchinTracker();
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -110,7 +110,12 @@ class WP_User_Avatar_Functions {
 		// Get registered user e-mail address
 		$user_id = !empty($user) ? $user->ID : "";
 	 }
-	 $user_has_gravatar = get_user_meta($user_id, 'wpua_has_gravatar', true);
+	 $wpua_has_gravatar = unserialize(get_option('wpua_has_gravatar'));
+	 $user_has_gravatar = '';
+	 if(is_array($wpua_has_gravatar)){
+		if (array_key_exists($user_id, $wpua_has_gravatar))
+			$user_has_gravatar = $wpua_has_gravatar[$user_id];
+	 }
 	 return (bool) $user_has_gravatar;
    }
   /**

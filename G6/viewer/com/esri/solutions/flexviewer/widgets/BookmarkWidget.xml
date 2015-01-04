@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright © 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<configuration>
+	<bookmarks>
+		<bookmark name="AGIO">564535.3208317566 3844963.465118394 565231.1763901343 3845527.0287455213</bookmark>
+	</bookmarks>
+</configuration>
+

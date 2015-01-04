@@ -1,0 +1,262 @@
+--ftp stats
+--dl/ul totals (since 1/10)
+select (SUM(cast([cs-bytes] as bigint))/1048576) AS Uploads_MB from dbo.FTP1_IIS where [cs-bytes] is not null
+select (SUM(cast([sc-bytes] as bigint))/1048576) AS Downloads_MB from dbo.FTP1_IIS where [sc-bytes] is not null
+
+--total dl/ul time in seconds (since 1/10)
+select (SUM(cast([time-taken] as bigint))/1000) AS Download_time from dbo.FTP1_IIS where [time-taken] is not null
+
+--total user (since 6/09)
+select count(distinct([c-ip])) as distinct_users from dbo.FTP1_IIS where [c-ip] is not null
+
+--top files downloaded (since 6/09)
+select distinct top 20 [cs-uri-stem] as file_name, COUNT([cs-uri-stem]) as dl_count from dbo.FTP1_IIS
+where [cs-method] = 'RETR' and [cs-uri-stem] IS not null and not [cs-uri-stem] = '/' 
+and [sc-substatus] = 0 and not [cs-uri-stem] = 'Thumbs.db'
+group by [cs-uri-stem]
+order by dl_count desc
+
+--tsql for updating ftp stats
+--clear out old results
+set nocount on
+delete from GeoStor.dbo.[ftp_top-downloads]
+go
+--gather stats and insert into results table
+declare
+	@filename varchar(255),
+	@dl_count int
+declare curs cursor
+	for
+		select distinct top 40 [cs-uri-stem] as file_name, COUNT([cs-uri-stem]) as dl_count from dbo.FTP1_IIS
+		where [cs-method] = 'RETR' and [cs-uri-stem] IS not null and not [cs-uri-stem] = '/' 
+		and [sc-substatus] = 0 and not [cs-uri-stem] = 'Thumbs.db' 
+		and not ([cs-uri-stem] like '%.xml' or [cs-uri-stem] like '%.sdw')
+		group by [cs-uri-stem]
+		order by dl_count desc
+open curs
+fetch next from curs into @filename, @dl_count
+while @@FETCH_STATUS = 0 begin
+	insert into GeoStor.dbo.[ftp_top-downloads] values (@filename, @dl_count)
+fetch next from curs into @filename, @dl_count
+end
+close curs
+deallocate curs
+go
+
+--start summary stats update
+--clear out old results
+delete from GeoStor.dbo.ftp_reporting
+go
+declare @output nvarchar(50)
+--uploads
+select @output=(SUM(cast([cs-bytes] as bigint))/1048576) from LOGS.dbo.FTP1_IIS where [cs-bytes] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Uploads',@output)
+--downloads
+select @output=(SUM(cast([sc-bytes] as bigint))/1048576) from dbo.FTP1_IIS where [sc-bytes] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Downloads',@output)
+--total transfers
+select  @output=(SUM(cast([time-taken] as bigint))/1000) from dbo.FTP1_IIS where [time-taken] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Transfer Time',@output)
+--total users
+select @output = count(distinct([c-ip])) from dbo.FTP1_IIS where [c-ip] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Total Users',@output)
+go
+--end tsql for updating ftp stats
+
+--ftp archives (since 8/08)
+select distinct top 20 target as file_name, COUNT(target) as dl_count from dbo.FTP1_IIS_ARCHIVES
+where target = 'RETR' and target IS not null and not target = '/' 
+and win32status = 0 and not target = 'Thumbs.db'
+group by target
+order by dl_count desc
+
+
+--www stats
+--count by app
+select COUNT([date]) FROM [LOGS].[dbo].[AGS1_IIS]
+where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+and [s-ip] = '170.94.10.111' and [cs-uri-stem] like '%APP_AGFC%'
+
+--top pages downloaded
+select distinct top 20 [cs-uri-stem] as file_name, COUNT([cs-uri-stem]) as files from [LOGS].[dbo].[AGS1_IIS]
+where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+and [s-ip] = '170.94.10.111'
+group by [cs-uri-stem]
+order by files desc
+
+--get the top files for all servers from aggregate table
+select distinct [FILE_NAME], SUM(dl_count) as total
+  FROM [GeoStor].[dbo].[iis_top-pages]
+  group by [FILE_NAME]
+  order by total desc
+
+--this one aggregates the top files
+set nocount on
+USE [GeoStor]
+GO
+
+/****** Object:  Table [dbo].[iis_top-pages]    Script Date: 07/21/2010 16:27:58 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[iis_top-pages]') AND type in (N'U'))
+DROP TABLE [dbo].[iis_top-pages]
+GO
+
+USE [GeoStor]
+GO
+
+/****** Object:  Table [dbo].[iis_top-pages]    Script Date: 07/21/2010 16:27:59 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[iis_top-pages](
+	[server] [nvarchar](30) NOT NULL,
+	[file_name] [nvarchar](max) NOT NULL,
+	[dl_count] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+
+--go
+--gather stats and insert into results table
+declare
+	@filename varchar(255),
+	@sql varchar(255),
+	@dl_count int
+--AGS1
+declare curs cursor
+	for
+		SELECT distinct top 20 [cs-uri-stem] as files, COUNT([cs-uri-stem]) as hits
+		from [LOGS].[dbo].AGS1_IIS
+		where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+		group by [cs-uri-stem]
+		order by hits desc;
+open curs
+fetch next from curs into @filename, @dl_count
+while @@FETCH_STATUS = 0 begin
+	--print 'insert into GeoStor.dbo.[iis_top-pages] values (' + @server + ',' + @filename + ',' + cast(@dl_count as varchar(255)) + ')'
+	insert into GeoStor.dbo.[iis_top-pages] values ('AGS1', @filename, @dl_count)
+fetch next from curs into @filename, @dl_count
+end
+close curs
+deallocate curs
+
+--AGS2
+declare curs cursor
+	for
+		SELECT distinct top 20 [cs-uri-stem] as files, COUNT([cs-uri-stem]) as hits
+		from [LOGS].[dbo].AGS2_IIS
+		where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+		group by [cs-uri-stem]
+		order by hits desc;
+open curs
+fetch next from curs into @filename, @dl_count
+while @@FETCH_STATUS = 0 begin
+	--print 'insert into GeoStor.dbo.[iis_top-pages] values (' + @server + ',' + @filename + ',' + cast(@dl_count as varchar(255)) + ')'
+	insert into GeoStor.dbo.[iis_top-pages] values ('AGS2', @filename, @dl_count)
+fetch next from curs into @filename, @dl_count
+end
+close curs
+deallocate curs
+
+--AGS3
+declare curs cursor
+	for
+		SELECT distinct top 20 [cs-uri-stem] as files, COUNT([cs-uri-stem]) as hits
+		from [LOGS].[dbo].AGS3_IIS
+		where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+		group by [cs-uri-stem]
+		order by hits desc;
+open curs
+fetch next from curs into @filename, @dl_count
+while @@FETCH_STATUS = 0 begin
+	--print 'insert into GeoStor.dbo.[iis_top-pages] values (' + @server + ',' + @filename + ',' + cast(@dl_count as varchar(255)) + ')'
+	insert into GeoStor.dbo.[iis_top-pages] values ('AGS3', @filename, @dl_count)
+fetch next from curs into @filename, @dl_count
+end
+close curs
+deallocate curs
+
+--AGS4
+declare curs cursor
+	for
+		SELECT distinct top 20 [cs-uri-stem] as files, COUNT([cs-uri-stem]) as hits
+		from [LOGS].[dbo].AGS4_IIS
+		where not [c-ip] = '170.94.248.111' and [sc-status] = '200'
+		group by [cs-uri-stem]
+		order by hits desc;
+open curs
+fetch next from curs into @filename, @dl_count
+while @@FETCH_STATUS = 0 begin
+	--print 'insert into GeoStor.dbo.[iis_top-pages] values (AGS4,' + @filename + ',' + cast(@dl_count as varchar(255)) + ')'
+	insert into GeoStor.dbo.[iis_top-pages] values ('AGS4', @filename, @dl_count)
+fetch next from curs into @filename, @dl_count
+end
+close curs
+deallocate curs
+go
+
+
+/*
+--start summary stats update
+--clear out old results
+delete from GeoStor.dbo.ftp_reporting
+go
+declare @output nvarchar(50)
+--uploads
+select @output=(SUM(cast([cs-bytes] as bigint))/1048576) from LOGS.dbo.FTP1_IIS where [cs-bytes] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Uploads',@output)
+--downloads
+select @output=(SUM(cast([sc-bytes] as bigint))/1048576) from dbo.FTP1_IIS where [sc-bytes] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Downloads',@output)
+--total transfers
+select  @output=(SUM(cast([time-taken] as bigint))/1000) from dbo.FTP1_IIS where [time-taken] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Transfer Time',@output)
+--total users
+select @output = count(distinct([c-ip])) from dbo.FTP1_IIS where [c-ip] is not null
+insert into GeoStor.dbo.ftp_reporting values ('Total Users',@output)
+go*/
+
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS1_IIS]
+  order by [date] desc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS2_IIS]
+  order by [date] desc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS3_IIS]
+  order by [date] desc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS4_IIS]
+  order by [date] desc
+  
+  
+  select top 1 [time]
+  FROM [LOGS].[dbo].[AGS1_AGS]
+  order by [time] desc
+  select top 1 [time]
+  FROM [LOGS].[dbo].[AGS2_AGS]
+  order by [time] desc
+  select top 1 [time]
+  FROM [LOGS].[dbo].[AGS3_AGS]
+  order by [time] desc
+  select top 1 [time]
+  FROM [LOGS].[dbo].[AGS4_AGS]
+  order by [time] desc
+  
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS1_IIS]
+  order by [date] asc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS2_IIS]
+  order by [date] asc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS3_IIS]
+  order by [date] asc
+  select top 1 [date]
+  FROM [LOGS].[dbo].[AGS4_IIS]
+  order by [date] asc
+  
+  select COUNT([time])
+  FROM [LOGS].[dbo].[AGS1_AGS]

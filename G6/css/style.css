@@ -1,0 +1,315 @@
+body {
+    color: #000;
+    background: #FFF url(/G6/images/gradientBackground.png) repeat-x;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    }
+#main {
+	background-color: white;
+	text-align: center;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color:black;
+}
+
+a, a:visited {
+    background-color: inherit;
+    color: #014586;
+    text-decoration: none;
+    }
+a:hover {
+    text-decoration: underline;
+    }
+h1 {
+    font-size: 1.25em;
+    color: #900;
+    font-weight: normal;
+    padding: 15px 0 0;
+    }
+h2 {
+    color: #900;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 15px 0 0;
+    }
+h3 {
+    color: #666;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0;
+    }
+
+/* -- page layout -- */
+
+#container {
+    background: #FFF;
+    border: 1px solid #CCC;
+    margin: 0 auto;
+    width: 1000px;
+    }
+
+/* -- header -- */
+
+#header {
+    }
+#headerTop {
+    background-color:#000099;
+    color: #FFF;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    height: 30px;
+    }
+#headerTop a, #headerTop a:visited {
+    background-color: inherit;
+    color: #FFF;
+    text-decoration: none;
+    }
+#headerTop a:hover {
+    text-decoration: underline;
+    }
+#headerTopLeft {
+    float: left;
+    padding: 6px 20px 4px;
+    }
+#headerTopCenter {
+    float: left;
+    padding: 8px 222px;
+    }
+#headerTopRight {
+    float: right;
+    padding: 8px 20px;
+    }
+#headerBanner {
+    background-color: #014586;
+    height: 120px;
+    width: 1000px;
+    }
+#headerInfo {
+    background: #014586 url(../images/stripeBackground.png);
+    color: #FFF;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    height: 30px;
+    }
+#headerInfo a, #headerInfo a:visited {
+    background-color: inherit;
+    color: #FFF;
+    text-decoration: none;
+    }
+#headerInfo a:hover {
+    text-decoration: underline;
+    }
+#headerInfoLeft {
+    float: left;
+    }
+#headerInfoRight {
+    float: right;
+    padding: 7px 20px;
+    }
+#headerInfoRight img {
+    border: none;
+    padding: 0 4px 0 0;
+    vertical-align: middle;
+    }
+
+/*-- alerts --*/
+#infoArea {
+    padding: 7px 20px;
+    }
+
+/* -- search --*/
+
+#searchHeader {
+    background: transparent url(../images/searchHeader.png) no-repeat;
+    color: #FFF;
+    font-size: .9em;
+    height: 23px;
+    margin: 0 0 5px;
+    padding: 5px 0 0 10px;
+    }
+#miniSearch{
+    padding: 4px 20px;
+    }
+.textInputHome {
+    font-size: 0.9em;
+    height: 20px;
+    vertical-align: middle;
+    width: 154px;
+    }
+.textInput {
+    font-size: 1em;
+    }
+.searchButttonHome {
+    font-size: 0.9em;
+    padding: 0 3px;
+    }
+.searchButtton {
+    font-size: 1em;
+    padding: 0 3px;
+    }
+.searchButton:hover {
+    cursor: pointer;
+    }
+
+/* -- top navigation --*/
+
+#headerNav {
+    background-color:#000099;
+    border-bottom: 1px solid #FFF;
+    height: 30px;
+	text-align: center;
+    }
+#headerNav ul {
+    list-style-image: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 4px 0 5px;
+    }
+#headerNav li {
+    display: inline;
+    }
+#headerNav ul li a {
+    background: url(../images/navRule.png) no-repeat right center;
+    color: #EFEFEF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 17px 5px 15px;
+    text-decoration: none;
+    }
+#headerNav ul li a:hover {
+    color: #CCC;
+    }
+
+/* -- side navigation --*/
+
+#sideBar .sideNavHeader {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0;
+    }
+#sideBar .sideNavHeader a {
+    color: #666;
+    }
+#sideBar .sideNavItem {
+    margin: 0;
+    padding: 4px 0;
+    }
+#sideBar .sideNavItem a {
+    color: #000;
+    }
+.sideNavSelectedItem {
+    color: #999;
+    }
+
+/* -- content --*/
+
+#content {
+    float: left;
+    margin: 20px 0;
+    min-height: 150px;
+    width: 1000px;
+    }
+#content p {
+    font-size: 0.8em;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 8px 0;
+    }
+#contentHomeLeft {
+    float: left;
+    padding: 0 12px 0 14px;
+    width: 224px;
+    }
+#contentHomeMiddle {
+    float: left;
+    padding: 0 12px;
+    width: 476px;
+    }
+#contentHomeMiddleLeft {
+    float: left;
+    padding: 0 10px 0 0;
+    width: 228px;
+    }
+#contentHomeMiddleRight {
+    float: right;
+    padding: 0 0 0 10px;
+    width: 228px;
+    }
+#contentHomeRight {
+    float: right;
+    padding: 0 14px 0 12px;
+    width: 224px;
+    }
+#sideBar {
+    float: left;
+    margin: 0;
+    padding: 0 20px 0 20px;
+    width: 210px
+    }
+#mainContent {
+    border-left: 1px solid #CCC;
+    float: right;
+    margin: 0px;
+    padding: 0 20px 40px 30px;
+    width: 699px;
+    }
+#breadCrumb {
+    color: #999;
+    font-size: 0.75em;
+    }
+
+/* -- footer -- */
+
+#footer {
+    font-size: 0.7em;
+    }
+#footerTop {
+    background: #F2F2F2;
+	float: left;
+    }
+#footerTop .chunk {
+    float: left;
+    padding: 10px;
+    width: 313px;
+    }
+#footerTop .chunk p {
+    margin: 0px;
+    padding: 3px 0;
+    }
+#footerTop .chunk strong {
+    background-color: inherit;
+    color: #014586;
+    font-size: 1em;
+    }
+#footerBottom {
+    }
+#footerBottomLeft {
+    float: left;
+    padding: 8px 20px;
+    }
+#footerBottomRight {
+    float: right;
+    padding: 8px 20px;
+    }
+
+/* -- miscellaneous -- */
+
+.clearFloat {
+    clear: both;
+    height: 0;
+    font-size: 1px;
+    line-height: 0px;
+    }
+.noBorder {
+    border: none;
+    }
+.linkIcon {
+    border: none;
+    vertical-align: middle;
+    }

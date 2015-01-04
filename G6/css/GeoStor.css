@@ -1,0 +1,388 @@
+﻿/* CSS Document */
+
+/* Default syntax is for Firefox.  Star hack used for IE6 (*html).  */
+
+body {
+  	margin: 0;
+  	padding: 0;
+  	color: #000;
+  	font-size: 100%;
+  	width:99%; 
+  	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: medium;
+	background-color:#BBBBBB;
+}
+
+#main {
+	background-color: white;
+	text-align: center;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color:black;
+}
+
+ a:link 
+{
+	color:blue;
+	text-decoration:underline;
+}
+ a:visited 
+{
+	color:blue;
+	text-decoration:underline;
+}
+ a:active 
+{
+	color:blue;
+	text-decoration:underline;
+}
+ a:hover 
+{
+	color:blue;
+	text-decoration:underline;
+}
+td
+{
+    text-align:left
+}
+
+.error 
+{
+	color: Red;
+	font-weight: bold;
+}
+
+thead {
+	font-weight: bold;
+	background-color:#000099;
+}
+th {
+	color:white;
+	text-align: center;
+}
+/* Navigation */ 	
+#agTopNav {
+	height:22px;
+    text-align: center;
+	background-color:#DDDDDD;
+	width:960px;
+	padding:10px 0 -5px 0;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #FFFFFF;
+	z-index:12;
+	margin:0;
+	left:0;
+} 
+
+/* jQuery specific stuff */
+table.results tr.even td { background-color:#C0C0C0; }
+.dllinks { color:blue; text-decoration:underline; cursor:pointer; }
+.mdlinks { color:blue; text-decoration:underline; cursor:pointer; }
+.rhlinks { color:blue; text-decoration:underline; cursor:pointer; }
+.tnlinks { color:blue; text-decoration:underline; cursor:pointer; }
+
+/* Pagination */
+.pagination {
+	font-size: 80%;
+	margin-left: 0;
+	margin-right: 0;
+	text-align: center;
+}
+        
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #AAE;
+	color: #15B;
+}
+
+.pagination a, .pagination span {
+    display: block;
+    float: left;
+    padding: 0.3em 0.5em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.pagination .current {
+    background: #26B;
+    color: #fff;
+	border: solid 1px #AAE;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+	text-align: center;
+}
+
+/* AR GOV Template *?
+/* IE6 hack to make fonts same size as IE7/FF */	
+*html body {
+	font-size:16px;
+	}  
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+ .clearfix {
+	display: inline-block;
+}
+
+/* Holly Hack Targets IE Win only \*/
+* html .clearfix {height: 1%;}
+
+.clearfix {display: block;}
+    /* End Holly Hack */	
+
+#containerall {
+  	width:99%; 
+  	height:auto;
+  	text-align:center;
+  	z-index:0;
+	margin-left:auto; 
+	margin-right:auto;
+
+  	} 	
+
+#layout {
+	text-align: left; 
+	width: 960px;
+	margin-left:auto; /* MUST BE HERE FOR FireFox */
+	margin-right:auto; /* MUST BE HERE FOR FireFox */
+
+}  
+/*
+#argovbanner {
+	margin: 0;
+	padding: 0;
+	background:url(/G6/images/argov_header_solid_gov.gif) no-repeat;
+	height:29px;
+	width:960px;	
+	}	
+*/
+#argovbanner {
+	margin:30px 0 0 0;
+	padding:0px 0 0 0;
+	background:url(../images/argov_header_solid_gov.gif) no-repeat;
+	height:31px;
+	width:960px;	
+	z-index:2;
+	}
+/*
+#argovlogo {
+font: Arial, Helvetica, sans-serif;
+font-size:.7em;
+	padding:8px 0 0 38px;
+	margin:0px;
+	width:122px;
+	background-image:url(/G6/images/argov_icon.gif);
+	background-repeat:no-repeat;
+	background-position:18px 3px;
+	}
+*/
+#argovlogo {
+	display:block;
+	width:130px;
+	height:15px;
+	cursor:pointer;
+	margin:0;
+	float:left;
+}
+
+#argovnav {
+	position:relative;
+	margin:-15px 10px -10px 330px;
+	width:620px;
+	left:0;
+	top:0;
+	}		
+
+#agHeader_home{
+	height:105px;
+	padding:0;
+	width:auto;
+	margin:0;
+	background: url(/G6/images/geostor_header.jpg);
+	background-repeat:no-repeat; 
+	}
+	
+#agHeader_back{
+	height:60px;
+	padding:0;
+	width:auto;
+	margin-top:0;
+	background: url(/G6/images/agency_back_banner_clf.jpg);
+	background-repeat:no-repeat;
+	
+	}	
+
+ /* Center Content */
+  	 
+
+ 	
+#middleArea {
+	width:960px;
+	padding:0px;
+	z-index:0;
+	margin:0 0 -10px 0;
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color:white;
+	}	
+
+
+/* Agency Footer | Address Line */
+#agFooter {
+	background-color:#000099;
+	text-align:center;
+	margin:11px 0 0 0;
+	height:24px;
+	width:960px;
+	color:#FFFFFF;
+	padding:5px 0 0 0;
+	z-index:20;
+}
+  
+/* Arkansas.gov Internet Policies */  
+
+#arPolicy
+{
+	clear:both;
+	margin-left:auto; /* MUST BE HERE FOR FireFox */
+	margin-right:auto; /* MUST BE HERE FOR FireFox */
+	background: url(../images/footer.jpg) no-repeat;
+	text-align:center;
+	font-size:.7em;
+	line-height:2em;
+	height:30px;
+	width:960px;
+	padding:15px 0 0 0;
+	z-index:10;
+	left:18px;
+} 
+			
+.argovText8em
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.8em;
+		color:#bfbfe5;
+	}
+	
+.argovText8em a:link
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.85em;
+		color:#bfbfe5;
+		text-decoration:none;
+	}	
+	
+.argovText8em a:active
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.85em;
+		color:#bfbfe5;
+		text-decoration:none;
+	}	
+	
+.argovText8em a:visited
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.85em;
+		color:#bfbfe5;
+		text-decoration:none;
+	}
+	.argovText8em a:hover
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.85em;
+		color:#bfbfe5;
+		text-decoration:underline;
+	}
+	.agText8em
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.8em;
+		color:#FFFFFF;
+	}
+	
+.agText8em a:link
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.9em;
+		color:#FFFFFF;
+		text-decoration:underline;
+	}	
+	
+.agText8em a:active
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.9em;
+		color:#FFFFFF;
+		text-decoration:underline;
+	}	
+	
+.agText8em a:visited
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.9em;
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	.agText8em a:hover
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.9em;
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	.agText8em_blue
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:.8em;
+		color:#000099;
+	}
+	
+.agText8em_blue a:link
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:1em;
+		color:#000099;
+		text-decoration:underline;
+	}	
+	
+.agText8em_blue a:active
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:1em;
+		color:#000099;
+	}	
+	
+.agText8em_blue a:visited
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:1em;
+		color:#000099;
+		text-decoration:underline;
+	}	
+	
+.agText8em_blue a:hover
+	{
+	 	font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:1em;
+		color:#000099;
+		text-decoration:none;
+	}
+
+.hideme {
+	display:none;
+	}
+.boldme {
+	font-weight:bold;
+	}	
