@@ -65,7 +65,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 		echo '<a href="http://www.geostor.org/S3Browser/Default.aspx?bucketname=geostor-imagery.geostor.org&path='.$node.'" class="button product_type_simple">&nbsp;&nbsp;&nbsp;&nbsp;Click Here Browse the Imagery Repository for download</a><br><br>';
 	 	}
 	 }else{
-	 	if($product_cat != 'Maps'){ 
+	 	if($product_cat != 'Maps'){
+	 		echo '<a href="http://www.geostor.org/arcgis/rest/services/FEATURESERVICES/'.$product_cat.'/MapServer" class="button product_type_wms" style="width:150px"><span>&nbsp;Web Map Service</span></a>';
+			echo '&nbsp;&nbsp;';
+			echo '<a href="http://www.geostor.org/arcgis/rest/services/FEATURESERVICES/'.$product_cat.'/FeatureServer" class="button product_type_wms" style="width:150px"><span>&nbsp;Web Feature Service</span></a><br><br>';  
 	 		echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/SHP/'.$product->get_sku().'.zip" class="button product_type_simple"><span>&nbsp;&nbsp;&nbsp;&nbsp;Statewide ZIP file (Shapefile - UTM Zone 15N)</span></a><br><br>'; 
 	 		echo '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/FGDB/'.$product->get_sku().'.gdb.zip" class="button product_type_simple"><span>&nbsp;&nbsp;&nbsp;&nbsp;Statewide ZIP file (FGDB - UTM Zone 15N)</span></a><br><br>';
 	 		echo '<strong>Or to clip by County or City</strong><br><br>';
