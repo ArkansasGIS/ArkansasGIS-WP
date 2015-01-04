@@ -72,7 +72,6 @@ add_filter('ngettext',  'translate_text');
 	$translated = str_ireplace('Orders',  'Downloads',  $translated);
 	$translated = str_ireplace('Order',  'Download',  $translated);
 	$translated = str_ireplace('Checkout',  'Download',  $translated);
-	$translated = str_ireplace('Cart',  'Bin',  $translated);
 
 	     
 	     return $translated;
