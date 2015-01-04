@@ -22,7 +22,7 @@ define('DB_NAME', 'geostor-dev');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '5tgb@WSX');
+define('DB_PASSWORD', 'yourpassword');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
