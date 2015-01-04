@@ -65,7 +65,14 @@ class WP_User_Avatar_Admin {
     add_option('wp_user_avatar_tinymce', '1');
     add_option('wp_user_avatar_upload_size_limit', '0');
 	//Schedules the hook to run the Cron to check whether Gravatar-hosted image exists or not of users.
-	wp_schedule_event( time(), 'daily', 'wpua_has_gravatar_cron_hook' );
+	if(!wp_next_scheduled( 'wpua_has_gravatar_cron_hook' )){
+		wp_schedule_event( time(), 'daily', 'wpua_has_gravatar_cron_hook' );
+	}
+	// Remove usermeta fields
+	$users = get_users();
+	foreach($users as $user) {
+		delete_user_meta($user->ID, 'wpua_has_gravatar');
+	}
   }
 
   /**
@@ -402,18 +409,32 @@ class WP_User_Avatar_Admin {
   */
   public function set_wpua_has_gravatar($user_id=""){
 	global $blog_id, $wpua_functions;
+	$wpua_has_gravatar = get_option('wpua_has_gravatar');
 	if(!empty($user_id)){
 		$flag = $wpua_functions->wpua_has_gravatar($user_id);
-			// Update usermeta
-			update_user_meta( $user_id, 'wpua_has_gravatar', $flag);
+		$users_array = array($user_id => $flag);
+		if($wpua_has_gravatar == false){
+			add_option('wpua_has_gravatar',serialize($users_array));
+		}
+		else{
+			$wpua_has_gravatar_arr = unserialize($wpua_has_gravatar);
+			$wpua_has_gravatar_arr[$user_id] = $flag;
+			update_option('wpua_has_gravatar',serialize($wpua_has_gravatar_arr));
+		}
 	}
 	else{
 		$blogusers = get_users( 'blog_id='.$blog_id );
+		$users_array = array();
 		// Array of WP_User objects.
 		foreach ( $blogusers as $user ) {
 			$flag = $wpua_functions->wpua_has_gravatar($user->ID);
-			// Update usermeta
-			update_user_meta( $user->ID, 'wpua_has_gravatar', $flag);
+			$users_array[$user->ID] = $flag;
+		}
+		if($wpua_has_gravatar == false){
+			add_option('wpua_has_gravatar',serialize($users_array));
+		}
+		else{
+			update_option('wpua_has_gravatar',serialize($users_array));
 		}
 	}
   }
