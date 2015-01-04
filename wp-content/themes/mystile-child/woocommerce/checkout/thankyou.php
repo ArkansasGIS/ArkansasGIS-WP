@@ -141,7 +141,7 @@ if ( $order ) : ?>
 
 	<?php else : ?>
 		<?php if($statewide) : ?>
-			<p><?php _e( 'Thank you. Due to space constraints, statewide processing is not available<br>Below you will find links to the Statewide zip file in the format and projection you requested.', 'woocommerce' ); ?></p>
+			<p><?php _e( 'Thank you for selecting Statewide Data Download.<br>Below you will find links to the Statewide zip file in the format and projection you requested.', 'woocommerce' ); ?></p>
 		 
 			<ul class="order_details">
 				<br>
