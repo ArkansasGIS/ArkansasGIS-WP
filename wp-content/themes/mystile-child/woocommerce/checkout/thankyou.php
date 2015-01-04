@@ -162,7 +162,7 @@ if ( $order ) : ?>
 					<strong><?php echo date_i18n( get_option( 'date_format' ), strtotime( $order->order_date ) ); ?></strong>
 				</li>
 				<li class="order">
-					<?php _e( 'Process ID:', 'woocommerce' ); ?>
+					<?php _e( 'Request Received:', 'woocommerce' ); ?>
 					<strong><?php echo '';$xmlresponse->jobID[0] ; ?></strong>
 				</li>
 			</ul>
