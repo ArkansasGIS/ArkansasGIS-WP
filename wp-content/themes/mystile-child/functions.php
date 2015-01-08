@@ -56,6 +56,18 @@ function custom_login_logo() {
 }
 add_action('login_head', 'custom_login_logo');
 
+/**
+* remove the register link from the wp-login.php script  GEOSTOREDIT
+*/
+add_filter('option_users_can_register', function($value) {
+    $script = basename(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH));
+ 
+    if ($script == 'wp-login.php') {
+        $value = false;
+    }
+ 
+    return $value;
+});
 
 //  Action to add 'Add To Cart' button with the product thumbnails
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
