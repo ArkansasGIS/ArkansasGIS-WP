@@ -256,7 +256,7 @@ function custom_override_checkout_fields( $fields ) {
  	    'options' => array(
  	    	''        => __( 'Select A Projection', 'woocommerce' ),
      		'26915'        => __( 'NAD83 UTM- Zone 15N', 'woocommerce' ),
-      		'4324'       => __( 'WGS84 Lat/Long', 'woocommerce' ), 	
+      		'4326'       => __( 'WGS84 Lat/Long', 'woocommerce' ), 	
       		'4269'       => __( 'NAD83 Lat/Long', 'woocommerce' ), 
       		'3433'       => __( 'Arkansas State Plane North Feet', 'woocommerce' ), 
       		'3434'       => __( 'Arkansas State Plane South Feet', 'woocommerce' )
