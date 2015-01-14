@@ -4,6 +4,7 @@ function toggleClipper(){
 	document.getElementById('county_clipper_field').style.display = 'none';
 	document.getElementById('city_clipper_field').style.display = 'none';
 	document.getElementById('extent_clipper_field').style.display = 'none';
+	document.getElementById('doqq_clipper_field').style.display = 'none';
 	var vector_formats = document.getElementById('vector_format_type');
 			var vector_options = vector_formats.getElementsByTagName("option");
 			for(var v = 0; v < vector_options.length; v++){
@@ -24,6 +25,9 @@ function toggleClipper(){
 		case 'Extent':
 			document.getElementById('extent_clipper_field').style.display = 'block';
 			showExtentMapWindow();
+			break;
+		case 'DOQQ':
+			document.getElementById('doqq_clipper_field').style.display = 'block';
 			break;
 		case 'State':
 			var allowed_vectors = ['SHAPE','FILEGDB'];
