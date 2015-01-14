@@ -146,6 +146,10 @@ a.button.view {
 #extent_clipper_field {
 	display: none;
 }
+/* set display to none to hide the clipper on page load    */
+#doqq_clipper_field {
+	display: none;
+}
 /* added for Imagery note */
 #imagerynotecontainer{
 	height: 300px;

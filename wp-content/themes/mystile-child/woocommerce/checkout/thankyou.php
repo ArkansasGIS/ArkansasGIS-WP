@@ -86,6 +86,11 @@ if ( $order ) : ?>
 					$clipper .= "Boundaries.CITY_LIMITS_AHTD";
 					$statewide = false;
 					break;
+				case 'DOQQ':
+					$whereclause = "name%20LIKE%20'".$order->doqq_clipper."'";
+					$whereclause = str_replace(" ", "%20", $whereclause);
+					$clipper .= "Imagery.ORTHO_DOQQ_ASLIB_2000";
+					break;
 			}
 			$fmeurl = "https://guest:agioguest@geostor-agio.fmecloud.com/fmedatadownload/GeoStor/GeoStor_Downloads_2015.fmw?";
 	   		$fmeurl .= "DestDataset_GENERIC=%22%24(FME_SHAREDRESOURCE_TEMP)%22";

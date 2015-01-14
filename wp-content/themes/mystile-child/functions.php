@@ -166,6 +166,7 @@ function custom_override_checkout_fields( $fields ) {
  	    	''        => __( 'Select a Clipper', 'woocommerce' ),
      		'County'        => __( 'County', 'woocommerce' ),
       		'City'        => __( 'City', 'woocommerce' ),
+      		'DOQQ'		=> __('DOQQ','woocommerce'),
       		'State'        => __( 'Statewide', 'woocommerce' )
                         )                       
     );
@@ -210,6 +211,26 @@ function custom_override_checkout_fields( $fields ) {
 	// Add the cities to the city clipper puldown
 	foreach($cities as $city){
 		$fields['billing']['city_clipper']['options'][$city->CITY_NAME] =  __($city->CITY_NAME,'woocommerce');
+	}
+	
+	$doqqs = $wpdb->get_results("SELECT doqq_name from doqq");
+	$fields['billing']['doqq_clipper']= array(
+		'type' => 'select',
+		'label' => __('DOQQ', 'woocommerce'),
+		'placeholder' => _x('Select','placeholder','woocommerce'),
+		'required' => false,
+		'form' => 'FME',
+		'class' => array('chosen-container'),
+		'clear' => true,
+		'id' => 'doqq_clipper',
+		'options' => array(
+			'' => __('Select a DOQQ','woocomerce')
+			)
+	);
+	
+	// Add the cities to the city clipper puldown
+	foreach($doqqs as $doqq){
+		$fields['billing']['doqq_clipper']['options'][$doqq->doqq_name] =  __($doqq->doqq_name,'woocommerce');
 	}
 
 	$fields['billing']['extent_clipper'] = array(
