@@ -42,7 +42,11 @@ if ( $order ) : ?>
 			            break;
 			        }
 				}
-				$productlinks .= '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$vector_type.'/'.$product->get_sku().'.gdb.zip" class="button product_type_simple"><span>'.$product->get_sku().'</span></a><br><br>';
+				if($vector_type == 'SHP'){
+					$productlinks .= '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$vector_type.'/'.$product->get_sku().'.zip" class="button product_type_simple"><span>'.$product->get_sku().'</span></a><br><br>';
+				}else{
+					$productlinks .= '<a href="http://geostor-vectors.geostor.org/'.$product_cat.'/'.$vector_type.'/'.$product->get_sku().'.gdb.zip" class="button product_type_simple"><span>'.$product->get_sku().'</span></a><br><br>';
+				}
 			}
 		}else{
 			// This creates a "for loop" to find each sku (Feature)
